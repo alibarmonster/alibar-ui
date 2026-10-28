@@ -4,9 +4,15 @@ import { useState } from "react";
 import { FerrofluidShader } from "@/components/bits/ferrofluid-shader";
 import { DitherField } from "@/components/bits/dither-field";
 import { CausticBeams } from "@/components/bits/caustic-beams";
+import { CymaticsShader } from "@/components/bits/cymatics-shader";
+import { ThinFilmShader } from "@/components/bits/thin-film-shader";
+import { TopographyShader } from "@/components/bits/topography-shader";
 import { TactileKnob } from "@/components/bits/tactile-knob";
 import { ElasticTabs } from "@/components/bits/elastic-tabs";
+import { SplitFlapBoard } from "@/components/bits/split-flap-board";
+import { MorphicCommandPalette } from "@/components/bits/morphic-command-palette";
 import { ReasoningTrace } from "@/components/bits/reasoning-trace";
+import { ToolCallCard } from "@/components/bits/tool-call-card";
 import { REGISTRY } from "@/lib/registry";
 
 export default function ComponentsVaultPage() {
@@ -34,7 +40,7 @@ export default function ComponentsVaultPage() {
               alibar/components
             </span>
             <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-400">
-              v0.1.0
+              v0.2.0
             </span>
           </div>
 
@@ -74,10 +80,10 @@ export default function ComponentsVaultPage() {
 
           <div className="mt-8 flex flex-wrap items-center gap-2">
             {[
-              { key: "all", label: "All Primitives (6)" },
-              { key: "webgl", label: "WebGL Shaders (3)" },
-              { key: "controls", label: "Tactile Controls (2)" },
-              { key: "ai", label: "Agent Telemetry (1)" },
+              { key: "all", label: "All Primitives (12)" },
+              { key: "webgl", label: "WebGL Shaders (6)" },
+              { key: "controls", label: "Tactile Controls (4)" },
+              { key: "ai", label: "Agent Telemetry (2)" },
             ].map((tab) => (
               <button
                 key={tab.key}
@@ -111,11 +117,31 @@ export default function ComponentsVaultPage() {
                 {item.id === "caustic-beams" && (
                   <CausticBeams speed={speed} intensity={1.2} />
                 )}
+                {item.id === "cymatics-shader" && (
+                  <CymaticsShader speed={speed} drive={0.7} />
+                )}
+                {item.id === "thin-film-shader" && (
+                  <ThinFilmShader speed={speed} thickness={2.4} />
+                )}
+                {item.id === "topography-shader" && (
+                  <TopographyShader speed={speed} density={18} />
+                )}
                 {item.id === "tactile-knob" && <TactileKnob />}
                 {item.id === "elastic-tabs" && <ElasticTabs />}
+                {item.id === "split-flap-board" && <SplitFlapBoard />}
+                {item.id === "morphic-command-palette" && (
+                  <div className="px-4 w-full flex justify-center">
+                    <MorphicCommandPalette />
+                  </div>
+                )}
                 {item.id === "reasoning-trace" && (
                   <div className="px-4 w-full flex justify-center">
                     <ReasoningTrace />
+                  </div>
+                )}
+                {item.id === "tool-call-card" && (
+                  <div className="px-4 w-full flex justify-center">
+                    <ToolCallCard />
                   </div>
                 )}
 

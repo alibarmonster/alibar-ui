@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { REGISTRY } from "../src/lib/registry";
 
-assert.equal(REGISTRY.length, 6, "Expected 6 core primitives in REGISTRY");
+assert.equal(REGISTRY.length, 12, "Expected 12 core primitives in REGISTRY");
 
 for (const item of REGISTRY) {
   const fullPath = path.join(process.cwd(), item.filePath);
@@ -12,4 +12,4 @@ for (const item of REGISTRY) {
   assert.ok(src.includes('"use client"'), `${item.filePath} must be a client component`);
 }
 
-console.log("✔ All 6 component primitives verified.");
+console.log("✔ All 12 component primitives verified.");
