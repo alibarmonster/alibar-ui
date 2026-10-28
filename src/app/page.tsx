@@ -13,6 +13,12 @@ import { SplitFlapBoard } from "@/components/bits/split-flap-board";
 import { MorphicCommandPalette } from "@/components/bits/morphic-command-palette";
 import { ReasoningTrace } from "@/components/bits/reasoning-trace";
 import { ToolCallCard } from "@/components/bits/tool-call-card";
+import { HyperCipherText } from "@/components/bits/hyper-cipher-text";
+import { KineticPressureText } from "@/components/bits/kinetic-pressure-text";
+import { MagneticDock } from "@/components/bits/magnetic-dock";
+import { DynamicIslandNav } from "@/components/bits/dynamic-island-nav";
+import { HapticMicroButton } from "@/components/bits/haptic-micro-button";
+import { HorizonHeroStage } from "@/components/bits/horizon-hero-stage";
 import { REGISTRY } from "@/lib/registry";
 
 export default function ComponentsVaultPage() {
@@ -40,7 +46,7 @@ export default function ComponentsVaultPage() {
               alibar/components
             </span>
             <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-400">
-              v0.2.0
+              v0.3.0
             </span>
           </div>
 
@@ -66,23 +72,26 @@ export default function ComponentsVaultPage() {
         <section className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#111114] p-8 sm:p-12 mb-12">
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono text-[#c8ff4d]">
-              <span>RAW WEBGL2 + SPRING PHYSICS</span>
+              <span>RAW WEBGL2 + KINETIC TYPOGRAPHY + SPRING PHYSICS</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-tight">
-              Personal UI &amp; Shader Primitives.
+              Personal UI, Motion &amp; Shader Arsenal.
             </h1>
             <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
-              Zero-wrapper copy-pasteable components engineered for React 19,
-              Tailwind CSS v4, and raw WebGL2 fullscreen shaders with automatic
-              offscreen context suspension.
+              18 zero-wrapper copy-pasteable primitives: custom heroes, dynamic
+              island navbars, kinetic typography, tactile encoders, and raw
+              WebGL2 shaders.
             </p>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-2">
             {[
-              { key: "all", label: "All Primitives (12)" },
+              { key: "all", label: "All (18)" },
+              { key: "sections", label: "Hero & Sections (1)" },
+              { key: "navigation", label: "Navbars & Docks (2)" },
+              { key: "text", label: "Text Animations (2)" },
+              { key: "controls", label: "Tactile & Micro (5)" },
               { key: "webgl", label: "WebGL Shaders (6)" },
-              { key: "controls", label: "Tactile Controls (4)" },
               { key: "ai", label: "Agent Telemetry (2)" },
             ].map((tab) => (
               <button
@@ -108,6 +117,16 @@ export default function ComponentsVaultPage() {
               className="group rounded-2xl border border-white/10 bg-[#111114] overflow-hidden flex flex-col shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
             >
               <div className="relative h-72 w-full bg-[#0b0b0e] flex items-center justify-center overflow-hidden border-b border-white/10">
+                {item.id === "horizon-hero-stage" && (
+                  <HorizonHeroStage speed={speed} />
+                )}
+                {item.id === "dynamic-island-nav" && <DynamicIslandNav />}
+                {item.id === "magnetic-dock" && <MagneticDock />}
+                {item.id === "hyper-cipher-text" && <HyperCipherText />}
+                {item.id === "kinetic-pressure-text" && (
+                  <KineticPressureText />
+                )}
+                {item.id === "haptic-micro-button" && <HapticMicroButton />}
                 {item.id === "ferrofluid-shader" && (
                   <FerrofluidShader speed={speed} />
                 )}
@@ -145,7 +164,7 @@ export default function ComponentsVaultPage() {
                   </div>
                 )}
 
-                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10 font-mono text-[10px] uppercase tracking-wider text-zinc-300">
+                <span className="absolute top-3 left-3 z-20 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10 font-mono text-[10px] uppercase tracking-wider text-zinc-300">
                   {item.category}
                 </span>
               </div>

@@ -1,13 +1,67 @@
 export interface ComponentEntry {
   id: string;
   name: string;
-  category: "webgl" | "controls" | "ai";
+  category: "webgl" | "controls" | "text" | "navigation" | "sections" | "ai";
   summary: string;
   filePath: string;
   code: string;
 }
 
 export const REGISTRY: ComponentEntry[] = [
+  {
+    id: "horizon-hero-stage",
+    name: "Horizon Hero Stage",
+    category: "sections",
+    summary:
+      "Full-bleed caustic shader hero section with live FPS telemetry badge, cipher headline, and haptic CTA.",
+    filePath: "src/components/bits/horizon-hero-stage.tsx",
+    code: `<HorizonHeroStage speed={1.0} />`,
+  },
+  {
+    id: "dynamic-island-nav",
+    name: "Dynamic Island Navbar",
+    category: "navigation",
+    summary:
+      "Multi-state morphing top navbar pill (Idle → Compiling GLSL → Edge Deployed) with spring layout transitions.",
+    filePath: "src/components/bits/dynamic-island-nav.tsx",
+    code: `<DynamicIslandNav />`,
+  },
+  {
+    id: "magnetic-dock",
+    name: "Magnetic Floating Dock",
+    category: "navigation",
+    summary:
+      "Pointer-attracted floating navigation bar with spring-coupled cursor pull and shared active pill.",
+    filePath: "src/components/bits/magnetic-dock.tsx",
+    code: `<MagneticDock />`,
+  },
+  {
+    id: "hyper-cipher-text",
+    name: "Hyper-Cipher Matrix Text",
+    category: "text",
+    summary:
+      "Cryptographic glyph-decryption text reveal with neon-acid active cursor sweep on click or hover.",
+    filePath: "src/components/bits/hyper-cipher-text.tsx",
+    code: `<HyperCipherText phrases={["ZERO-OVERHEAD GLSL", "SPRING PHYSICS"]} />`,
+  },
+  {
+    id: "kinetic-pressure-text",
+    name: "Kinetic Pressure Typography",
+    category: "text",
+    summary:
+      "Proximity-reactive per-character spring scale and vertical wave distortion driven by cursor X-distance.",
+    filePath: "src/components/bits/kinetic-pressure-text.tsx",
+    code: `<KineticPressureText text="KINETIC WAVEFORM" />`,
+  },
+  {
+    id: "haptic-micro-button",
+    name: "Haptic Micro-Action Button",
+    category: "controls",
+    summary:
+      "Tactile multi-stage deploy trigger (Idle → Verifying Signatures → Shipped) with spring compression.",
+    filePath: "src/components/bits/haptic-micro-button.tsx",
+    code: `<HapticMicroButton />`,
+  },
   {
     id: "ferrofluid-shader",
     name: "Ferrofluid Surface",
