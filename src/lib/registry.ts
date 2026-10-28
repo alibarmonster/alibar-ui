@@ -1,13 +1,193 @@
 export interface ComponentEntry {
   id: string;
   name: string;
-  category: "webgl" | "controls" | "text" | "navigation" | "sections" | "ai";
+  category: "ogl" | "webgl" | "controls" | "text" | "navigation" | "sections" | "ai";
   summary: string;
   filePath: string;
   code: string;
 }
 
 export const REGISTRY: ComponentEntry[] = [
+  {
+    id: "ogl-abyssal-hellfire",
+    name: "OGL Abyssal Hellfire Pyre",
+    category: "ogl",
+    summary:
+      "OGL Triangle + Program pipeline rendering 5-octave FBM rising crimson-gold hellfire columns.",
+    filePath: "src/components/bits/ogl-abyssal-hellfire.tsx",
+    code: `<OglAbyssalHellfire speed={1.0} />`,
+  },
+  {
+    id: "ogl-blackflame-eclipse",
+    name: "OGL Blackflame Amaterasu",
+    category: "ogl",
+    summary:
+      "OGL obsidian-core dark flame with ultraviolet and crimson-violet burning corona wisps.",
+    filePath: "src/components/bits/ogl-blackflame-eclipse.tsx",
+    code: `<OglBlackflameEclipse speed={1.0} />`,
+  },
+  {
+    id: "ogl-necrotic-soulfire",
+    name: "OGL Necrotic Soulfire Wisp",
+    category: "ogl",
+    summary:
+      "OGL domain-warped spectral emerald and lich-teal necromantic flame rising from dark crypts.",
+    filePath: "src/components/bits/ogl-necrotic-soulfire.tsx",
+    code: `<OglNecroticSoulfire speed={1.0} />`,
+  },
+  {
+    id: "ogl-dragonfire-breath",
+    name: "OGL Dragonfire Breath Cone",
+    category: "ogl",
+    summary:
+      "OGL directional high-velocity dragon breath combustion jet tracking cursor aim coordinates.",
+    filePath: "src/components/bits/ogl-dragonfire-breath.tsx",
+    code: `<OglDragonfireBreath speed={1.0} />`,
+  },
+  {
+    id: "ogl-cinderlord-embers",
+    name: "OGL Cinderlord Ash & Embers",
+    category: "ogl",
+    summary:
+      "OGL 4-layer parallax bonfire ember storm with dark soul-ash flakes and smoldering hearth glow.",
+    filePath: "src/components/bits/ogl-cinderlord-embers.tsx",
+    code: `<OglCinderlordEmbers speed={1.0} />`,
+  },
+  {
+    id: "ogl-darksign-solar-ring",
+    name: "OGL Darksign Accursed Ring",
+    category: "ogl",
+    summary:
+      "OGL bleeding solar eclipse ring of fire dripping incandescent magma into the abyss.",
+    filePath: "src/components/bits/ogl-darksign-solar-ring.tsx",
+    code: `<OglDarksignSolarRing speed={1.0} />`,
+  },
+  {
+    id: "ogl-eldritch-rune-sigil",
+    name: "OGL Eldritch Rune Sigil",
+    category: "ogl",
+    summary:
+      "OGL rotating counter-inscribed octagram summoning circle with pulsing demonic rune ticks.",
+    filePath: "src/components/bits/ogl-eldritch-rune-sigil.tsx",
+    code: `<OglEldritchRuneSigil speed={1.0} />`,
+  },
+  {
+    id: "ogl-blood-moon-ritual",
+    name: "OGL Blood Moon Ritual",
+    category: "ogl",
+    summary:
+      "OGL crimson sacrificial full moon veiled by drifting gothic night-mist and crater shadows.",
+    filePath: "src/components/bits/ogl-blood-moon-ritual.tsx",
+    code: `<OglBloodMoonRitual speed={1.0} />`,
+  },
+  {
+    id: "ogl-shadow-abyss-maelstrom",
+    name: "OGL Shadow Abyss Maelstrom",
+    category: "ogl",
+    summary:
+      "OGL logarithmic spiral void portal with eldritch violet rift lightning and gravity well.",
+    filePath: "src/components/bits/ogl-shadow-abyss-maelstrom.tsx",
+    code: `<OglShadowAbyssMaelstrom speed={1.0} />`,
+  },
+  {
+    id: "ogl-infernal-brimstone-vortex",
+    name: "OGL Infernal Fire Tornado",
+    category: "ogl",
+    summary:
+      "OGL helical brimstone fire-vortex column twisting upward with sulfur core highlights.",
+    filePath: "src/components/bits/ogl-infernal-brimstone-vortex.tsx",
+    code: `<OglInfernalBrimstoneVortex speed={1.0} />`,
+  },
+  {
+    id: "ogl-ghostfire-lich-crown",
+    name: "OGL Ghostfire Lich Crown",
+    category: "ogl",
+    summary:
+      "OGL glacial cyan-cobalt spectral frostfire burning with frozen wraith-white tips.",
+    filePath: "src/components/bits/ogl-ghostfire-lich-crown.tsx",
+    code: `<OglGhostfireLichCrown speed={1.0} />`,
+  },
+  {
+    id: "ogl-vampiric-bloodpool",
+    name: "OGL Vampiric Bloodpool",
+    category: "ogl",
+    summary:
+      "OGL viscous dark-crimson alchemy fluid with screen-space derivative specular reflections.",
+    filePath: "src/components/bits/ogl-vampiric-bloodpool.tsx",
+    code: `<OglVampiricBloodpool speed={1.0} />`,
+  },
+  {
+    id: "ogl-phoenix-rebirth-plume",
+    name: "OGL Phoenix Rebirth Plume",
+    category: "ogl",
+    summary:
+      "OGL bilateral symmetrical solar fire-wings erupting from an incandescent rebirth core.",
+    filePath: "src/components/bits/ogl-phoenix-rebirth-plume.tsx",
+    code: `<OglPhoenixRebirthPlume speed={1.0} />`,
+  },
+  {
+    id: "ogl-demonic-void-tendrils",
+    name: "OGL Demonic Void Tendrils",
+    category: "ogl",
+    summary:
+      "OGL writhing pitch-black shadow tentacles with glowing violet corruption rim-lighting.",
+    filePath: "src/components/bits/ogl-demonic-void-tendrils.tsx",
+    code: `<OglDemonicVoidTendrils speed={1.0} />`,
+  },
+  {
+    id: "ogl-hellforged-obsidian-slag",
+    name: "OGL Hellforged Obsidian Slag",
+    category: "ogl",
+    summary:
+      "OGL ridged-multifractal volcanic armor plates pulsing with sub-crustal magma veins.",
+    filePath: "src/components/bits/ogl-hellforged-obsidian-slag.tsx",
+    code: `<OglHellforgedObsidianSlag speed={1.0} />`,
+  },
+  {
+    id: "ogl-astral-cataclysm-meteors",
+    name: "OGL Astral Cataclysm Meteors",
+    category: "ogl",
+    summary:
+      "OGL apocalyptic starfall shower streaking across a dark-fantasy violet cosmos.",
+    filePath: "src/components/bits/ogl-astral-cataclysm-meteors.tsx",
+    code: `<OglAstralCataclysmMeteors speed={1.0} />`,
+  },
+  {
+    id: "ogl-cursed-blight-miasma",
+    name: "OGL Cursed Blight Miasma",
+    category: "ogl",
+    summary:
+      "OGL layered poison-swamp miasma fog with drifting bioluminescent will-o'-the-wisp orbs.",
+    filePath: "src/components/bits/ogl-cursed-blight-miasma.tsx",
+    code: `<OglCursedBlightMiasma speed={1.0} />`,
+  },
+  {
+    id: "ogl-seraphim-burning-grace",
+    name: "OGL Seraphim Burning Grace",
+    category: "ogl",
+    summary:
+      "OGL corrupted golden-halo radial god-rays and sacred fire rings inspired by dark fantasy.",
+    filePath: "src/components/bits/ogl-seraphim-burning-grace.tsx",
+    code: `<OglSeraphimBurningGrace speed={1.0} />`,
+  },
+  {
+    id: "ogl-sauron-eye-of-flame",
+    name: "OGL Eye of Flame",
+    category: "ogl",
+    summary:
+      "OGL vertical cat-slit void pupil surrounded by fibrous wreathed hellfire iris.",
+    filePath: "src/components/bits/ogl-sauron-eye-of-flame.tsx",
+    code: `<OglSauronEyeOfFlame speed={1.0} />`,
+  },
+  {
+    id: "ogl-crimson-lightning-storm",
+    name: "OGL Ancient Dragon Lightning",
+    category: "ogl",
+    summary:
+      "OGL jagged scarlet-gold dragon cult lightning spears tearing through dark stormclouds.",
+    filePath: "src/components/bits/ogl-crimson-lightning-storm.tsx",
+    code: `<OglCrimsonLightningStorm speed={1.0} />`,
+  },
   {
     id: "horizon-hero-stage",
     name: "Horizon Hero Stage",

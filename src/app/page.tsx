@@ -44,6 +44,26 @@ import { MagneticDock } from "@/components/bits/magnetic-dock";
 import { DynamicIslandNav } from "@/components/bits/dynamic-island-nav";
 import { HapticMicroButton } from "@/components/bits/haptic-micro-button";
 import { HorizonHeroStage } from "@/components/bits/horizon-hero-stage";
+import { OglAbyssalHellfire } from "@/components/bits/ogl-abyssal-hellfire";
+import { OglBlackflameEclipse } from "@/components/bits/ogl-blackflame-eclipse";
+import { OglNecroticSoulfire } from "@/components/bits/ogl-necrotic-soulfire";
+import { OglDragonfireBreath } from "@/components/bits/ogl-dragonfire-breath";
+import { OglCinderlordEmbers } from "@/components/bits/ogl-cinderlord-embers";
+import { OglDarksignSolarRing } from "@/components/bits/ogl-darksign-solar-ring";
+import { OglEldritchRuneSigil } from "@/components/bits/ogl-eldritch-rune-sigil";
+import { OglBloodMoonRitual } from "@/components/bits/ogl-blood-moon-ritual";
+import { OglShadowAbyssMaelstrom } from "@/components/bits/ogl-shadow-abyss-maelstrom";
+import { OglInfernalBrimstoneVortex } from "@/components/bits/ogl-infernal-brimstone-vortex";
+import { OglGhostfireLichCrown } from "@/components/bits/ogl-ghostfire-lich-crown";
+import { OglVampiricBloodpool } from "@/components/bits/ogl-vampiric-bloodpool";
+import { OglPhoenixRebirthPlume } from "@/components/bits/ogl-phoenix-rebirth-plume";
+import { OglDemonicVoidTendrils } from "@/components/bits/ogl-demonic-void-tendrils";
+import { OglHellforgedObsidianSlag } from "@/components/bits/ogl-hellforged-obsidian-slag";
+import { OglAstralCataclysmMeteors } from "@/components/bits/ogl-astral-cataclysm-meteors";
+import { OglCursedBlightMiasma } from "@/components/bits/ogl-cursed-blight-miasma";
+import { OglSeraphimBurningGrace } from "@/components/bits/ogl-seraphim-burning-grace";
+import { OglSauronEyeOfFlame } from "@/components/bits/ogl-sauron-eye-of-flame";
+import { OglCrimsonLightningStorm } from "@/components/bits/ogl-crimson-lightning-storm";
 import { REGISTRY } from "@/lib/registry";
 
 export default function ComponentsVaultPage() {
@@ -63,6 +83,46 @@ export default function ComponentsVaultPage() {
 
   const renderPreview = (id: string) => {
     switch (id) {
+      case "ogl-abyssal-hellfire":
+        return <OglAbyssalHellfire speed={speed} />;
+      case "ogl-blackflame-eclipse":
+        return <OglBlackflameEclipse speed={speed} />;
+      case "ogl-necrotic-soulfire":
+        return <OglNecroticSoulfire speed={speed} />;
+      case "ogl-dragonfire-breath":
+        return <OglDragonfireBreath speed={speed} />;
+      case "ogl-cinderlord-embers":
+        return <OglCinderlordEmbers speed={speed} />;
+      case "ogl-darksign-solar-ring":
+        return <OglDarksignSolarRing speed={speed} />;
+      case "ogl-eldritch-rune-sigil":
+        return <OglEldritchRuneSigil speed={speed} />;
+      case "ogl-blood-moon-ritual":
+        return <OglBloodMoonRitual speed={speed} />;
+      case "ogl-shadow-abyss-maelstrom":
+        return <OglShadowAbyssMaelstrom speed={speed} />;
+      case "ogl-infernal-brimstone-vortex":
+        return <OglInfernalBrimstoneVortex speed={speed} />;
+      case "ogl-ghostfire-lich-crown":
+        return <OglGhostfireLichCrown speed={speed} />;
+      case "ogl-vampiric-bloodpool":
+        return <OglVampiricBloodpool speed={speed} />;
+      case "ogl-phoenix-rebirth-plume":
+        return <OglPhoenixRebirthPlume speed={speed} />;
+      case "ogl-demonic-void-tendrils":
+        return <OglDemonicVoidTendrils speed={speed} />;
+      case "ogl-hellforged-obsidian-slag":
+        return <OglHellforgedObsidianSlag speed={speed} />;
+      case "ogl-astral-cataclysm-meteors":
+        return <OglAstralCataclysmMeteors speed={speed} />;
+      case "ogl-cursed-blight-miasma":
+        return <OglCursedBlightMiasma speed={speed} />;
+      case "ogl-seraphim-burning-grace":
+        return <OglSeraphimBurningGrace speed={speed} />;
+      case "ogl-sauron-eye-of-flame":
+        return <OglSauronEyeOfFlame speed={speed} />;
+      case "ogl-crimson-lightning-storm":
+        return <OglCrimsonLightningStorm speed={speed} />;
       case "horizon-hero-stage":
         return <HorizonHeroStage speed={speed} />;
       case "dynamic-island-nav":
@@ -176,7 +236,7 @@ export default function ComponentsVaultPage() {
               alibar/components
             </span>
             <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-400">
-              v1.0.0 · 43 Primitives
+              v2.0.0 · 63 Primitives
             </span>
           </div>
 
@@ -208,16 +268,17 @@ export default function ComponentsVaultPage() {
               Personal UI, Motion &amp; Shader Arsenal.
             </h1>
             <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
-              43 zero-wrapper copy-pasteable primitives: 31 procedural WebGL2
-              shaders multiplexed across a single offscreen GPU context (zero
-              context-loss), plus tactile controls, navbars, and kinetic text.
+              63 zero-wrapper copy-pasteable primitives: 20 Dark Fantasy &amp;
+              Flame OGL shaders, 31 procedural WebGL2 shaders, plus tactile
+              controls, navbars, and kinetic typography.
             </p>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-2">
             {[
-              { key: "all", label: "All (43)" },
-              { key: "webgl", label: "WebGL Shaders (31)" },
+              { key: "all", label: "All (63)" },
+              { key: "ogl", label: "OGL Dark Fantasy & Flame (20)" },
+              { key: "webgl", label: "WebGL2 Sci-Fi Shaders (31)" },
               { key: "controls", label: "Tactile & Micro (5)" },
               { key: "navigation", label: "Navbars & Docks (2)" },
               { key: "text", label: "Text Animations (2)" },
