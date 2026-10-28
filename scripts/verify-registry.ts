@@ -3,7 +3,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { REGISTRY } from "../src/lib/registry";
 
-assert.equal(REGISTRY.length, 18, "Expected 18 core primitives in REGISTRY");
+assert.equal(REGISTRY.length, 43, "Expected 43 core primitives in REGISTRY");
+const webglCount = REGISTRY.filter((r) => r.category === "webgl").length;
+assert.equal(webglCount, 31, "Expected 31 WebGL shaders in REGISTRY");
 
 for (const item of REGISTRY) {
   const fullPath = path.join(process.cwd(), item.filePath);
@@ -12,4 +14,4 @@ for (const item of REGISTRY) {
   assert.ok(src.includes('"use client"'), `${item.filePath} must be a client component`);
 }
 
-console.log("✔ All 18 component primitives verified.");
+console.log(`✔ All ${REGISTRY.length} primitives (${webglCount} WebGL2 shaders) verified.`);

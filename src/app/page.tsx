@@ -7,6 +7,31 @@ import { CausticBeams } from "@/components/bits/caustic-beams";
 import { CymaticsShader } from "@/components/bits/cymatics-shader";
 import { ThinFilmShader } from "@/components/bits/thin-film-shader";
 import { TopographyShader } from "@/components/bits/topography-shader";
+import { EventHorizonShader } from "@/components/bits/event-horizon-shader";
+import { VoronoiBioCellShader } from "@/components/bits/voronoi-biocell-shader";
+import { QuantumLatticeShader } from "@/components/bits/quantum-lattice-shader";
+import { PlasmaTokamakShader } from "@/components/bits/plasma-tokamak-shader";
+import { TuringMorphogenesisShader } from "@/components/bits/turing-morphogenesis-shader";
+import { AsciiMatrixRainShader } from "@/components/bits/ascii-matrix-rain-shader";
+import { CyberCircuitTracesShader } from "@/components/bits/cyber-circuit-traces-shader";
+import { ChromaticPrismLensShader } from "@/components/bits/chromatic-prism-lens-shader";
+import { AuroraBorealisVeilShader } from "@/components/bits/aurora-borealis-veil-shader";
+import { MagmaConvectionShader } from "@/components/bits/magma-convection-shader";
+import { WarpSlipstreamTunnelShader } from "@/components/bits/warp-slipstream-tunnel-shader";
+import { HolographicGlobeMeshShader } from "@/components/bits/holographic-globe-mesh-shader";
+import { HexagonalHiveForcefieldShader } from "@/components/bits/hexagonal-hive-forcefield-shader";
+import { SonarPhasedArrayShader } from "@/components/bits/sonar-phased-array-shader";
+import { LightningArcDischargeShader } from "@/components/bits/lightning-arc-discharge-shader";
+import { FractalJuliaSingularityShader } from "@/components/bits/fractal-julia-singularity-shader";
+import { NeuralSynapsePlexusShader } from "@/components/bits/neural-synapse-plexus-shader";
+import { HalftoneMoireWaveShader } from "@/components/bits/halftone-moire-wave-shader";
+import { CrystalKaleidoscopePrismShader } from "@/components/bits/crystal-kaleidoscope-prism-shader";
+import { MagneticDipoleFluxShader } from "@/components/bits/magnetic-dipole-flux-shader";
+import { SolarCoronaEclipseShader } from "@/components/bits/solar-corona-eclipse-shader";
+import { AerodynamicWindTunnelShader } from "@/components/bits/aerodynamic-wind-tunnel-shader";
+import { LiquidMercuryMetaballsShader } from "@/components/bits/liquid-mercury-metaballs-shader";
+import { SynthwaveGridHorizonShader } from "@/components/bits/synthwave-grid-horizon-shader";
+import { BioluminescentEmbersShader } from "@/components/bits/bioluminescent-embers-shader";
 import { TactileKnob } from "@/components/bits/tactile-knob";
 import { ElasticTabs } from "@/components/bits/elastic-tabs";
 import { SplitFlapBoard } from "@/components/bits/split-flap-board";
@@ -36,6 +61,111 @@ export default function ComponentsVaultPage() {
     setTimeout(() => setCopiedId(null), 1600);
   };
 
+  const renderPreview = (id: string) => {
+    switch (id) {
+      case "horizon-hero-stage":
+        return <HorizonHeroStage speed={speed} />;
+      case "dynamic-island-nav":
+        return <DynamicIslandNav />;
+      case "magnetic-dock":
+        return <MagneticDock />;
+      case "hyper-cipher-text":
+        return <HyperCipherText />;
+      case "kinetic-pressure-text":
+        return <KineticPressureText />;
+      case "haptic-micro-button":
+        return <HapticMicroButton />;
+      case "ferrofluid-shader":
+        return <FerrofluidShader speed={speed} />;
+      case "dither-field":
+        return <DitherField speed={speed} pixelSize={4} />;
+      case "caustic-beams":
+        return <CausticBeams speed={speed} intensity={1.2} />;
+      case "cymatics-shader":
+        return <CymaticsShader speed={speed} drive={0.7} />;
+      case "thin-film-shader":
+        return <ThinFilmShader speed={speed} thickness={2.4} />;
+      case "topography-shader":
+        return <TopographyShader speed={speed} density={18} />;
+      case "event-horizon-shader":
+        return <EventHorizonShader speed={speed} />;
+      case "voronoi-biocell-shader":
+        return <VoronoiBioCellShader speed={speed} />;
+      case "quantum-lattice-shader":
+        return <QuantumLatticeShader speed={speed} />;
+      case "plasma-tokamak-shader":
+        return <PlasmaTokamakShader speed={speed} />;
+      case "turing-morphogenesis-shader":
+        return <TuringMorphogenesisShader speed={speed} />;
+      case "ascii-matrix-rain-shader":
+        return <AsciiMatrixRainShader speed={speed} />;
+      case "cyber-circuit-traces-shader":
+        return <CyberCircuitTracesShader speed={speed} />;
+      case "chromatic-prism-lens-shader":
+        return <ChromaticPrismLensShader speed={speed} />;
+      case "aurora-borealis-veil-shader":
+        return <AuroraBorealisVeilShader speed={speed} />;
+      case "magma-convection-shader":
+        return <MagmaConvectionShader speed={speed} />;
+      case "warp-slipstream-tunnel-shader":
+        return <WarpSlipstreamTunnelShader speed={speed} />;
+      case "holographic-globe-mesh-shader":
+        return <HolographicGlobeMeshShader speed={speed} />;
+      case "hexagonal-hive-forcefield-shader":
+        return <HexagonalHiveForcefieldShader speed={speed} />;
+      case "sonar-phased-array-shader":
+        return <SonarPhasedArrayShader speed={speed} />;
+      case "lightning-arc-discharge-shader":
+        return <LightningArcDischargeShader speed={speed} />;
+      case "fractal-julia-singularity-shader":
+        return <FractalJuliaSingularityShader speed={speed} />;
+      case "neural-synapse-plexus-shader":
+        return <NeuralSynapsePlexusShader speed={speed} />;
+      case "halftone-moire-wave-shader":
+        return <HalftoneMoireWaveShader speed={speed} />;
+      case "crystal-kaleidoscope-prism-shader":
+        return <CrystalKaleidoscopePrismShader speed={speed} />;
+      case "magnetic-dipole-flux-shader":
+        return <MagneticDipoleFluxShader speed={speed} />;
+      case "solar-corona-eclipse-shader":
+        return <SolarCoronaEclipseShader speed={speed} />;
+      case "aerodynamic-wind-tunnel-shader":
+        return <AerodynamicWindTunnelShader speed={speed} />;
+      case "liquid-mercury-metaballs-shader":
+        return <LiquidMercuryMetaballsShader speed={speed} />;
+      case "synthwave-grid-horizon-shader":
+        return <SynthwaveGridHorizonShader speed={speed} />;
+      case "bioluminescent-embers-shader":
+        return <BioluminescentEmbersShader speed={speed} />;
+      case "tactile-knob":
+        return <TactileKnob />;
+      case "elastic-tabs":
+        return <ElasticTabs />;
+      case "split-flap-board":
+        return <SplitFlapBoard />;
+      case "morphic-command-palette":
+        return (
+          <div className="px-4 w-full flex justify-center">
+            <MorphicCommandPalette />
+          </div>
+        );
+      case "reasoning-trace":
+        return (
+          <div className="px-4 w-full flex justify-center">
+            <ReasoningTrace />
+          </div>
+        );
+      case "tool-call-card":
+        return (
+          <div className="px-4 w-full flex justify-center">
+            <ToolCallCard />
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#09090b] text-zinc-100">
       <header className="sticky top-0 z-40 border-b border-white/10 bg-[#09090b]/80 backdrop-blur-xl">
@@ -46,7 +176,7 @@ export default function ComponentsVaultPage() {
               alibar/components
             </span>
             <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-400">
-              v0.3.0
+              v1.0.0 · 43 Primitives
             </span>
           </div>
 
@@ -72,26 +202,26 @@ export default function ComponentsVaultPage() {
         <section className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#111114] p-8 sm:p-12 mb-12">
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono text-[#c8ff4d]">
-              <span>RAW WEBGL2 + KINETIC TYPOGRAPHY + SPRING PHYSICS</span>
+              <span>SINGLE-CONTEXT MULTIPLEXED WEBGL2 + SPRING PHYSICS</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Personal UI, Motion &amp; Shader Arsenal.
             </h1>
             <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
-              18 zero-wrapper copy-pasteable primitives: custom heroes, dynamic
-              island navbars, kinetic typography, tactile encoders, and raw
-              WebGL2 shaders.
+              43 zero-wrapper copy-pasteable primitives: 31 procedural WebGL2
+              shaders multiplexed across a single offscreen GPU context (zero
+              context-loss), plus tactile controls, navbars, and kinetic text.
             </p>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-2">
             {[
-              { key: "all", label: "All (18)" },
-              { key: "sections", label: "Hero & Sections (1)" },
+              { key: "all", label: "All (43)" },
+              { key: "webgl", label: "WebGL Shaders (31)" },
+              { key: "controls", label: "Tactile & Micro (5)" },
               { key: "navigation", label: "Navbars & Docks (2)" },
               { key: "text", label: "Text Animations (2)" },
-              { key: "controls", label: "Tactile & Micro (5)" },
-              { key: "webgl", label: "WebGL Shaders (6)" },
+              { key: "sections", label: "Hero & Sections (1)" },
               { key: "ai", label: "Agent Telemetry (2)" },
             ].map((tab) => (
               <button
@@ -117,52 +247,7 @@ export default function ComponentsVaultPage() {
               className="group rounded-2xl border border-white/10 bg-[#111114] overflow-hidden flex flex-col shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
             >
               <div className="relative h-72 w-full bg-[#0b0b0e] flex items-center justify-center overflow-hidden border-b border-white/10">
-                {item.id === "horizon-hero-stage" && (
-                  <HorizonHeroStage speed={speed} />
-                )}
-                {item.id === "dynamic-island-nav" && <DynamicIslandNav />}
-                {item.id === "magnetic-dock" && <MagneticDock />}
-                {item.id === "hyper-cipher-text" && <HyperCipherText />}
-                {item.id === "kinetic-pressure-text" && (
-                  <KineticPressureText />
-                )}
-                {item.id === "haptic-micro-button" && <HapticMicroButton />}
-                {item.id === "ferrofluid-shader" && (
-                  <FerrofluidShader speed={speed} />
-                )}
-                {item.id === "dither-field" && (
-                  <DitherField speed={speed} pixelSize={4} />
-                )}
-                {item.id === "caustic-beams" && (
-                  <CausticBeams speed={speed} intensity={1.2} />
-                )}
-                {item.id === "cymatics-shader" && (
-                  <CymaticsShader speed={speed} drive={0.7} />
-                )}
-                {item.id === "thin-film-shader" && (
-                  <ThinFilmShader speed={speed} thickness={2.4} />
-                )}
-                {item.id === "topography-shader" && (
-                  <TopographyShader speed={speed} density={18} />
-                )}
-                {item.id === "tactile-knob" && <TactileKnob />}
-                {item.id === "elastic-tabs" && <ElasticTabs />}
-                {item.id === "split-flap-board" && <SplitFlapBoard />}
-                {item.id === "morphic-command-palette" && (
-                  <div className="px-4 w-full flex justify-center">
-                    <MorphicCommandPalette />
-                  </div>
-                )}
-                {item.id === "reasoning-trace" && (
-                  <div className="px-4 w-full flex justify-center">
-                    <ReasoningTrace />
-                  </div>
-                )}
-                {item.id === "tool-call-card" && (
-                  <div className="px-4 w-full flex justify-center">
-                    <ToolCallCard />
-                  </div>
-                )}
+                {renderPreview(item.id)}
 
                 <span className="absolute top-3 left-3 z-20 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10 font-mono text-[10px] uppercase tracking-wider text-zinc-300">
                   {item.category}
