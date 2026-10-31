@@ -1,37 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { FerrofluidShader } from "@/components/bits/ferrofluid-shader";
 import { DitherField } from "@/components/bits/dither-field";
-import { CausticBeams } from "@/components/bits/caustic-beams";
 import { CymaticsShader } from "@/components/bits/cymatics-shader";
-import { ThinFilmShader } from "@/components/bits/thin-film-shader";
-import { TopographyShader } from "@/components/bits/topography-shader";
-import { EventHorizonShader } from "@/components/bits/event-horizon-shader";
-import { VoronoiBioCellShader } from "@/components/bits/voronoi-biocell-shader";
-import { QuantumLatticeShader } from "@/components/bits/quantum-lattice-shader";
 import { PlasmaTokamakShader } from "@/components/bits/plasma-tokamak-shader";
-import { TuringMorphogenesisShader } from "@/components/bits/turing-morphogenesis-shader";
 import { AsciiMatrixRainShader } from "@/components/bits/ascii-matrix-rain-shader";
-import { CyberCircuitTracesShader } from "@/components/bits/cyber-circuit-traces-shader";
-import { ChromaticPrismLensShader } from "@/components/bits/chromatic-prism-lens-shader";
-import { AuroraBorealisVeilShader } from "@/components/bits/aurora-borealis-veil-shader";
-import { MagmaConvectionShader } from "@/components/bits/magma-convection-shader";
-import { WarpSlipstreamTunnelShader } from "@/components/bits/warp-slipstream-tunnel-shader";
-import { HolographicGlobeMeshShader } from "@/components/bits/holographic-globe-mesh-shader";
-import { HexagonalHiveForcefieldShader } from "@/components/bits/hexagonal-hive-forcefield-shader";
-import { SonarPhasedArrayShader } from "@/components/bits/sonar-phased-array-shader";
-import { LightningArcDischargeShader } from "@/components/bits/lightning-arc-discharge-shader";
-import { FractalJuliaSingularityShader } from "@/components/bits/fractal-julia-singularity-shader";
-import { NeuralSynapsePlexusShader } from "@/components/bits/neural-synapse-plexus-shader";
 import { HalftoneMoireWaveShader } from "@/components/bits/halftone-moire-wave-shader";
-import { CrystalKaleidoscopePrismShader } from "@/components/bits/crystal-kaleidoscope-prism-shader";
-import { MagneticDipoleFluxShader } from "@/components/bits/magnetic-dipole-flux-shader";
-import { SolarCoronaEclipseShader } from "@/components/bits/solar-corona-eclipse-shader";
-import { AerodynamicWindTunnelShader } from "@/components/bits/aerodynamic-wind-tunnel-shader";
-import { LiquidMercuryMetaballsShader } from "@/components/bits/liquid-mercury-metaballs-shader";
-import { SynthwaveGridHorizonShader } from "@/components/bits/synthwave-grid-horizon-shader";
-import { BioluminescentEmbersShader } from "@/components/bits/bioluminescent-embers-shader";
 import { TactileKnob } from "@/components/bits/tactile-knob";
 import { ElasticTabs } from "@/components/bits/elastic-tabs";
 import { SplitFlapBoard } from "@/components/bits/split-flap-board";
@@ -44,26 +18,6 @@ import { MagneticDock } from "@/components/bits/magnetic-dock";
 import { DynamicIslandNav } from "@/components/bits/dynamic-island-nav";
 import { HapticMicroButton } from "@/components/bits/haptic-micro-button";
 import { HorizonHeroStage } from "@/components/bits/horizon-hero-stage";
-import { OglAbyssalHellfire } from "@/components/bits/ogl-abyssal-hellfire";
-import { OglBlackflameEclipse } from "@/components/bits/ogl-blackflame-eclipse";
-import { OglNecroticSoulfire } from "@/components/bits/ogl-necrotic-soulfire";
-import { OglDragonfireBreath } from "@/components/bits/ogl-dragonfire-breath";
-import { OglCinderlordEmbers } from "@/components/bits/ogl-cinderlord-embers";
-import { OglDarksignSolarRing } from "@/components/bits/ogl-darksign-solar-ring";
-import { OglEldritchRuneSigil } from "@/components/bits/ogl-eldritch-rune-sigil";
-import { OglBloodMoonRitual } from "@/components/bits/ogl-blood-moon-ritual";
-import { OglShadowAbyssMaelstrom } from "@/components/bits/ogl-shadow-abyss-maelstrom";
-import { OglInfernalBrimstoneVortex } from "@/components/bits/ogl-infernal-brimstone-vortex";
-import { OglGhostfireLichCrown } from "@/components/bits/ogl-ghostfire-lich-crown";
-import { OglVampiricBloodpool } from "@/components/bits/ogl-vampiric-bloodpool";
-import { OglPhoenixRebirthPlume } from "@/components/bits/ogl-phoenix-rebirth-plume";
-import { OglDemonicVoidTendrils } from "@/components/bits/ogl-demonic-void-tendrils";
-import { OglHellforgedObsidianSlag } from "@/components/bits/ogl-hellforged-obsidian-slag";
-import { OglAstralCataclysmMeteors } from "@/components/bits/ogl-astral-cataclysm-meteors";
-import { OglCursedBlightMiasma } from "@/components/bits/ogl-cursed-blight-miasma";
-import { OglSeraphimBurningGrace } from "@/components/bits/ogl-seraphim-burning-grace";
-import { OglSauronEyeOfFlame } from "@/components/bits/ogl-sauron-eye-of-flame";
-import { OglCrimsonLightningStorm } from "@/components/bits/ogl-crimson-lightning-storm";
 import { REGISTRY } from "@/lib/registry";
 
 export default function ComponentsVaultPage() {
@@ -83,46 +37,16 @@ export default function ComponentsVaultPage() {
 
   const renderPreview = (id: string) => {
     switch (id) {
-      case "ogl-abyssal-hellfire":
-        return <OglAbyssalHellfire speed={speed} />;
-      case "ogl-blackflame-eclipse":
-        return <OglBlackflameEclipse speed={speed} />;
-      case "ogl-necrotic-soulfire":
-        return <OglNecroticSoulfire speed={speed} />;
-      case "ogl-dragonfire-breath":
-        return <OglDragonfireBreath speed={speed} />;
-      case "ogl-cinderlord-embers":
-        return <OglCinderlordEmbers speed={speed} />;
-      case "ogl-darksign-solar-ring":
-        return <OglDarksignSolarRing speed={speed} />;
-      case "ogl-eldritch-rune-sigil":
-        return <OglEldritchRuneSigil speed={speed} />;
-      case "ogl-blood-moon-ritual":
-        return <OglBloodMoonRitual speed={speed} />;
-      case "ogl-shadow-abyss-maelstrom":
-        return <OglShadowAbyssMaelstrom speed={speed} />;
-      case "ogl-infernal-brimstone-vortex":
-        return <OglInfernalBrimstoneVortex speed={speed} />;
-      case "ogl-ghostfire-lich-crown":
-        return <OglGhostfireLichCrown speed={speed} />;
-      case "ogl-vampiric-bloodpool":
-        return <OglVampiricBloodpool speed={speed} />;
-      case "ogl-phoenix-rebirth-plume":
-        return <OglPhoenixRebirthPlume speed={speed} />;
-      case "ogl-demonic-void-tendrils":
-        return <OglDemonicVoidTendrils speed={speed} />;
-      case "ogl-hellforged-obsidian-slag":
-        return <OglHellforgedObsidianSlag speed={speed} />;
-      case "ogl-astral-cataclysm-meteors":
-        return <OglAstralCataclysmMeteors speed={speed} />;
-      case "ogl-cursed-blight-miasma":
-        return <OglCursedBlightMiasma speed={speed} />;
-      case "ogl-seraphim-burning-grace":
-        return <OglSeraphimBurningGrace speed={speed} />;
-      case "ogl-sauron-eye-of-flame":
-        return <OglSauronEyeOfFlame speed={speed} />;
-      case "ogl-crimson-lightning-storm":
-        return <OglCrimsonLightningStorm speed={speed} />;
+      case "dither-field":
+        return <DitherField speed={speed} pixelSize={4} />;
+      case "cymatics-shader":
+        return <CymaticsShader speed={speed} drive={0.7} />;
+      case "plasma-tokamak-shader":
+        return <PlasmaTokamakShader speed={speed} />;
+      case "ascii-matrix-rain-shader":
+        return <AsciiMatrixRainShader speed={speed} />;
+      case "halftone-moire-wave-shader":
+        return <HalftoneMoireWaveShader speed={speed} />;
       case "horizon-hero-stage":
         return <HorizonHeroStage speed={speed} />;
       case "dynamic-island-nav":
@@ -135,68 +59,6 @@ export default function ComponentsVaultPage() {
         return <KineticPressureText />;
       case "haptic-micro-button":
         return <HapticMicroButton />;
-      case "ferrofluid-shader":
-        return <FerrofluidShader speed={speed} />;
-      case "dither-field":
-        return <DitherField speed={speed} pixelSize={4} />;
-      case "caustic-beams":
-        return <CausticBeams speed={speed} intensity={1.2} />;
-      case "cymatics-shader":
-        return <CymaticsShader speed={speed} drive={0.7} />;
-      case "thin-film-shader":
-        return <ThinFilmShader speed={speed} thickness={2.4} />;
-      case "topography-shader":
-        return <TopographyShader speed={speed} density={18} />;
-      case "event-horizon-shader":
-        return <EventHorizonShader speed={speed} />;
-      case "voronoi-biocell-shader":
-        return <VoronoiBioCellShader speed={speed} />;
-      case "quantum-lattice-shader":
-        return <QuantumLatticeShader speed={speed} />;
-      case "plasma-tokamak-shader":
-        return <PlasmaTokamakShader speed={speed} />;
-      case "turing-morphogenesis-shader":
-        return <TuringMorphogenesisShader speed={speed} />;
-      case "ascii-matrix-rain-shader":
-        return <AsciiMatrixRainShader speed={speed} />;
-      case "cyber-circuit-traces-shader":
-        return <CyberCircuitTracesShader speed={speed} />;
-      case "chromatic-prism-lens-shader":
-        return <ChromaticPrismLensShader speed={speed} />;
-      case "aurora-borealis-veil-shader":
-        return <AuroraBorealisVeilShader speed={speed} />;
-      case "magma-convection-shader":
-        return <MagmaConvectionShader speed={speed} />;
-      case "warp-slipstream-tunnel-shader":
-        return <WarpSlipstreamTunnelShader speed={speed} />;
-      case "holographic-globe-mesh-shader":
-        return <HolographicGlobeMeshShader speed={speed} />;
-      case "hexagonal-hive-forcefield-shader":
-        return <HexagonalHiveForcefieldShader speed={speed} />;
-      case "sonar-phased-array-shader":
-        return <SonarPhasedArrayShader speed={speed} />;
-      case "lightning-arc-discharge-shader":
-        return <LightningArcDischargeShader speed={speed} />;
-      case "fractal-julia-singularity-shader":
-        return <FractalJuliaSingularityShader speed={speed} />;
-      case "neural-synapse-plexus-shader":
-        return <NeuralSynapsePlexusShader speed={speed} />;
-      case "halftone-moire-wave-shader":
-        return <HalftoneMoireWaveShader speed={speed} />;
-      case "crystal-kaleidoscope-prism-shader":
-        return <CrystalKaleidoscopePrismShader speed={speed} />;
-      case "magnetic-dipole-flux-shader":
-        return <MagneticDipoleFluxShader speed={speed} />;
-      case "solar-corona-eclipse-shader":
-        return <SolarCoronaEclipseShader speed={speed} />;
-      case "aerodynamic-wind-tunnel-shader":
-        return <AerodynamicWindTunnelShader speed={speed} />;
-      case "liquid-mercury-metaballs-shader":
-        return <LiquidMercuryMetaballsShader speed={speed} />;
-      case "synthwave-grid-horizon-shader":
-        return <SynthwaveGridHorizonShader speed={speed} />;
-      case "bioluminescent-embers-shader":
-        return <BioluminescentEmbersShader speed={speed} />;
       case "tactile-knob":
         return <TactileKnob />;
       case "elastic-tabs":
@@ -236,7 +98,7 @@ export default function ComponentsVaultPage() {
               alibar/components
             </span>
             <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-400">
-              v2.0.0 · 63 Primitives
+              v1.0.0 · 17 Primitives
             </span>
           </div>
 
@@ -262,23 +124,23 @@ export default function ComponentsVaultPage() {
         <section className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#111114] p-8 sm:p-12 mb-12">
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono text-[#c8ff4d]">
-              <span>SINGLE-CONTEXT MULTIPLEXED WEBGL2 + SPRING PHYSICS</span>
+              <span>CURATED WEBGL2 + SPRING PHYSICS VAULT</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Personal UI, Motion &amp; Shader Arsenal.
             </h1>
             <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
-              63 zero-wrapper copy-pasteable primitives: 20 Dark Fantasy &amp;
-              Flame OGL shaders, 31 procedural WebGL2 shaders, plus tactile
-              controls, navbars, and kinetic typography.
+              17 curated zero-wrapper primitives: 5 signature WebGL2 shaders
+              (Ordered Dither, Chladni Cymatics, Tokamak Plasma, ASCII Glyph
+              Vortex, Halftone Moiré), plus tactile controls, navbars, and
+              kinetic typography.
             </p>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-2">
             {[
-              { key: "all", label: "All (63)" },
-              { key: "ogl", label: "OGL Dark Fantasy & Flame (20)" },
-              { key: "webgl", label: "WebGL2 Sci-Fi Shaders (31)" },
+              { key: "all", label: "All (17)" },
+              { key: "webgl", label: "WebGL2 Shaders (5)" },
               { key: "controls", label: "Tactile & Micro (5)" },
               { key: "navigation", label: "Navbars & Docks (2)" },
               { key: "text", label: "Text Animations (2)" },

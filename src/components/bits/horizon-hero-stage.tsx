@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { CausticBeams } from "@/components/bits/caustic-beams";
+import { PlasmaTokamakShader } from "@/components/bits/plasma-tokamak-shader";
 import { HyperCipherText } from "@/components/bits/hyper-cipher-text";
 import { HapticMicroButton } from "@/components/bits/haptic-micro-button";
 import { cn } from "@/lib/utils";
@@ -21,7 +21,7 @@ export function HorizonHeroStage({
       )}
     >
       <div className="absolute inset-0 opacity-75 pointer-events-none">
-        <CausticBeams speed={speed} intensity={1.1} />
+        <PlasmaTokamakShader speed={speed} />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/40 to-transparent pointer-events-none" />
 

@@ -1,7 +1,7 @@
 export interface ComponentEntry {
   id: string;
   name: string;
-  category: "ogl" | "webgl" | "controls" | "text" | "navigation" | "sections" | "ai";
+  category: "webgl" | "controls" | "text" | "navigation" | "sections" | "ai";
   summary: string;
   filePath: string;
   code: string;
@@ -9,191 +9,56 @@ export interface ComponentEntry {
 
 export const REGISTRY: ComponentEntry[] = [
   {
-    id: "ogl-abyssal-hellfire",
-    name: "OGL Abyssal Hellfire Pyre",
-    category: "ogl",
+    id: "dither-field",
+    name: "Ordered Dither Matrix",
+    category: "webgl",
     summary:
-      "OGL Triangle + Program pipeline rendering 5-octave FBM rising crimson-gold hellfire columns.",
-    filePath: "src/components/bits/ogl-abyssal-hellfire.tsx",
-    code: `<OglAbyssalHellfire speed={1.0} />`,
+      "4x4 Bayer matrix quantization shader with pointer ripple propagation and adjustable pixel grid scale.",
+    filePath: "src/components/bits/dither-field.tsx",
+    code: `<DitherField speed={1.0} pixelSize={4} />`,
   },
   {
-    id: "ogl-blackflame-eclipse",
-    name: "OGL Blackflame Amaterasu",
-    category: "ogl",
+    id: "cymatics-shader",
+    name: "Chladni Cymatics Plate",
+    category: "webgl",
     summary:
-      "OGL obsidian-core dark flame with ultraviolet and crimson-violet burning corona wisps.",
-    filePath: "src/components/bits/ogl-blackflame-eclipse.tsx",
-    code: `<OglBlackflameEclipse speed={1.0} />`,
+      "Acoustic standing-wave eigenmode solver rendering resonant Chladni nodal lines reactive to cursor coordinates.",
+    filePath: "src/components/bits/cymatics-shader.tsx",
+    code: `<CymaticsShader speed={1.0} drive={0.7} />`,
   },
   {
-    id: "ogl-necrotic-soulfire",
-    name: "OGL Necrotic Soulfire Wisp",
-    category: "ogl",
+    id: "plasma-tokamak-shader",
+    name: "Tokamak Plasma Turbulence",
+    category: "webgl",
     summary:
-      "OGL domain-warped spectral emerald and lich-teal necromantic flame rising from dark crypts.",
-    filePath: "src/components/bits/ogl-necrotic-soulfire.tsx",
-    code: `<OglNecroticSoulfire speed={1.0} />`,
+      "Iterative domain-rotated sinusoidal fluid advection simulating magnetic fusion confinement filaments.",
+    filePath: "src/components/bits/plasma-tokamak-shader.tsx",
+    code: `<PlasmaTokamakShader speed={1.0} />`,
   },
   {
-    id: "ogl-dragonfire-breath",
-    name: "OGL Dragonfire Breath Cone",
-    category: "ogl",
+    id: "ascii-matrix-rain-shader",
+    name: "ASCII Glyph Vortex",
+    category: "webgl",
     summary:
-      "OGL directional high-velocity dragon breath combustion jet tracking cursor aim coordinates.",
-    filePath: "src/components/bits/ogl-dragonfire-breath.tsx",
-    code: `<OglDragonfireBreath speed={1.0} />`,
+      "Procedural bitmask character glyph quantization driven by polar swirl and falling data streams.",
+    filePath: "src/components/bits/ascii-matrix-rain-shader.tsx",
+    code: `<AsciiMatrixRainShader speed={1.0} />`,
   },
   {
-    id: "ogl-cinderlord-embers",
-    name: "OGL Cinderlord Ash & Embers",
-    category: "ogl",
+    id: "halftone-moire-wave-shader",
+    name: "Halftone Moiré Interference",
+    category: "webgl",
     summary:
-      "OGL 4-layer parallax bonfire ember storm with dark soul-ash flakes and smoldering hearth glow.",
-    filePath: "src/components/bits/ogl-cinderlord-embers.tsx",
-    code: `<OglCinderlordEmbers speed={1.0} />`,
-  },
-  {
-    id: "ogl-darksign-solar-ring",
-    name: "OGL Darksign Accursed Ring",
-    category: "ogl",
-    summary:
-      "OGL bleeding solar eclipse ring of fire dripping incandescent magma into the abyss.",
-    filePath: "src/components/bits/ogl-darksign-solar-ring.tsx",
-    code: `<OglDarksignSolarRing speed={1.0} />`,
-  },
-  {
-    id: "ogl-eldritch-rune-sigil",
-    name: "OGL Eldritch Rune Sigil",
-    category: "ogl",
-    summary:
-      "OGL rotating counter-inscribed octagram summoning circle with pulsing demonic rune ticks.",
-    filePath: "src/components/bits/ogl-eldritch-rune-sigil.tsx",
-    code: `<OglEldritchRuneSigil speed={1.0} />`,
-  },
-  {
-    id: "ogl-blood-moon-ritual",
-    name: "OGL Blood Moon Ritual",
-    category: "ogl",
-    summary:
-      "OGL crimson sacrificial full moon veiled by drifting gothic night-mist and crater shadows.",
-    filePath: "src/components/bits/ogl-blood-moon-ritual.tsx",
-    code: `<OglBloodMoonRitual speed={1.0} />`,
-  },
-  {
-    id: "ogl-shadow-abyss-maelstrom",
-    name: "OGL Shadow Abyss Maelstrom",
-    category: "ogl",
-    summary:
-      "OGL logarithmic spiral void portal with eldritch violet rift lightning and gravity well.",
-    filePath: "src/components/bits/ogl-shadow-abyss-maelstrom.tsx",
-    code: `<OglShadowAbyssMaelstrom speed={1.0} />`,
-  },
-  {
-    id: "ogl-infernal-brimstone-vortex",
-    name: "OGL Infernal Fire Tornado",
-    category: "ogl",
-    summary:
-      "OGL helical brimstone fire-vortex column twisting upward with sulfur core highlights.",
-    filePath: "src/components/bits/ogl-infernal-brimstone-vortex.tsx",
-    code: `<OglInfernalBrimstoneVortex speed={1.0} />`,
-  },
-  {
-    id: "ogl-ghostfire-lich-crown",
-    name: "OGL Ghostfire Lich Crown",
-    category: "ogl",
-    summary:
-      "OGL glacial cyan-cobalt spectral frostfire burning with frozen wraith-white tips.",
-    filePath: "src/components/bits/ogl-ghostfire-lich-crown.tsx",
-    code: `<OglGhostfireLichCrown speed={1.0} />`,
-  },
-  {
-    id: "ogl-vampiric-bloodpool",
-    name: "OGL Vampiric Bloodpool",
-    category: "ogl",
-    summary:
-      "OGL viscous dark-crimson alchemy fluid with screen-space derivative specular reflections.",
-    filePath: "src/components/bits/ogl-vampiric-bloodpool.tsx",
-    code: `<OglVampiricBloodpool speed={1.0} />`,
-  },
-  {
-    id: "ogl-phoenix-rebirth-plume",
-    name: "OGL Phoenix Rebirth Plume",
-    category: "ogl",
-    summary:
-      "OGL bilateral symmetrical solar fire-wings erupting from an incandescent rebirth core.",
-    filePath: "src/components/bits/ogl-phoenix-rebirth-plume.tsx",
-    code: `<OglPhoenixRebirthPlume speed={1.0} />`,
-  },
-  {
-    id: "ogl-demonic-void-tendrils",
-    name: "OGL Demonic Void Tendrils",
-    category: "ogl",
-    summary:
-      "OGL writhing pitch-black shadow tentacles with glowing violet corruption rim-lighting.",
-    filePath: "src/components/bits/ogl-demonic-void-tendrils.tsx",
-    code: `<OglDemonicVoidTendrils speed={1.0} />`,
-  },
-  {
-    id: "ogl-hellforged-obsidian-slag",
-    name: "OGL Hellforged Obsidian Slag",
-    category: "ogl",
-    summary:
-      "OGL ridged-multifractal volcanic armor plates pulsing with sub-crustal magma veins.",
-    filePath: "src/components/bits/ogl-hellforged-obsidian-slag.tsx",
-    code: `<OglHellforgedObsidianSlag speed={1.0} />`,
-  },
-  {
-    id: "ogl-astral-cataclysm-meteors",
-    name: "OGL Astral Cataclysm Meteors",
-    category: "ogl",
-    summary:
-      "OGL apocalyptic starfall shower streaking across a dark-fantasy violet cosmos.",
-    filePath: "src/components/bits/ogl-astral-cataclysm-meteors.tsx",
-    code: `<OglAstralCataclysmMeteors speed={1.0} />`,
-  },
-  {
-    id: "ogl-cursed-blight-miasma",
-    name: "OGL Cursed Blight Miasma",
-    category: "ogl",
-    summary:
-      "OGL layered poison-swamp miasma fog with drifting bioluminescent will-o'-the-wisp orbs.",
-    filePath: "src/components/bits/ogl-cursed-blight-miasma.tsx",
-    code: `<OglCursedBlightMiasma speed={1.0} />`,
-  },
-  {
-    id: "ogl-seraphim-burning-grace",
-    name: "OGL Seraphim Burning Grace",
-    category: "ogl",
-    summary:
-      "OGL corrupted golden-halo radial god-rays and sacred fire rings inspired by dark fantasy.",
-    filePath: "src/components/bits/ogl-seraphim-burning-grace.tsx",
-    code: `<OglSeraphimBurningGrace speed={1.0} />`,
-  },
-  {
-    id: "ogl-sauron-eye-of-flame",
-    name: "OGL Eye of Flame",
-    category: "ogl",
-    summary:
-      "OGL vertical cat-slit void pupil surrounded by fibrous wreathed hellfire iris.",
-    filePath: "src/components/bits/ogl-sauron-eye-of-flame.tsx",
-    code: `<OglSauronEyeOfFlame speed={1.0} />`,
-  },
-  {
-    id: "ogl-crimson-lightning-storm",
-    name: "OGL Ancient Dragon Lightning",
-    category: "ogl",
-    summary:
-      "OGL jagged scarlet-gold dragon cult lightning spears tearing through dark stormclouds.",
-    filePath: "src/components/bits/ogl-crimson-lightning-storm.tsx",
-    code: `<OglCrimsonLightningStorm speed={1.0} />`,
+      "Dual-source acoustic wave interference modulating sub-cell halftone dot radii for kinetic moiré patterns.",
+    filePath: "src/components/bits/halftone-moire-wave-shader.tsx",
+    code: `<HalftoneMoireWaveShader speed={1.0} />`,
   },
   {
     id: "horizon-hero-stage",
     name: "Horizon Hero Stage",
     category: "sections",
     summary:
-      "Full-bleed caustic shader hero section with live FPS telemetry badge, cipher headline, and haptic CTA.",
+      "Full-bleed tokamak plasma hero section with live FPS telemetry badge, cipher headline, and haptic CTA.",
     filePath: "src/components/bits/horizon-hero-stage.tsx",
     code: `<HorizonHeroStage speed={1.0} />`,
   },
@@ -241,285 +106,6 @@ export const REGISTRY: ComponentEntry[] = [
       "Tactile multi-stage deploy trigger (Idle → Verifying Signatures → Shipped) with spring compression.",
     filePath: "src/components/bits/haptic-micro-button.tsx",
     code: `<HapticMicroButton />`,
-  },
-  {
-    id: "ferrofluid-shader",
-    name: "Ferrofluid Surface",
-    category: "webgl",
-    summary:
-      "Domain-warped FBM liquid metal shader with mouse magnetic distortion and iridescent Fresnel highlights.",
-    filePath: "src/components/bits/ferrofluid-shader.tsx",
-    code: `<FerrofluidShader speed={1.0} distortion={1.6} />`,
-  },
-  {
-    id: "dither-field",
-    name: "Ordered Dither Matrix",
-    category: "webgl",
-    summary:
-      "4x4 Bayer matrix quantization shader with pointer ripple propagation and adjustable pixel grid scale.",
-    filePath: "src/components/bits/dither-field.tsx",
-    code: `<DitherField speed={1.0} pixelSize={4} />`,
-  },
-  {
-    id: "caustic-beams",
-    name: "Caustic Energy Beams",
-    category: "webgl",
-    summary:
-      "Multi-harmonic interferometric light curves reactive to cursor proximity with exponential tone mapping.",
-    filePath: "src/components/bits/caustic-beams.tsx",
-    code: `<CausticBeams speed={1.0} intensity={1.2} />`,
-  },
-  {
-    id: "cymatics-shader",
-    name: "Chladni Cymatics Plate",
-    category: "webgl",
-    summary:
-      "Acoustic standing-wave eigenmode solver rendering resonant Chladni nodal lines reactive to cursor coordinates.",
-    filePath: "src/components/bits/cymatics-shader.tsx",
-    code: `<CymaticsShader speed={1.0} drive={0.7} />`,
-  },
-  {
-    id: "thin-film-shader",
-    name: "Thin-Film Interference",
-    category: "webgl",
-    summary:
-      "Optical path difference interference shader simulating soap-bubble spectral iridescence and fluid thickness.",
-    filePath: "src/components/bits/thin-film-shader.tsx",
-    code: `<ThinFilmShader speed={1.0} thickness={2.4} />`,
-  },
-  {
-    id: "topography-shader",
-    name: "Topography Isolines",
-    category: "webgl",
-    summary:
-      "Anti-aliased screen-space derivative elevation contours (fwidth) with cursor terrain deformation.",
-    filePath: "src/components/bits/topography-shader.tsx",
-    code: `<TopographyShader speed={1.0} density={18} />`,
-  },
-  {
-    id: "event-horizon-shader",
-    name: "Relativistic Event Horizon",
-    category: "webgl",
-    summary:
-      "Gravitational lensing black hole shadow with Doppler-beamed swirling accretion disk and photon ring.",
-    filePath: "src/components/bits/event-horizon-shader.tsx",
-    code: `<EventHorizonShader speed={1.0} />`,
-  },
-  {
-    id: "voronoi-biocell-shader",
-    name: "Voronoi Bio-Cell Mitosis",
-    category: "webgl",
-    summary:
-      "2-pass organic Voronoi cellular tissue with sub-surface membrane distance gradients and nuclei pulse.",
-    filePath: "src/components/bits/voronoi-biocell-shader.tsx",
-    code: `<VoronoiBioCellShader speed={1.0} />`,
-  },
-  {
-    id: "quantum-lattice-shader",
-    name: "3D Quantum Lattice",
-    category: "webgl",
-    summary:
-      "Sphere-traced 3D infinite modular crystal lattice with volumetric distance-field glow accumulation.",
-    filePath: "src/components/bits/quantum-lattice-shader.tsx",
-    code: `<QuantumLatticeShader speed={1.0} />`,
-  },
-  {
-    id: "plasma-tokamak-shader",
-    name: "Tokamak Plasma Turbulence",
-    category: "webgl",
-    summary:
-      "Iterative domain-rotated sinusoidal fluid advection simulating magnetic fusion confinement filaments.",
-    filePath: "src/components/bits/plasma-tokamak-shader.tsx",
-    code: `<PlasmaTokamakShader speed={1.0} />`,
-  },
-  {
-    id: "turing-morphogenesis-shader",
-    name: "Turing Morphogenesis Coral",
-    category: "webgl",
-    summary:
-      "Multi-scale reaction-diffusion activator-inhibitor patterns forming organic biological labyrinth ridges.",
-    filePath: "src/components/bits/turing-morphogenesis-shader.tsx",
-    code: `<TuringMorphogenesisShader speed={1.0} />`,
-  },
-  {
-    id: "ascii-matrix-rain-shader",
-    name: "ASCII Glyph Vortex",
-    category: "webgl",
-    summary:
-      "Procedural bitmask character glyph quantization driven by polar swirl and falling data streams.",
-    filePath: "src/components/bits/ascii-matrix-rain-shader.tsx",
-    code: `<AsciiMatrixRainShader speed={1.0} />`,
-  },
-  {
-    id: "cyber-circuit-traces-shader",
-    name: "Truchet Cyber Circuit",
-    category: "webgl",
-    summary:
-      "Procedural Truchet dual-arc PCB traces with high-speed glowing data packets following conductive paths.",
-    filePath: "src/components/bits/cyber-circuit-traces-shader.tsx",
-    code: `<CyberCircuitTracesShader speed={1.0} />`,
-  },
-  {
-    id: "chromatic-prism-lens-shader",
-    name: "Chromatic Prism Dispersion",
-    category: "webgl",
-    summary:
-      "Wavelength-dependent RGB refractive index splitting across concentric interferometric wave rings.",
-    filePath: "src/components/bits/chromatic-prism-lens-shader.tsx",
-    code: `<ChromaticPrismLensShader speed={1.0} />`,
-  },
-  {
-    id: "aurora-borealis-veil-shader",
-    name: "Aurora Borealis Veil",
-    category: "webgl",
-    summary:
-      "12-layer volumetric geomagnetic ribbon curtains with parallax depth fade and exponential tone mapping.",
-    filePath: "src/components/bits/aurora-borealis-veil-shader.tsx",
-    code: `<AuroraBorealisVeilShader speed={1.0} />`,
-  },
-  {
-    id: "magma-convection-shader",
-    name: "Volcanic Magma Fissures",
-    category: "webgl",
-    summary:
-      "Tectonic basalt crust plates fracturing over incandescent convective mantle fissures.",
-    filePath: "src/components/bits/magma-convection-shader.tsx",
-    code: `<MagmaConvectionShader speed={1.0} />`,
-  },
-  {
-    id: "warp-slipstream-tunnel-shader",
-    name: "Relativistic Warp Tunnel",
-    category: "webgl",
-    summary:
-      "Log-polar coordinate transformation tunnel with high-velocity light streaks and cursor yaw steering.",
-    filePath: "src/components/bits/warp-slipstream-tunnel-shader.tsx",
-    code: `<WarpSlipstreamTunnelShader speed={1.0} />`,
-  },
-  {
-    id: "holographic-globe-mesh-shader",
-    name: "Holographic Dotted Globe",
-    category: "webgl",
-    summary:
-      "Analytic ray-sphere intersection planetary globe with procedural latitude/longitude dot continents and Fresnel rim.",
-    filePath: "src/components/bits/holographic-globe-mesh-shader.tsx",
-    code: `<HolographicGlobeMeshShader speed={1.0} />`,
-  },
-  {
-    id: "hexagonal-hive-forcefield-shader",
-    name: "Hexagonal Forcefield Shield",
-    category: "webgl",
-    summary:
-      "Exact isometric hexagonal grid distance field with reactive ripple waves and glowing cell borders.",
-    filePath: "src/components/bits/hexagonal-hive-forcefield-shader.tsx",
-    code: `<HexagonalHiveForcefieldShader speed={1.0} />`,
-  },
-  {
-    id: "sonar-phased-array-shader",
-    name: "Phased-Array Sonar Sweep",
-    category: "webgl",
-    summary:
-      "Polar coordinate tactical radar display with phosphor decay trail, range rings, and cursor target ping.",
-    filePath: "src/components/bits/sonar-phased-array-shader.tsx",
-    code: `<SonarPhasedArrayShader speed={1.0} />`,
-  },
-  {
-    id: "lightning-arc-discharge-shader",
-    name: "Tesla Arc Discharge",
-    category: "webgl",
-    summary:
-      "Multi-strand FBM domain-displaced high-voltage plasma filaments snapping toward cursor coordinates.",
-    filePath: "src/components/bits/lightning-arc-discharge-shader.tsx",
-    code: `<LightningArcDischargeShader speed={1.0} />`,
-  },
-  {
-    id: "fractal-julia-singularity-shader",
-    name: "Julia Set Singularity",
-    category: "webgl",
-    summary:
-      "Real-time complex-plane quadratic Julia set iterator with continuous potential coloring and cursor C-parameter.",
-    filePath: "src/components/bits/fractal-julia-singularity-shader.tsx",
-    code: `<FractalJuliaSingularityShader speed={1.0} />`,
-  },
-  {
-    id: "neural-synapse-plexus-shader",
-    name: "Neural Synapse Plexus",
-    category: "webgl",
-    summary:
-      "Multi-layer spatial hash node graph with oscillating axon filaments and synaptic action-potential pulses.",
-    filePath: "src/components/bits/neural-synapse-plexus-shader.tsx",
-    code: `<NeuralSynapsePlexusShader speed={1.0} />`,
-  },
-  {
-    id: "halftone-moire-wave-shader",
-    name: "Halftone Moiré Interference",
-    category: "webgl",
-    summary:
-      "Dual-source acoustic wave interference modulating sub-cell halftone dot radii for kinetic moiré patterns.",
-    filePath: "src/components/bits/halftone-moire-wave-shader.tsx",
-    code: `<HalftoneMoireWaveShader speed={1.0} />`,
-  },
-  {
-    id: "crystal-kaleidoscope-prism-shader",
-    name: "Dihedral Kaleidoscope Prism",
-    category: "webgl",
-    summary:
-      "6-fold dihedral mirror-folded IFS geometry producing razor-sharp geometric crystal facets.",
-    filePath: "src/components/bits/crystal-kaleidoscope-prism-shader.tsx",
-    code: `<CrystalKaleidoscopePrismShader speed={1.0} />`,
-  },
-  {
-    id: "magnetic-dipole-flux-shader",
-    name: "Magnetic Dipole Flux",
-    category: "webgl",
-    summary:
-      "Bipolar vector potential field rendering magnetic flux lines and orthogonal equipotential contours.",
-    filePath: "src/components/bits/magnetic-dipole-flux-shader.tsx",
-    code: `<MagneticDipoleFluxShader speed={1.0} />`,
-  },
-  {
-    id: "solar-corona-eclipse-shader",
-    name: "Solar Corona Eclipse",
-    category: "webgl",
-    summary:
-      "Total solar eclipse occlusion disc with harmonic coronal mass ejections and diamond-ring flare.",
-    filePath: "src/components/bits/solar-corona-eclipse-shader.tsx",
-    code: `<SolarCoronaEclipseShader speed={1.0} />`,
-  },
-  {
-    id: "aerodynamic-wind-tunnel-shader",
-    name: "Aerodynamic Streamlines",
-    category: "webgl",
-    summary:
-      "Laminar flow streamlines deflecting around a cursor pressure boundary with wake turbulence.",
-    filePath: "src/components/bits/aerodynamic-wind-tunnel-shader.tsx",
-    code: `<AerodynamicWindTunnelShader speed={1.0} />`,
-  },
-  {
-    id: "liquid-mercury-metaballs-shader",
-    name: "Liquid Mercury Metaballs",
-    category: "webgl",
-    summary:
-      "3D sphere-traced polynomial smooth-minimum (smin) metaballs with finite-difference normals and Fresnel chrome.",
-    filePath: "src/components/bits/liquid-mercury-metaballs-shader.tsx",
-    code: `<LiquidMercuryMetaballsShader speed={1.0} />`,
-  },
-  {
-    id: "synthwave-grid-horizon-shader",
-    name: "Pulsar Joy-Plot Horizon",
-    category: "webgl",
-    summary:
-      "Stacked radio-astronomy elevation scanlines with foreground occlusion masking and Gaussian envelope.",
-    filePath: "src/components/bits/synthwave-grid-horizon-shader.tsx",
-    code: `<SynthwaveGridHorizonShader speed={1.0} />`,
-  },
-  {
-    id: "bioluminescent-embers-shader",
-    name: "Bioluminescent Deep Embers",
-    category: "webgl",
-    summary:
-      "3-layer parallax rising particle field with harmonic drift and phase-shifted bioluminescent flicker.",
-    filePath: "src/components/bits/bioluminescent-embers-shader.tsx",
-    code: `<BioluminescentEmbersShader speed={1.0} />`,
   },
   {
     id: "tactile-knob",
