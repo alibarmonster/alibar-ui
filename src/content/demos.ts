@@ -166,4 +166,6 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "page-flip-book": () => import("@/components/ui/page-flip-book/demo"),
   "infinite-canvas-gallery": () => import("@/components/ui/infinite-canvas-gallery/demo"),
   "scattered-prints": () => import("@/components/ui/scattered-prints/demo"),
+  "market-card": () => import("@/components/ui/market-card/demo"),
+  "trade-ticket": () => import("@/components/ui/trade-ticket/demo"),
 };

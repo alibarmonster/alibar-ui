@@ -317,8 +317,8 @@ const rows: Record<CategoryId, Row[]> = {
     ["lens-tab-bar", "Lens Tab Bar", "A lens slides between tabs and redraws what passes under it inverted.", "ready", V030],
   ],
   markets: [
-    ["market-card", "Market Card", "A prediction market with odds, a gauge and Yes/No buttons.", "planned", V030],
-    ["trade-ticket", "Trade Ticket", "Buy and sell outcome shares with a live payout summary.", "planned", V030],
+    ["market-card", "Market Card", "A prediction market with odds, a gauge and Yes/No buttons.", "ready", V030],
+    ["trade-ticket", "Trade Ticket", "Buy and sell outcome shares with a live payout summary.", "ready", V030],
     ["probability-chart", "Probability Chart", "Odds over time per outcome with a snapping crosshair.", "planned", V030],
     ["outcome-ladder", "Outcome Ladder", "Outcomes re-sort by probability as the odds move.", "planned", V030],
     ["order-book", "Order Book", "Bids and asks with animated depth bars and the spread.", "planned", V030],

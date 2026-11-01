@@ -165,4 +165,6 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "page-flip-book": () => import("@/components/ui/page-flip-book/docs"),
   "infinite-canvas-gallery": () => import("@/components/ui/infinite-canvas-gallery/docs"),
   "scattered-prints": () => import("@/components/ui/scattered-prints/docs"),
+  "market-card": () => import("@/components/ui/market-card/docs"),
+  "trade-ticket": () => import("@/components/ui/trade-ticket/docs"),
 };

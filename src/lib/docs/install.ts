@@ -28,6 +28,11 @@ const LIB_FILES: Record<string, string> = {
   "@/lib/gallery/gallery-a11y": "src/lib/gallery/gallery-a11y.tsx",
   "@/lib/gallery/gallery-fallback": "src/lib/gallery/gallery-fallback.tsx",
   "@/lib/gallery/gallery-chrome": "src/lib/gallery/gallery-chrome.tsx",
+  "@/lib/markets/types": "src/lib/markets/types.ts",
+  "@/lib/markets/math": "src/lib/markets/math.ts",
+  "@/lib/markets/format": "src/lib/markets/format.ts",
+  "@/lib/markets/use-now": "src/lib/markets/use-now.ts",
+  "@/lib/markets/avatar": "src/lib/markets/avatar.tsx",
 };
 
 const UTILS_PACKAGES = ["clsx", "tailwind-merge"];
