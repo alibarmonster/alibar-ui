@@ -1,0 +1,39 @@
+name: Bug report
+description: Something in a component or the docs site doesn't work as expected.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: input
+    id: component
+    attributes:
+      label: Component or page
+      placeholder: e.g. dock, otp-input, /docs/theming
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you expected, what you saw instead, and screenshots or a recording if it's visual.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open …
+        2. Press Tab until …
+        3. See …
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: e.g. Chrome 131 on macOS, Safari on iOS 18, reduced motion on
+  - type: input
+    id: versions
+    attributes:
+      label: Versions in your project
+      placeholder: e.g. react 19.2, next 16.2, tailwindcss 4.1, motion 14.9
