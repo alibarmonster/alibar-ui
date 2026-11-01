@@ -154,4 +154,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "node-network": () => import("@/components/ui/node-network/demo"),
   "animated-grid-pattern": () => import("@/components/ui/animated-grid-pattern/demo"),
   "ascii-aquarium-background": () => import("@/components/ui/ascii-aquarium-background/demo"),
+  "curved-wall": () => import("@/components/ui/curved-wall/demo"),
 };

@@ -153,4 +153,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "node-network": () => import("@/components/ui/node-network/docs"),
   "animated-grid-pattern": () => import("@/components/ui/animated-grid-pattern/docs"),
   "ascii-aquarium-background": () => import("@/components/ui/ascii-aquarium-background/docs"),
+  "curved-wall": () => import("@/components/ui/curved-wall/docs"),
 };

@@ -27,6 +27,7 @@ const LIB_FILES: Record<string, string> = {
   "@/lib/gallery/use-gallery": "src/lib/gallery/use-gallery.ts",
   "@/lib/gallery/gallery-a11y": "src/lib/gallery/gallery-a11y.tsx",
   "@/lib/gallery/gallery-fallback": "src/lib/gallery/gallery-fallback.tsx",
+  "@/lib/gallery/gallery-chrome": "src/lib/gallery/gallery-chrome.tsx",
 };
 
 const UTILS_PACKAGES = ["clsx", "tailwind-merge"];

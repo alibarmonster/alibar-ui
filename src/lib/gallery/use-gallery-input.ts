@@ -52,7 +52,7 @@ export interface UseGalleryInputOptions {
   onSelect?: (index: number) => void;
   onEscape?: () => void;
   /** A press without a drag, in element coordinates. */
-  onTap?: (point: { x: number; y: number }) => void;
+  onTap?: (point: { x: number; y: number }, input: Omit<GalleryInput, "index" | "autoplaying">) => void;
   /** Called whenever the position changes so a renderer can draw. */
   invalidate?: () => void;
 }
@@ -66,6 +66,8 @@ export interface GalleryInput {
   autoplaying: boolean;
   /** Current position in items (fractional while moving; unbounded when looping). */
   position: () => number;
+  /** Active item right now (use in event handlers; `index` is the rendered value). */
+  activeIndex: () => number;
   /** Velocity in items per second. */
   velocity: () => number;
   /** Advances the physics by dt seconds. Returns true while still moving. */
@@ -366,7 +368,7 @@ export function useGalleryInput(options: UseGalleryInputOptions): GalleryInput {
           } catch {}
           release();
         } else if (event.type === "pointerup") {
-          latest.current.onTap?.(local(event));
+          latest.current.onTap?.(local(event), controls);
         }
       };
       const onClickCapture = (event: MouseEvent) => {
@@ -434,13 +436,13 @@ export function useGalleryInput(options: UseGalleryInputOptions): GalleryInput {
           o.onSelect?.(s.lastIndex);
         } else if (event.key === "Escape") {
           o.onEscape?.();
-        } else if (event.key === " " && o.autoplay) {
+        } else if (event.key === " " && o.autoplay && !target.closest("[data-gallery-control]")) {
           event.preventDefault();
           togglePause();
         }
       };
       const onKeyUp = (event: KeyboardEvent) => {
-        if (event.key === " " && latest.current.autoplay && (latest.current.keyboard ?? true)) event.preventDefault();
+        if (event.key === " " && latest.current.autoplay && (latest.current.keyboard ?? true) && !(event.target as HTMLElement).closest("[data-gallery-control]")) event.preventDefault();
       };
       const onDragStart = (event: Event) => event.preventDefault();
 
@@ -481,6 +483,7 @@ export function useGalleryInput(options: UseGalleryInputOptions): GalleryInput {
     const controls: Omit<GalleryInput, "index" | "autoplaying"> = {
       bind,
       position: () => st().p,
+      activeIndex: () => st().lastIndex,
       velocity: () => st().v,
       update,
       drift,
