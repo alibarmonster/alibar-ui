@@ -159,4 +159,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "darkroom-stream": () => import("@/components/ui/darkroom-stream/docs"),
   "formation-gallery": () => import("@/components/ui/formation-gallery/docs"),
   "depth-rail": () => import("@/components/ui/depth-rail/docs"),
+  "card-wallet": () => import("@/components/ui/card-wallet/docs"),
 };

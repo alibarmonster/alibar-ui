@@ -313,7 +313,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["scattered-prints", "Scattered Prints", "Polaroids on a table you can pick up and throw.", "planned", V030],
   ],
   surfaces: [
-    ["card-wallet", "Card Wallet", "Metal, black, glass and color cards you can fan, cycle and lift out.", "planned", V030],
+    ["card-wallet", "Card Wallet", "Metal, black, glass and color cards you can fan, cycle and lift out.", "ready", V030],
     ["lens-tab-bar", "Lens Tab Bar", "A lens slides between tabs and redraws what passes under it inverted.", "planned", V030],
   ],
   markets: [
