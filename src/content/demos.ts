@@ -161,4 +161,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "formation-gallery": () => import("@/components/ui/formation-gallery/demo"),
   "depth-rail": () => import("@/components/ui/depth-rail/demo"),
   "card-wallet": () => import("@/components/ui/card-wallet/demo"),
+  "lens-tab-bar": () => import("@/components/ui/lens-tab-bar/demo"),
 };

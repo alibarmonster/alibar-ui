@@ -314,7 +314,7 @@ const rows: Record<CategoryId, Row[]> = {
   ],
   surfaces: [
     ["card-wallet", "Card Wallet", "Metal, black, glass and color cards you can fan, cycle and lift out.", "ready", V030],
-    ["lens-tab-bar", "Lens Tab Bar", "A lens slides between tabs and redraws what passes under it inverted.", "planned", V030],
+    ["lens-tab-bar", "Lens Tab Bar", "A lens slides between tabs and redraws what passes under it inverted.", "ready", V030],
   ],
   markets: [
     ["market-card", "Market Card", "A prediction market with odds, a gauge and Yes/No buttons.", "planned", V030],
