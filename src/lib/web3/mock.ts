@@ -113,6 +113,16 @@ export const getMockToken = (symbol: string) => {
 /** Tokens offered as one-tap chips in selectors. */
 export const popularTokenSymbols = ["ETH", "USDC", "USDT", "WBTC", "DAI"];
 
+// ── Wallets ─────────────────────────────────────────────────────────────────
+
+/** Invented wallet apps for connect demos (generated icons, no real brands). */
+export const mockWallets = [
+  { id: "harbor", name: "Harbor Wallet", color: "#2563EB", recent: true, installed: true },
+  { id: "lumen", name: "Lumen", color: "#F59E0B", installed: true },
+  { id: "keystone", name: "Keystone", color: "#16A34A", description: "Hardware wallet" },
+  { id: "relay", name: "Relay Connect", color: "#6366F1", qr: true, description: "Scan with a mobile wallet" },
+];
+
 // ── Account and balances ────────────────────────────────────────────────────
 
 export const mockAccount = {

@@ -16,6 +16,9 @@ const LIB_FILES: Record<string, string> = {
   "@/lib/webgl/use-shader-canvas": "src/lib/webgl/use-shader-canvas.ts",
   "@/lib/webgl/noise.glsl": "src/lib/webgl/noise.glsl.ts",
   "@/lib/web3/format": "src/lib/web3/format.ts",
+  "@/lib/web3/types": "src/lib/web3/types.ts",
+  "@/lib/web3/icons": "src/lib/web3/icons.tsx",
+  "@/lib/web3/rolling-value": "src/lib/web3/rolling-value.tsx",
 };
 
 const UTILS_PACKAGES = ["clsx", "tailwind-merge"];
