@@ -39,6 +39,11 @@ export interface UseShaderCanvasOptions {
   pointer?: boolean;
   /** Clock value, in seconds, of the single frame drawn under reduced motion. @default 6 */
   staticTime?: number;
+  /**
+   * Render even on software WebGL (SwiftShader, llvmpipe), where compiling and every frame run on
+   * the CPU and block the main thread. By default those renderers get the fallback. @default false
+   */
+  allowSoftware?: boolean;
 }
 
 const VERTEX_SHADER = /* glsl */ `#version 300 es
@@ -130,7 +135,8 @@ function setUniform(gl: WebGL2RenderingContext, { location, type }: UniformSlot,
  * attach `ref` to (give that element a size and `position: relative`, `absolute` or `fixed`).
  *
  * One fullscreen triangle, no three.js. The canvas follows the element's size, caps the pixel
- * ratio, pauses offscreen and in hidden tabs, draws a single static frame under reduced motion,
+ * ratio, pauses offscreen and in hidden tabs, draws a single static frame under reduced motion
+ * (software WebGL such as SwiftShader gets the fallback unless allowSoftware is set),
  * recovers from context loss and releases the GPU context on unmount. Uniform values can be
  * numbers, arrays (vec2–vec4 or float arrays) or, for sampler2D uniforms, an image, canvas or
  * video element (uploaded once it has pixels; pass a new element or re-render to refresh). When `status` is
@@ -187,6 +193,7 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
     let needsResize = true;
     let drawn = false;
     let lost = false;
+    let software = false;
 
     const report = (next: ShaderStatus) => {
       if (next === reported) return;
@@ -203,7 +210,13 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
         premultipliedAlpha: true,
         powerPreference: "low-power",
       });
-      program = gl ? link(gl, fragmentShader) : null;
+      if (gl) {
+        const info = gl.getExtension("WEBGL_debug_renderer_info");
+        const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : String(gl.getParameter(gl.RENDERER));
+        software = /swiftshader|llvmpipe|softpipe|software|basic render/i.test(renderer);
+      }
+      // On software WebGL even compiling blocks the main thread, so use the CSS fallback instead.
+      program = gl && !(software && !latest.current.allowSoftware) ? link(gl, fragmentShader) : null;
       uniforms = gl && program ? collectUniforms(gl, program) : new Map();
       textures.clear();
       needsResize = true;
@@ -281,8 +294,8 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
       gl.uniform1i(slot.location, entry.unit);
     };
 
-    const shouldRun = () =>
-      !lost && program !== null && inView && pageVisible && !latest.current.paused && !reducedMotion.matches;
+    const still = () => reducedMotion.matches;
+    const shouldRun = () => !lost && program !== null && inView && pageVisible && !latest.current.paused && !still();
 
     const frame = (now: number) => {
       raf = 0;
@@ -304,7 +317,7 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
     const settle = () => {
       lastFrame = 0;
       if (lost || !program) return;
-      time.current = reducedMotion.matches ? (latest.current.staticTime ?? 6) : clock;
+      time.current = still() ? (latest.current.staticTime ?? 6) : clock;
       draw(time.current);
       report("static");
     };

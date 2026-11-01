@@ -8,7 +8,7 @@ export const docs: ComponentDocs = {
 </CloudShader>`,
   a11y: [
     "The sky is a decorative canvas (aria-hidden); children render above it as normal content.",
-    "With reduced motion the shader draws one still frame. Without WebGL2, a CSS gradient in the same colors is shown.",
+    "With reduced motion the shader draws one still frame. Without WebGL2, or on software rendering with no GPU, a CSS gradient in the same colors is shown.",
     "Check text contrast against your sky colors: the default palette is light, so use dark text on it.",
   ],
   notes: [

@@ -8,7 +8,7 @@ export const docs: ComponentDocs = {
 </LightRays>`,
   a11y: [
     "The canvas is decorative (aria-hidden); children render above it as normal content.",
-    "With reduced motion the shader draws a single still frame. Without WebGL2, a CSS fallback in the same colors is shown.",
+    "With reduced motion the shader draws a single still frame. Without WebGL2, or on software rendering with no GPU, a CSS fallback in the same colors is shown.",
   ],
   notes: [
     "Rays come from angle bands around a light source above the top edge, mixing two frequencies with noise for irregular widths. The source sways slowly, and rays fade with distance and toward the bottom.",

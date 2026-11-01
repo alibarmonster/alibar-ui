@@ -29,7 +29,7 @@ export const releases: Release[] = [
           "Shared GLSL snippets (hash, simplex noise, fBm, Bayer dither), a hex-to-vec3 color helper, and web3 formatting built on bigint math and viem.",
           "A version badge in the navbar and this changelog.",
           "Landing page: a What's new section with live showcases (Token Swap Widget, Orbiting Circles), Logo Grid Hover Reveal under the hero and an optional Cloud Shader hero background.",
-          "useShaderCanvas also takes texture uniforms (images, canvases, video) and per-frame uniform functions, and exposes its clock.",
+          "useShaderCanvas also takes texture uniforms (images, canvases, video) and per-frame uniform functions, and exposes its clock. On software WebGL (no GPU), shaders use their CSS fallback instead of blocking the main thread.",
         ],
       },
       {

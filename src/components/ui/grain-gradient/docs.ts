@@ -8,7 +8,7 @@ export const docs: ComponentDocs = {
 </GrainGradient>`,
   a11y: [
     "The canvas is decorative (aria-hidden); children render above it as normal content.",
-    "With reduced motion the shader draws a single still frame. Without WebGL2, a CSS fallback in the same colors is shown.",
+    "With reduced motion the shader draws a single still frame. Without WebGL2, or on software rendering with no GPU, a CSS fallback in the same colors is shown.",
   ],
   notes: [
     "Grain is a per-pixel hash re-seeded 24 times a second, layered over a noise-warped three-color gradient. It renders at full resolution (capped at a 1.5 pixel ratio) so the grain stays fine.",
