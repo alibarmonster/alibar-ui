@@ -159,4 +159,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "ring-reel": () => import("@/components/ui/ring-reel/demo"),
   "darkroom-stream": () => import("@/components/ui/darkroom-stream/demo"),
   "formation-gallery": () => import("@/components/ui/formation-gallery/demo"),
+  "depth-rail": () => import("@/components/ui/depth-rail/demo"),
 };
