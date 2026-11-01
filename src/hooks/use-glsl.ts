@@ -144,9 +144,11 @@ function getEngine() {
 export function useGLSL(options: GLSLOptions) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const uniformsRef = useRef(options.uniforms);
-  uniformsRef.current = options.uniforms;
   const speedRef = useRef(options.speed ?? 1);
-  speedRef.current = options.speed ?? 1;
+  useEffect(() => {
+    uniformsRef.current = options.uniforms;
+    speedRef.current = options.speed ?? 1;
+  });
 
   useEffect(() => {
     const canvas = canvasRef.current;
