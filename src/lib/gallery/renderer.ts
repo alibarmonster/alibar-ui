@@ -15,6 +15,8 @@ export interface GalleryCard {
   rotateZ?: number;
   /** Uniform scale. @default 1 */
   scale?: number;
+  /** Turn around the card's own vertical axis, applied before the other rotations (radians). @default 0 */
+  flip?: number;
   width: number;
   height: number;
   /** Corner radius in px. @default 12 */
@@ -506,7 +508,7 @@ export class GalleryRenderer {
     // Back-to-front order by view-space depth.
     while (this.models.length < cards.length) this.models.push(createMat4());
     const order = cards.map((card, i) => {
-      compose(this.models[i], card.x, card.y, card.z, card.rotateX ?? 0, card.rotateY ?? 0, card.rotateZ ?? 0, card.scale ?? 1);
+      compose(this.models[i], card.x, card.y, card.z, card.rotateX ?? 0, card.rotateY ?? 0, card.rotateZ ?? 0, card.scale ?? 1, card.flip ?? 0);
       const depth = this.view[2] * card.x + this.view[6] * card.y + this.view[10] * card.z + this.view[14];
       return { i, depth };
     });

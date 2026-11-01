@@ -70,8 +70,11 @@ export function lookAt(out: Mat4, eye: readonly number[], target: readonly numbe
   return out;
 }
 
-/** Model matrix: translate × rotateY × rotateX × rotateZ × uniform scale. Angles in radians. */
-export function compose(out: Mat4, x: number, y: number, z: number, rx: number, ry: number, rz: number, s: number) {
+/**
+ * Model matrix: translate × rotateY × rotateX × rotateZ × flip × uniform scale. Angles in radians.
+ * `flip` turns the card around its own vertical axis before the other rotations (turning a leaning card over).
+ */
+export function compose(out: Mat4, x: number, y: number, z: number, rx: number, ry: number, rz: number, s: number, flip = 0) {
   const cx = Math.cos(rx);
   const sx = Math.sin(rx);
   const cy = Math.cos(ry);
@@ -90,6 +93,17 @@ export function compose(out: Mat4, x: number, y: number, z: number, rx: number, 
   out[9] = -sx * s;
   out[10] = cy * cx * s;
   out[11] = 0;
+  if (flip) {
+    // Right-multiply by a rotation about local y: column 0 and column 2 mix.
+    const cf = Math.cos(flip);
+    const sf = Math.sin(flip);
+    for (let row = 0; row < 3; row++) {
+      const c0 = out[row];
+      const c2 = out[8 + row];
+      out[row] = c0 * cf - c2 * sf;
+      out[8 + row] = c0 * sf + c2 * cf;
+    }
+  }
   out[12] = x;
   out[13] = y;
   out[14] = z;

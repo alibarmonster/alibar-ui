@@ -156,4 +156,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "ascii-aquarium-background": () => import("@/components/ui/ascii-aquarium-background/demo"),
   "curved-wall": () => import("@/components/ui/curved-wall/demo"),
   "sleeve-rail": () => import("@/components/ui/sleeve-rail/demo"),
+  "ring-reel": () => import("@/components/ui/ring-reel/demo"),
 };
