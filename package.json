@@ -4,29 +4,25 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run registry:build && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "registry:build": "tsx scripts/build-registry.ts && shadcn build",
+    "check": "tsx scripts/check-components.ts",
+    "lab:verify": "tsx scripts/verify-registry.ts"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.7.0",
-    "@react-three/postprocessing": "^3.0.4",
     "clsx": "^2.1.1",
-    "gray-matter": "^4.0.3",
-    "gsap": "^3.15.0",
-    "motion": "^12.43.0",
+    "geist": "^1.9.0",
+    "lucide-react": "^1.65.0",
+    "motion": "^14.9.0",
     "next": "16.2.12",
-    "next-themes": "^0.4.6",
-    "postprocessing": "^6.39.4",
+    "radix-ui": "^1.8.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-icons": "^5.7.0",
-    "reactbits-installer": "^2.0.0",
-    "remark": "^15.0.1",
-    "remark-html": "^16.0.1",
-    "tailwind-merge": "^3.6.0",
-    "three": "^0.185.1"
+    "shiki": "^4.5.0",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -35,13 +31,11 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
+    "shadcn": "^4.23.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   },
-  "ignoreScripts": [
-    "sharp",
-    "unrs-resolver"
-  ],
   "trustedDependencies": [
     "sharp",
     "unrs-resolver"
