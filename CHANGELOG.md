@@ -12,6 +12,8 @@ Work toward 0.2.0: 50 components in five new categories.
 - `useShaderCanvas` (`src/lib/webgl/use-shader-canvas.ts`): WebGL2 fragment shaders on a fullscreen triangle, with a pixel-ratio cap, render scale, offscreen and hidden-tab pausing, a static frame under reduced motion, context-loss recovery and cleanup.
 - GLSL snippets (hash, simplex noise, fBm, Bayer dither), a hex-to-vec3 color helper, bigint-safe web3 formatting built on viem, and mock web3 data for demos.
 - Twelve original placeholder brands for demos.
+- **Web3: Wallet & Identity**: Connect Wallet Button, Wallet Selector Modal, Address Pill, Network Switcher, Account Dropdown, Token Balance List, Transaction Toast, Transaction History, NFT Card and Transaction Review Modal. They're presentational (data and callbacks in, no wallet calls), use bigint math only, and every demo has a state switcher.
+- Shared web3 helpers for registry items: generated token, chain, wallet and address avatars, `RollingValue` for rolling pre-formatted amounts with green/red flashes, and shared `Token`, `Chain`, `WalletOption` and `TxStatus` types.
 - A version badge in the navbar and a `/changelog` page.
 
 ### Changed
