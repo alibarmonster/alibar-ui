@@ -50,9 +50,10 @@ const jsonLd = {
 
 export default function HomePage() {
   const installCommand = `npx shadcn@latest add ${registryUrl("spring-press-button")}`;
-  const newComponents = readyComponents.filter((c) => c.version === siteConfig.version);
+  // The landing page showcases the latest shipped (dated) release; a release in progress stays on /changelog.
+  const release = releases.find((r) => r.date) ?? releases[0];
+  const newComponents = readyComponents.filter((c) => c.version === release.version);
   const newCategories = categories.filter((category) => newComponents.some((c) => c.category === category.id));
-  const release = releases.find((r) => r.version === siteConfig.version);
   const releaseDate = release?.date
     ? new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${release.date}T00:00:00Z`))
     : "soon";
@@ -72,7 +73,7 @@ export default function HomePage() {
             className="hero-rise focus-ring group mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-background py-1 pr-3 pl-1 text-[13px] text-muted-foreground shadow-xs transition-colors hover:text-foreground"
           >
             <NewBadge />
-            v{siteConfig.version}: Web3, shaders, marketing sections and more
+            v{release.version}: Web3, shaders, marketing sections and more
             <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
 
@@ -134,7 +135,7 @@ export default function HomePage() {
               <NewBadge /> Released {releaseDate}
             </p>
             <h2 id="new-heading" className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-              What&apos;s new in v{siteConfig.version}
+              What&apos;s new in v{release.version}
             </h2>
             <p className="mt-2 max-w-xl text-[15px] leading-7 text-muted-foreground">
               {newComponents.length} components in {newCategories.length} new categories: Web3 wallets and DeFi, marketing sections, shader and canvas

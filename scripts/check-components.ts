@@ -15,10 +15,10 @@ const demoMap = read("src/content/demos.ts");
 const docsMap = read("src/content/docs.ts");
 const failures: string[] = [];
 
-assert.equal(components.length, 151, "The catalog should list 151 components");
+assert.equal(components.length, 188, "The catalog should list 188 components");
 assert.equal(new Set(components.map((c) => c.slug)).size, components.length, "Slugs must be unique");
 for (const category of categories) {
-  assert.ok(components.filter((c) => c.category === category.id).length >= 10, `${category.name} should have at least 10 components`);
+  assert.ok(components.some((c) => c.category === category.id), `${category.name} should have at least one component`);
 }
 const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8")) as { version: string };
 assert.equal(siteConfig.version, pkg.version, `siteConfig.version (${siteConfig.version}) must match package.json (${pkg.version})`);

@@ -15,7 +15,12 @@ export type CategoryId =
   | "web3-defi"
   | "marketing"
   | "shaders"
-  | "orbits";
+  | "orbits"
+  | "galleries"
+  | "surfaces"
+  | "markets"
+  | "billing"
+  | "html-canvas";
 
 export interface Category {
   id: CategoryId;
@@ -69,6 +74,41 @@ export const categories: Category[] = [
   { id: "marketing", name: "Marketing Sections & Logo Clouds", description: "Logo clouds, pricing, stats and CTAs." },
   { id: "shaders", name: "Shaders & Backgrounds", description: "GPU shaders and canvas scenes: clouds, gradients, fields and an ASCII aquarium." },
   { id: "orbits", name: "Orbits, Beams & Illustrations", description: "Orbits, beams, globes and graphs." },
+  {
+    id: "galleries",
+    name: "3D Galleries & Carousels",
+    navName: "Galleries & Carousels",
+    group: "3D Galleries",
+    description: "WebGL and CSS 3D image galleries you can drag, scroll and throw.",
+  },
+  {
+    id: "surfaces",
+    name: "Physical Surfaces & Navigation",
+    navName: "Surfaces & Navigation",
+    group: "Physical Surfaces",
+    description: "Material cards and tab bars driven by continuous motion values.",
+  },
+  {
+    id: "markets",
+    name: "Prediction Markets",
+    navName: "Market Components",
+    group: "Prediction Markets",
+    description: "Odds, trades, order books and leaderboards on simulated data.",
+  },
+  {
+    id: "billing",
+    name: "Usage, Billing & Agent Commerce",
+    navName: "Usage, Billing & Agents",
+    group: "Usage & Billing",
+    description: "Spend meters, credit charts, receipts and a wallet agent.",
+  },
+  {
+    id: "html-canvas",
+    name: "HTML in Canvas",
+    navName: "Live DOM Effects",
+    group: "HTML in Canvas",
+    description: "Live, interactive DOM drawn into a canvas and distorted (experimental).",
+  },
 ];
 
 type Row = [slug: string, name: string, description: string, status?: ComponentStatus, version?: string];
@@ -76,6 +116,7 @@ type Row = [slug: string, name: string, description: string, status?: ComponentS
 /** First release; rows without a version belong to it. */
 const INITIAL_VERSION = "0.1.0";
 const V020 = "0.2.0";
+const V030 = "0.3.0";
 
 const rows: Record<CategoryId, Row[]> = {
   buttons: [
@@ -258,6 +299,53 @@ const rows: Record<CategoryId, Row[]> = {
     ["border-beam", "Border Beam", "A light segment travels around any card's border.", "ready", V020],
     ["node-network", "Node Network", "Floating connected nodes; lines highlight on hover.", "ready", V020],
     ["animated-grid-pattern", "Animated Grid Pattern", "Grid squares light up in a subtle random pattern.", "ready", V020],
+  ],
+  galleries: [
+    ["sleeve-rail", "Sleeve Rail", "A fanned rail of album sleeves; the focused record slides out and spins.", "planned", V030],
+    ["curved-wall", "Curved Wall", "Image panels on the inside of a cylinder, with drift, steps and dial-like snapping.", "planned", V030],
+    ["formation-gallery", "Formation Gallery", "Up to 160 cards flowing between rings, spiral, globe and field.", "planned", V030],
+    ["darkroom-stream", "Darkroom Stream", "Photos stream out from the center and develop like prints.", "planned", V030],
+    ["ring-reel", "Ring Reel", "A turning wheel of cards that zooms into an arc.", "planned", V030],
+    ["helix-gallery", "Helix Gallery", "Cards wound on a vertical helix; scroll or drag to travel along it.", "planned", V030],
+    ["depth-rail", "Depth Rail", "A lightweight CSS 3D coverflow with parallax and springy throws.", "planned", V030],
+    ["page-flip-book", "Page Flip Book", "Pages turn with a curl and a shadow along the spine.", "planned", V030],
+    ["infinite-canvas-gallery", "Infinite Canvas Gallery", "An endless pannable grid with momentum and column parallax.", "planned", V030],
+    ["scattered-prints", "Scattered Prints", "Polaroids on a table you can pick up and throw.", "planned", V030],
+  ],
+  surfaces: [
+    ["card-wallet", "Card Wallet", "Metal, black, glass and color cards you can fan, cycle and lift out.", "planned", V030],
+    ["lens-tab-bar", "Lens Tab Bar", "A lens slides between tabs and redraws what passes under it inverted.", "planned", V030],
+  ],
+  markets: [
+    ["market-card", "Market Card", "A prediction market with odds, a gauge and Yes/No buttons.", "planned", V030],
+    ["trade-ticket", "Trade Ticket", "Buy and sell outcome shares with a live payout summary.", "planned", V030],
+    ["probability-chart", "Probability Chart", "Odds over time per outcome with a snapping crosshair.", "planned", V030],
+    ["outcome-ladder", "Outcome Ladder", "Outcomes re-sort by probability as the odds move.", "planned", V030],
+    ["order-book", "Order Book", "Bids and asks with animated depth bars and the spread.", "planned", V030],
+    ["mobile-trade-bar", "Mobile Trade Bar", "A sticky bar that expands into a trade sheet.", "planned", V030],
+    ["positions-panel", "Positions Panel", "Open, resolved and past positions with P&L and claims.", "planned", V030],
+    ["market-leaderboard", "Market Leaderboard", "A podium and ranked list by profit, volume or accuracy.", "planned", V030],
+    ["resolution-card", "Resolution & Rules Card", "A status timeline, rules and a dispute countdown.", "planned", V030],
+    ["market-activity", "Market Activity & Discussion", "A live trade stream and a threaded discussion.", "planned", V030],
+  ],
+  billing: [
+    ["spend-meter", "Spend Meter", "Monthly usage by resource against an adjustable limit.", "planned", V030],
+    ["credit-trend", "Credit Trend", "Daily credit spend with stacked bars and a projection.", "planned", V030],
+    ["credit-breakdown", "Credit Breakdown", "Credits by category, workflow and teammate.", "planned", V030],
+    ["printed-receipt", "Printed Receipt", "An order receipt that feeds out of a thermal printer.", "planned", V030],
+    ["wallet-agent-chat", "Wallet Agent Chat", "An AI wallet assistant that answers with transaction cards.", "planned", V030],
+  ],
+  "html-canvas": [
+    ["ripple-form", "Ripple Form", "A live sign-up form on a rippling water surface.", "planned", V030],
+    ["peel-card", "Peel Card", "A DOM card that curls back like paper to reveal its back.", "planned", V030],
+    ["living-book", "Living Book", "A 3D book whose pages are live, selectable DOM.", "planned", V030],
+    ["dissolve-transition", "Dissolve Transition", "Outgoing content dissolves into pixels as the next resolves.", "planned", V030],
+    ["crt-terminal", "CRT Terminal", "A real terminal on a curved, glowing CRT.", "planned", V030],
+    ["disintegrate-delete", "Disintegrate Delete", "Deleted rows crumble into dust, with undo.", "planned", V030],
+    ["magnifier-lens", "Magnifier Lens", "A loupe that magnifies the live DOM under the pointer.", "planned", V030],
+    ["floating-screen", "Floating Screen", "A live mini-app on a tilted 3D device screen.", "planned", V030],
+    ["cloth-banner", "Cloth Banner", "An announcement bar on gently waving cloth.", "planned", V030],
+    ["liquid-glass-overlay", "Liquid Glass Overlay", "Draggable glass that refracts the live content below.", "planned", V030],
   ],
 };
 

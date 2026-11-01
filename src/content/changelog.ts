@@ -15,6 +15,26 @@ export interface Release {
  */
 export const releases: Release[] = [
   {
+    version: "0.3.0",
+    title: "3D galleries, physical surfaces, prediction markets, billing and HTML in Canvas",
+    summary:
+      "Thirty-seven components in five new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, and an adapter for the experimental HTML-in-Canvas API.",
+    changes: [
+      {
+        type: "Added",
+        items: [
+          "Five categories: 3D Galleries & Carousels, Physical Surfaces & Navigation, Prediction Markets, Usage, Billing & Agent Commerce, and HTML in Canvas, each with its own sidebar group.",
+          "A shared gallery engine: a WebGL2 renderer for textured cards (rounded corners, soft shadows, edge fades and floor reflections in one instanced draw), one input hook for drag, wheel, keyboard and autoplay, and a hidden DOM list that keeps every gallery keyboard and screen-reader operable.",
+          "24 original generated placeholder images for gallery demos.",
+        ],
+      },
+      {
+        type: "Changed",
+        items: ["The New badge moves to 0.3.0 components; components from 0.2.0 no longer show it."],
+      },
+    ],
+  },
+  {
     version: "0.2.0",
     date: "2026-11-01",
     title: "Web3, marketing sections, shaders and orbits",
