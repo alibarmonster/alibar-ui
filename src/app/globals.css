@@ -1,50 +1,245 @@
 @import "tailwindcss";
 
+/*
+ * Design tokens.
+ *
+ * Token names follow the shadcn/ui convention so every component installed
+ * from the registry picks up the host project's theme. The palette maps to
+ * the alibar/ui spec like this:
+ *
+ *   spec --surface   (#FAFAFA)  -> --surface            (site chrome, preview frames)
+ *   spec --surface-2 (#F4F4F5)  -> --surface-2, --muted, --secondary, --accent
+ *   spec --muted     (#71717A)  -> --muted-foreground   (secondary text)
+ *   spec --accent    (#2563EB)  -> --primary, --ring    (use sparingly)
+ *   spec --danger    (#DC2626)  -> --destructive
+ */
 :root {
-  --bg: #09090b;
-  --surface: #111114;
-  --surface-elevated: #18181c;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(255, 255, 255, 0.16);
-  --text: #f4f4f5;
-  --muted: #a1a1aa;
-  --accent: #c8ff4d;
-  --cyan: #5eead4;
-  color-scheme: dark;
+  --radius: 10px;
+
+  --background: #ffffff;
+  --foreground: #09090b;
+  --surface: #fafafa;
+  --surface-2: #f4f4f5;
+
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --popover: #ffffff;
+  --popover-foreground: #09090b;
+
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #09090b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #09090b;
+
+  --destructive: #dc2626;
+  --success: #16a34a;
+  --warning: #d97706;
+
+  /* Chart series, in this fixed order (validated for colour-blind separation on white). */
+  --chart-1: #2563eb;
+  --chart-2: #eb6834;
+  --chart-3: #1baf7a;
+  --chart-4: #eda100;
+  --chart-5: #e87ba4;
+
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #2563eb;
+
+  --dot: #e4e4e7;
+
+  color-scheme: light;
 }
 
-* {
-  box-sizing: border-box;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Radius scale: 6 / 10 / 14 / 20 / full */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 10px);
+
+  /* Soft, layered shadows */
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.04), 0 2px 6px rgb(0 0 0 / 0.04);
+  --shadow-md: 0 1px 2px rgb(0 0 0 / 0.04), 0 4px 12px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.04), 0 12px 32px rgb(0 0 0 / 0.08);
+  --shadow-xl: 0 4px 8px rgb(0 0 0 / 0.04), 0 24px 56px rgb(0 0 0 / 0.12);
+
+  /* Motion curves (mirrors src/lib/motion.ts) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --default-transition-duration: 180ms;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body {
-  margin: 0;
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--primary) 16%, transparent);
+  }
+
+  :target {
+    scroll-margin-top: 5.5rem;
+  }
 }
 
-::selection {
-  background: var(--accent);
-  color: #09090b;
+/* Site-only helpers (not shipped with registry components) */
+@utility focus-ring {
+  outline: none;
+  &:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--ring);
+  }
 }
 
-.glass-panel {
-  background: rgba(17, 17, 20, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+@utility bg-dot-grid {
+  background-image: radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
+  background-size: 16px 16px;
+  background-position: -8px -8px;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Landing hero (CSS so it runs before hydration) */
+@keyframes hero-word-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+}
+/* The headline is the page's main content: its words start visible (soft and low) and sharpen into place,
+   so it paints with the first frame instead of after an opacity fade. */
+@keyframes hero-word-focus {
+  from {
+    opacity: 0.35;
+    transform: translateY(12px);
+    filter: blur(8px);
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero-word {
+  animation: hero-word-focus 0.7s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 60ms + 40ms);
+}
+
+.hero-rise {
+  animation: hero-word-in 0.6s var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.hero-underline {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-draw 0.65s var(--ease-in-out) var(--delay, 0ms) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .hero-word,
+  .hero-rise {
+    animation-name: hero-fade-in;
   }
+  .hero-underline {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Shiki output: let the container own background and spacing */
+.shiki,
+.shiki span {
+  background-color: transparent !important;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1rem 1.125rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  tab-size: 2;
+}
+
+.code-block pre code {
+  display: grid;
+  min-width: max-content;
+}
+
+/* Each line is a grid row, so give blank lines their height back. */
+.code-block pre code .line:empty::before {
+  content: "\200b";
 }
