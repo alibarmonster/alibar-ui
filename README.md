@@ -110,6 +110,10 @@ On Vercel, the production URL is detected automatically.
 
 Issues and pull requests are welcome. Please read the [contributing guide](./CONTRIBUTING.md) and follow the [code of conduct](./CODE_OF_CONDUCT.md). To report a vulnerability, see [SECURITY.md](./SECURITY.md).
 
+## Acknowledgments
+
+alibar/ui was built and is maintained with help from [Claude](https://www.anthropic.com/claude) by Anthropic. Claude worked as a pair programmer through the whole process: designing and implementing the components and the docs site, testing accessibility and performance, and preparing the repository for open source.
+
 ## License
 
 [MIT](./LICENSE) © alibar
