@@ -161,4 +161,8 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "depth-rail": () => import("@/components/ui/depth-rail/docs"),
   "card-wallet": () => import("@/components/ui/card-wallet/docs"),
   "lens-tab-bar": () => import("@/components/ui/lens-tab-bar/docs"),
+  "helix-gallery": () => import("@/components/ui/helix-gallery/docs"),
+  "page-flip-book": () => import("@/components/ui/page-flip-book/docs"),
+  "infinite-canvas-gallery": () => import("@/components/ui/infinite-canvas-gallery/docs"),
+  "scattered-prints": () => import("@/components/ui/scattered-prints/docs"),
 };

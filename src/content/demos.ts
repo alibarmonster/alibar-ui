@@ -162,4 +162,8 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "depth-rail": () => import("@/components/ui/depth-rail/demo"),
   "card-wallet": () => import("@/components/ui/card-wallet/demo"),
   "lens-tab-bar": () => import("@/components/ui/lens-tab-bar/demo"),
+  "helix-gallery": () => import("@/components/ui/helix-gallery/demo"),
+  "page-flip-book": () => import("@/components/ui/page-flip-book/demo"),
+  "infinite-canvas-gallery": () => import("@/components/ui/infinite-canvas-gallery/demo"),
+  "scattered-prints": () => import("@/components/ui/scattered-prints/demo"),
 };
