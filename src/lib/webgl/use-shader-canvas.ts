@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-export type UniformValue = number | boolean | readonly number[] | Float32Array;
+/** Numbers, vectors (arrays) and, for sampler2D uniforms, an image, canvas or video element. */
+export type UniformValue = number | boolean | readonly number[] | Float32Array | TexImageSource;
+
+const isTextureSource = (value: UniformValue): value is TexImageSource =>
+  typeof value === "object" && value !== null && !Array.isArray(value) && !ArrayBuffer.isView(value);
 
 /**
  * - `idle`: not started yet (always the value on the server and the first client render)
@@ -18,8 +22,11 @@ export interface UseShaderCanvasOptions {
    * `in vec2 v_uv` and `out vec4 fragColor`. Output premultiplied alpha.
    */
   fragmentShader: string;
-  /** Custom uniforms by name. Read every frame, so updating them never restarts the shader. */
-  uniforms?: Record<string, UniformValue>;
+  /**
+   * Custom uniforms by name. Read every frame, so updating them never restarts the shader. Pass a
+   * function to compute them per frame from refs or other values that change without re-rendering.
+   */
+  uniforms?: Record<string, UniformValue> | (() => Record<string, UniformValue>);
   /** Clock multiplier. @default 1 */
   speed?: number;
   /** Freezes the clock and keeps the current frame on screen. @default false */
@@ -102,7 +109,7 @@ function collectUniforms(gl: WebGL2RenderingContext, program: WebGLProgram) {
   return slots;
 }
 
-function setUniform(gl: WebGL2RenderingContext, { location, type }: UniformSlot, value: UniformValue) {
+function setUniform(gl: WebGL2RenderingContext, { location, type }: UniformSlot, value: Exclude<UniformValue, TexImageSource>) {
   const isInt = type === gl.INT || type === gl.BOOL;
   if (typeof value === "boolean" || typeof value === "number") {
     const n = Number(value);
@@ -124,7 +131,9 @@ function setUniform(gl: WebGL2RenderingContext, { location, type }: UniformSlot,
  *
  * One fullscreen triangle, no three.js. The canvas follows the element's size, caps the pixel
  * ratio, pauses offscreen and in hidden tabs, draws a single static frame under reduced motion,
- * recovers from context loss and releases the GPU context on unmount. When `status` is
+ * recovers from context loss and releases the GPU context on unmount. Uniform values can be
+ * numbers, arrays (vec2–vec4 or float arrays) or, for sampler2D uniforms, an image, canvas or
+ * video element (uploaded once it has pixels; pass a new element or re-render to refresh). When `status` is
  * `fallback` (or before the first frame), whatever you render behind the canvas shows through.
  */
 export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options: UseShaderCanvasOptions) {
@@ -132,6 +141,7 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
   const [status, setStatus] = useState<ShaderStatus>("idle");
   const latest = useRef(options);
   const wake = useRef<() => void>(() => {});
+  const time = useRef(0);
 
   // Keep the render loop reading fresh props, and let it react to paused/uniform changes.
   useEffect(() => {
@@ -165,6 +175,7 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
     let gl: WebGL2RenderingContext | null = null;
     let program: WebGLProgram | null = null;
     let uniforms = new Map<string, UniformSlot>();
+    const textures = new Map<string, { texture: WebGLTexture; unit: number; source: TexImageSource | null; ready: boolean }>();
     let reported: ShaderStatus = "idle";
     let raf = 0;
     let lastFrame = 0;
@@ -194,6 +205,7 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
       });
       program = gl ? link(gl, fragmentShader) : null;
       uniforms = gl && program ? collectUniforms(gl, program) : new Map();
+      textures.clear();
       needsResize = true;
       return program !== null;
     };
@@ -218,19 +230,55 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
       gl.useProgram(program);
       const set = (name: string, value: UniformValue) => {
         const slot = uniforms.get(name);
-        if (slot && gl) setUniform(gl, slot, value);
+        if (!slot || !gl) return;
+        if (isTextureSource(value)) bindTexture(name, slot, value);
+        else setUniform(gl, slot, value);
       };
       set("u_time", time);
       set("u_resolution", [canvas.width, canvas.height]);
       set("u_mouse", mouse);
       set("u_pointer", pointer);
-      const custom = latest.current.uniforms;
+      const source = latest.current.uniforms;
+      const custom = typeof source === "function" ? source() : source;
       if (custom) for (const name in custom) set(name, custom[name]);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       if (!drawn) {
         drawn = true;
         canvas.style.opacity = "1";
       }
+    };
+
+    // Textures upload once per source (and every frame for video), as soon as the source has pixels.
+    const bindTexture = (name: string, slot: UniformSlot, source: TexImageSource) => {
+      if (!gl || slot.type !== gl.SAMPLER_2D) return;
+      let entry = textures.get(name);
+      if (!entry) {
+        const texture = gl.createTexture();
+        if (!texture) return;
+        entry = { texture, unit: textures.size, source: null, ready: false };
+        textures.set(name, entry);
+      }
+      gl.activeTexture(gl.TEXTURE0 + entry.unit);
+      gl.bindTexture(gl.TEXTURE_2D, entry.texture);
+      const hasPixels =
+        typeof HTMLImageElement !== "undefined" && source instanceof HTMLImageElement
+          ? source.complete && source.naturalWidth > 0
+          : typeof HTMLVideoElement !== "undefined" && source instanceof HTMLVideoElement
+            ? source.readyState >= 2
+            : true;
+      const isVideo = typeof HTMLVideoElement !== "undefined" && source instanceof HTMLVideoElement;
+      if (hasPixels && (entry.source !== source || !entry.ready || isVideo)) {
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+        gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        entry.source = source;
+        entry.ready = true;
+      }
+      gl.uniform1i(slot.location, entry.unit);
     };
 
     const shouldRun = () =>
@@ -247,6 +295,7 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
       mouse[1] += (mouseTarget[1] - mouse[1]) * ease;
       pointer += (pointerTarget - pointer) * ease;
       draw(clock);
+      time.current = clock;
       report("running");
       raf = requestAnimationFrame(frame);
     };
@@ -255,7 +304,8 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
     const settle = () => {
       lastFrame = 0;
       if (lost || !program) return;
-      draw(reducedMotion.matches ? (latest.current.staticTime ?? 6) : clock);
+      time.current = reducedMotion.matches ? (latest.current.staticTime ?? 6) : clock;
+      draw(time.current);
       report("static");
     };
 
@@ -341,6 +391,7 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
       window.removeEventListener("pointermove", onPointerMove);
       document.documentElement.removeEventListener("pointerleave", onPointerLeave);
       if (gl) {
+        textures.forEach((entry) => gl?.deleteTexture(entry.texture));
         if (program) gl.deleteProgram(program);
         gl.getExtension("WEBGL_lose_context")?.loseContext();
       }
@@ -348,5 +399,6 @@ export function useShaderCanvas<T extends HTMLElement = HTMLDivElement>(options:
     };
   }, [fragmentShader]);
 
-  return { ref, status };
+  /** `time` holds the shader clock (seconds, as passed to u_time), e.g. to timestamp clicks. */
+  return { ref, status, time };
 }
