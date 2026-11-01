@@ -175,20 +175,24 @@ export interface MockQuote {
  * A deterministic quote from the mock prices: a 0.3% fee plus price impact that grows with
  * size (1 bp per $1,000, capped at 25%). Pure bigint math.
  */
-export function mockQuote(from: MockToken, to: MockToken, amountIn: bigint, slippageBps = BigInt(50)): MockQuote {
+type QuoteToken = { symbol: string; decimals: number; price?: bigint };
+
+export function mockQuote(from: QuoteToken, to: QuoteToken, amountIn: bigint, slippageBps = BigInt(50)): MockQuote {
+  const fromPrice = from.price ?? BigInt(0);
+  const toPrice = to.price && to.price > BigInt(0) ? to.price : BigInt(1);
   const feeBps = BigInt(30);
-  const usdIn = toUsd(amountIn, from.decimals, from.price);
+  const usdIn = toUsd(amountIn, from.decimals, fromPrice);
   const thousand = BigInt(1000) * BigInt(10) ** BigInt(USD_DECIMALS);
   const priceImpactBps = usdIn / thousand > BigInt(2500) ? BigInt(2500) : usdIn / thousand;
   const usdOut = (usdIn * (BigInt(10_000) - feeBps - priceImpactBps)) / BigInt(10_000);
-  const amountOut = (usdOut * BigInt(10) ** BigInt(to.decimals)) / to.price;
-  const stable = (t: MockToken) => t.symbol === "USDC" || t.symbol === "USDT" || t.symbol === "DAI";
+  const amountOut = (usdOut * BigInt(10) ** BigInt(to.decimals)) / toPrice;
+  const stable = (t: QuoteToken) => t.symbol === "USDC" || t.symbol === "USDT" || t.symbol === "DAI";
   const direct = from.symbol === "ETH" || to.symbol === "ETH" || (stable(from) && stable(to));
   return {
     amountIn,
     amountOut,
     minimumOut: (amountOut * (BigInt(10_000) - slippageBps)) / BigInt(10_000),
-    rate: (from.price * BigInt(10) ** BigInt(to.decimals)) / to.price,
+    rate: (fromPrice * BigInt(10) ** BigInt(to.decimals)) / toPrice,
     priceImpactBps,
     feeBps,
     route: direct ? [from.symbol, to.symbol] : [from.symbol, "ETH", to.symbol],
@@ -305,3 +309,55 @@ export const mockTransactions: MockTransaction[] = [
     direction: "in",
   }),
 ];
+
+// ── Candles ─────────────────────────────────────────────────────────────────
+
+export interface MockCandle {
+  /** Candle open time, ms since epoch. */
+  time: number;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+}
+
+export type MockTimeframe = "1H" | "1D" | "1W" | "1M";
+
+const TIMEFRAME_STEP: Record<MockTimeframe, { count: number; stepMs: number; volatility: number }> = {
+  "1H": { count: 60, stepMs: 60_000, volatility: 0.0012 },
+  "1D": { count: 48, stepMs: 30 * 60_000, volatility: 0.004 },
+  "1W": { count: 42, stepMs: 4 * 3_600_000, volatility: 0.009 },
+  "1M": { count: 30, stepMs: 86_400_000, volatility: 0.02 },
+};
+
+/**
+ * Deterministic OHLC candles ending at a fixed time, so server and client agree. Chart
+ * geometry uses plain numbers: these are display prices, not balances.
+ */
+export function mockCandles(timeframe: MockTimeframe, last = 3412.58): MockCandle[] {
+  const { count, stepMs, volatility } = TIMEFRAME_STEP[timeframe];
+  const end = Date.UTC(2026, 10, 1, 10, 0, 0);
+  let seed = [...timeframe].reduce((h, c) => Math.imul(h ^ c.charCodeAt(0), 0x01000193), 0x811c9dc5);
+  const random = () => {
+    seed = Math.imul(seed ^ (seed >>> 15), 0x2c1b3c6d);
+    seed = Math.imul(seed ^ (seed >>> 12), 0x297a2d39);
+    seed ^= seed >>> 15;
+    return (seed >>> 0) / 4294967296;
+  };
+  // Walk backwards from the last close so the series ends at `last`.
+  const closes: number[] = [last];
+  for (let i = 1; i < count; i++) closes.unshift(closes[0] * (1 + (random() - 0.5) * 2 * volatility - volatility * 0.12));
+  return closes.map((close, i) => {
+    const open = i === 0 ? close * (1 - (random() - 0.5) * volatility) : closes[i - 1];
+    const wick = Math.abs(close - open) + close * volatility * random();
+    return {
+      time: end - (count - 1 - i) * stepMs,
+      open,
+      close,
+      high: Math.max(open, close) + wick * random(),
+      low: Math.min(open, close) - wick * random(),
+      volume: 200 + random() * 800 + Math.abs(close - open) * 4,
+    };
+  });
+}
