@@ -37,9 +37,11 @@ export interface OrbitingCirclesProps extends Omit<ComponentProps<"div">, "child
   designSize?: number;
 }
 
-// Keyframes ship with the component (React 19 hoists and de-duplicates this <style>).
+// Keyframes ship with the component (React 19 hoists and de-duplicates this <style>). Each icon travels its own
+// path (rotate out, then counter-rotate to stay upright), so no full-size box ever spins: a spinning ring box
+// makes browsers count its rotated bounds as page overflow and widens narrow screens.
 const KEYFRAMES =
-  "@keyframes alibar-orbit-spin{to{transform:rotate(360deg)}}@keyframes alibar-orbit-counter{to{transform:rotate(-360deg)}}";
+  "@keyframes alibar-orbit-path{from{transform:rotate(var(--a)) translateX(var(--radius)) rotate(calc(var(--a) * -1))}to{transform:rotate(calc(var(--a) + 360deg)) translateX(var(--radius)) rotate(calc(var(--a) * -1 - 360deg))}}";
 
 export function OrbitingCircles({
   center,
@@ -82,28 +84,20 @@ export function OrbitingCircles({
                 )}
               />
             ) : null}
-            <ul
-              aria-label={`Orbit ${r + 1}`}
-              className={cn("absolute inset-0 [animation-iteration-count:infinite] [animation-name:alibar-orbit-spin] [animation-timing-function:linear] motion-reduce:[animation-name:none]", paused)}
-              style={animation}
-            >
+            <ul aria-label={`Orbit ${r + 1}`} className="absolute top-1/2 left-1/2 size-0">
               {ring.items.map((item, i) => {
                 const angle = (360 / ring.items.length) * i;
                 return (
                   <li
                     key={item.name}
-                    className="absolute top-1/2 left-1/2"
-                    style={{ transform: `rotate(${angle}deg) translateX(var(--radius)) rotate(${-angle}deg)` }}
+                    className={cn(
+                      "absolute top-0 left-0 [animation-iteration-count:infinite] [animation-name:alibar-orbit-path] [animation-timing-function:linear] motion-reduce:[animation-name:none]",
+                      paused,
+                    )}
+                    // The inline transform is the resting position, used when reduced motion turns the animation off.
+                    style={{ "--a": `${angle}deg`, transform: `rotate(${angle}deg) translateX(var(--radius)) rotate(${-angle}deg)`, ...animation } as CSSProperties}
                   >
-                    {/* Counter-rotates at the same speed, so the icon stays upright. */}
-                    <div
-                      className={cn(
-                        "[animation-iteration-count:infinite] [animation-name:alibar-orbit-counter] [animation-timing-function:linear] motion-reduce:[animation-name:none]",
-                        paused,
-                      )}
-                      style={animation}
-                    >
-                      <span
+                    <span
                         tabIndex={0}
                         className="group/icon pointer-events-auto relative -mt-[calc(var(--s)/2)] -ml-[calc(var(--s)/2)] grid size-[var(--s)] place-items-center rounded-xl border border-border bg-background text-foreground shadow-sm outline-none transition-transform duration-300 ease-[cubic-bezier(0.34,1.4,0.64,1)] hover:scale-110 focus-visible:scale-110 focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none [&>svg]:size-[55%]"
                         style={{ "--s": `calc(${size} * var(--orbit-unit))` } as CSSProperties}
@@ -116,8 +110,7 @@ export function OrbitingCircles({
                         >
                           {item.name}
                         </span>
-                      </span>
-                    </div>
+                    </span>
                   </li>
                 );
               })}

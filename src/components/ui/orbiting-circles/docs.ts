@@ -17,7 +17,7 @@ export const docs: ComponentDocs = {
     "With reduced motion nothing orbits: icons sit at their evenly spaced positions.",
   ],
   notes: [
-    "Pure CSS keyframes: each ring container rotates, and each icon counter-rotates at the same speed to stay upright. There's no per-frame JavaScript. The keyframes ship inside the component through a React 19 hoisted <style>.",
+    "Pure CSS keyframes: each icon follows its own circular path (rotate out to the ring, then counter-rotate to stay upright), so no full-size box ever spins and the rings never widen the page on narrow screens. There's no per-frame JavaScript. The keyframes ship inside the component through a React 19 hoisted <style>.",
     "Radii and icon sizes are given for designSize (480px by default) and scale down with the container through container query units, so it works on phones.",
   ],
 };
