@@ -19,6 +19,14 @@ const LIB_FILES: Record<string, string> = {
   "@/lib/web3/types": "src/lib/web3/types.ts",
   "@/lib/web3/icons": "src/lib/web3/icons.tsx",
   "@/lib/web3/rolling-value": "src/lib/web3/rolling-value.tsx",
+  "@/lib/gallery/types": "src/lib/gallery/types.ts",
+  "@/lib/gallery/math": "src/lib/gallery/math.ts",
+  "@/lib/gallery/renderer": "src/lib/gallery/renderer.ts",
+  "@/lib/gallery/use-gallery-renderer": "src/lib/gallery/use-gallery-renderer.ts",
+  "@/lib/gallery/use-gallery-input": "src/lib/gallery/use-gallery-input.ts",
+  "@/lib/gallery/use-gallery": "src/lib/gallery/use-gallery.ts",
+  "@/lib/gallery/gallery-a11y": "src/lib/gallery/gallery-a11y.tsx",
+  "@/lib/gallery/gallery-fallback": "src/lib/gallery/gallery-fallback.tsx",
 };
 
 const UTILS_PACKAGES = ["clsx", "tailwind-merge"];
