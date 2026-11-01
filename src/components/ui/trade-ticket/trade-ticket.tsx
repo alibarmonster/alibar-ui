@@ -174,7 +174,7 @@ export function TradeTicket({
       <LayoutGroup id={`${id}-side`}>
         <div role="tablist" aria-label="Order side" className="mt-3 grid grid-cols-2 gap-0.5 rounded-full bg-surface-2 p-0.5">
           {(["buy", "sell"] as const).map((s) => (
-            <button key={s} type="button" role="tab" aria-selected={side === s} onClick={() => switchSide(s)} className={cn("relative h-8 cursor-pointer rounded-full text-[13px] font-medium capitalize outline-none focus-visible:ring-2 focus-visible:ring-ring", side === s ? "text-foreground" : "text-muted-foreground")}>
+            <button key={s} type="button" role="tab" aria-selected={side === s} onClick={() => switchSide(s)} className={cn("relative h-8 cursor-pointer rounded-full text-[13px] font-medium capitalize outline-none focus-visible:ring-2 focus-visible:ring-ring", side === s ? "text-foreground" : "text-[color-mix(in_oklab,var(--muted-foreground)_75%,var(--foreground))]")}>
               {side === s ? <motion.span layoutId="ticket-side" transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 500, damping: 34 }} className="absolute inset-0 rounded-full bg-background shadow-sm" /> : null}
               <span className="relative">{s}</span>
             </button>
@@ -311,7 +311,7 @@ export function TradeTicket({
           disabled={disabled}
           className={cn(
             "relative flex h-11 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed",
-            status === "success" ? "bg-success text-white" : disabled ? "bg-surface-2 text-muted-foreground" : side === "buy" && (!binary || choice === "yes") ? "bg-foreground text-background" : "bg-foreground text-background",
+            status === "success" ? "bg-[color-mix(in_oklab,var(--success)_78%,var(--foreground))] text-white" : disabled ? "bg-surface-2 text-muted-foreground" : side === "buy" && (!binary || choice === "yes") ? "bg-foreground text-background" : "bg-foreground text-background",
           )}
         >
           {status === "confirming" ? <span aria-hidden="true" className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none" /> : null}

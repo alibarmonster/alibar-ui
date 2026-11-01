@@ -15,12 +15,20 @@ Work toward 0.3.0: 37 components (#152–188) in five new categories. No breakin
 - **Physical Surfaces & Navigation**: Card Wallet (#162), a stack of fictional payment cards in metal, black guilloche, frosted glass and solid color finishes with an original network mark, pointer- or tilt-driven light, fanning, drag-to-pocket cycling and an open view with a rolling balance and recent activity. Lens Tab Bar (#163), an iOS-style tab bar whose selection is a draggable lens that redraws what passes under it inverted, with spring-opened labels, rolling badges and full tablist semantics.
 - **Prediction Markets** foundations in `src/lib/markets/`: integer math (basis-point prices, cent amounts, hundredth shares, simulated price impact, P&L), formatting (probability, ¢ prices, compact volume, time left), shared types, a hydration-safe clock and generated trader avatars, plus demo-only mock markets and a live tick engine.
 - **Prediction Markets**: Market Card (#164) with a probability gauge or outcome bars, Yes/No buttons with payout previews that morph into the ticket, and open, closing, resolved and loading states; Trade Ticket (#165) with Buy/Sell, Yes/No or outcome select, quick amounts, a live summary with price impact, limit orders and a simulated confirm, success and failure flow.
+- **Prediction Markets**: Probability Chart (#166), odds over time with timeframe tabs that morph the lines, a toggling legend, a snapping crosshair (pointer and keyboard), annotations and a hidden data table; Outcome Ladder (#167), outcomes that re-sort by probability with layout animation, rolling prices and expandable rows; Order Book (#168), bids and asks with cumulative depth bars, flashing size changes, the spread, a mirrored No book and click-to-fill; Mobile Trade Bar (#169), a sticky bar that hides on scroll and morphs into a draggable bottom-sheet Trade Ticket; Positions Panel (#170), open, resolved and past positions with live P&L, claims with a coin burst and an empty state; Market Leaderboard (#171), a podium and ranked list by profit, volume or accuracy with the viewer's row pinned; Resolution & Rules Card (#172), a status timeline, expandable rules, a dispute countdown and a resolved stamp; and Market Activity & Discussion (#173), a live trade stream and a comment thread with position badges, likes, replies, sorting and holder filters. All demo data is simulated and labelled as such.
+- Two demo pages built from the Prediction Markets components: `/demos/prediction-market` (chart, order book or outcome ladder, sticky trade ticket or mobile trade bar, rules, activity, positions and leaderboard, with a pause switch for live data) and `/demos/prediction-feed` (market cards with topic chips, search, a watchlist filter and a card-to-ticket trade overlay).
+- `useHydrated` in `src/lib/markets/use-now.ts` for text derived from timestamps that are generated relative to page load.
 - The gallery renderer keeps texture transparency (for overlays such as a record's sheen) and can turn a card over around its own axis, and the input hook can be scrubbed from another control. Space pauses any gallery with continuous motion, and gallery roots take focus on click so Escape and the arrow keys work after pointer use.
 - Shared gallery captions and previous/next controls that switch to light text on dark backgrounds.
 
 ### Changed
 
 - Version 0.3.0 in progress: the navbar badge and the New badges follow it, so components from 0.2.0 no longer show New. The landing page keeps showcasing the latest shipped release.
+
+### Fixed
+
+- Compact dollar amounts in the market helpers format the same on the server and in the browser (`$412K`, not `$412.0K` from Node), which removes a hydration mismatch when market components are server-rendered.
+- Trade Ticket's success state uses a darker green so its white label meets 4.5:1 contrast, and its inactive Buy/Sell tab text is darker on the grey track.
 
 ## [0.2.0] - 2026-11-01
 

@@ -6,8 +6,10 @@ let timer = 0;
 
 function subscribe(listener: () => void) {
   listeners.add(listener);
+  // Refresh on every subscribe, so a component that mounts while the timer is already running
+  // does not start with a timestamp up to 15 s old.
+  now = Date.now();
   if (!timer) {
-    now = Date.now();
     timer = window.setInterval(() => {
       now = Date.now();
       listeners.forEach((l) => l());
@@ -31,5 +33,19 @@ export function useNow() {
     subscribe,
     () => now || Date.now(),
     () => 0,
+  );
+}
+
+const noop = () => () => {};
+
+/**
+ * False on the server and during hydration, true after. Gate text derived from timestamps (axis
+ * labels, dates) with it when the data may be generated relative to page load.
+ */
+export function useHydrated() {
+  return useSyncExternalStore(
+    noop,
+    () => true,
+    () => false,
   );
 }

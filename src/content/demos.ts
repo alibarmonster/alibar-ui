@@ -168,4 +168,12 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "scattered-prints": () => import("@/components/ui/scattered-prints/demo"),
   "market-card": () => import("@/components/ui/market-card/demo"),
   "trade-ticket": () => import("@/components/ui/trade-ticket/demo"),
+  "probability-chart": () => import("@/components/ui/probability-chart/demo"),
+  "outcome-ladder": () => import("@/components/ui/outcome-ladder/demo"),
+  "order-book": () => import("@/components/ui/order-book/demo"),
+  "mobile-trade-bar": () => import("@/components/ui/mobile-trade-bar/demo"),
+  "positions-panel": () => import("@/components/ui/positions-panel/demo"),
+  "market-leaderboard": () => import("@/components/ui/market-leaderboard/demo"),
+  "resolution-card": () => import("@/components/ui/resolution-card/demo"),
+  "market-activity": () => import("@/components/ui/market-activity/demo"),
 };

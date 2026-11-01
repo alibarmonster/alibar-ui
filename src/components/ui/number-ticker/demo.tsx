@@ -9,7 +9,7 @@ const control =
 const STATS = [
   { label: "Developers", value: 12480, suffix: "+" },
   { label: "Uptime", value: 99.98, suffix: "%" },
-  { label: "Paid out", value: 1284000, format: { style: "currency", currency: "USD", notation: "compact", maximumFractionDigits: 1 } as const },
+  { label: "Paid out", value: 1284000, format: { style: "currency", currency: "USD", notation: "compact", minimumFractionDigits: 0, maximumFractionDigits: 1 } as const },
 ];
 
 export function Default() {

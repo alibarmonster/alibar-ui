@@ -167,4 +167,12 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "scattered-prints": () => import("@/components/ui/scattered-prints/docs"),
   "market-card": () => import("@/components/ui/market-card/docs"),
   "trade-ticket": () => import("@/components/ui/trade-ticket/docs"),
+  "probability-chart": () => import("@/components/ui/probability-chart/docs"),
+  "outcome-ladder": () => import("@/components/ui/outcome-ladder/docs"),
+  "order-book": () => import("@/components/ui/order-book/docs"),
+  "mobile-trade-bar": () => import("@/components/ui/mobile-trade-bar/docs"),
+  "positions-panel": () => import("@/components/ui/positions-panel/docs"),
+  "market-leaderboard": () => import("@/components/ui/market-leaderboard/docs"),
+  "resolution-card": () => import("@/components/ui/resolution-card/docs"),
+  "market-activity": () => import("@/components/ui/market-activity/docs"),
 };
