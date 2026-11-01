@@ -3,9 +3,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { REGISTRY } from "../src/lib/registry";
 
-assert.equal(REGISTRY.length, 17, "Expected 17 core primitives in REGISTRY");
+assert.equal(REGISTRY.length, 20, "Expected 20 core primitives in REGISTRY");
 const webglCount = REGISTRY.filter((r) => r.category === "webgl").length;
-assert.equal(webglCount, 5, "Expected 5 WebGL shaders in REGISTRY");
+assert.equal(webglCount, 8, "Expected 8 WebGL/ASCII shaders in REGISTRY");
 
 for (const item of REGISTRY) {
   const fullPath = path.join(process.cwd(), item.filePath);

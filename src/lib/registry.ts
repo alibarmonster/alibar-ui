@@ -9,6 +9,33 @@ export interface ComponentEntry {
 
 export const REGISTRY: ComponentEntry[] = [
   {
+    id: "ascii-wildlife-sim",
+    name: "ASCII Wildlife Ecosystem (Orca, Turtle, Birds, Eagle)",
+    category: "webgl",
+    summary:
+      "20-node articulated spine & Reynolds boids ASCII grid simulation featuring Orca, Sea Turtle, Swallow Flock, and Soaring Eagle with live Split Black/White theme inversion.",
+    filePath: "src/components/bits/ascii-wildlife-sim.tsx",
+    code: `<AsciiWildlifeSim speed={1.0} defaultTheme="split" />`,
+  },
+  {
+    id: "ascii-recipe-crt-studio",
+    name: "ASCII Magic Recipe Studio (CRT & Post-FX)",
+    category: "webgl",
+    summary:
+      "REA-reconstructed ASCII Magic recipe engine with Matrix, Lost Signal, Blueprint, Blue Hour, Golden Hour & Noir presets, CRT barrel warp, charChroma RGB split, and recipe:v1 exporter.",
+    filePath: "src/components/bits/ascii-recipe-crt-studio.tsx",
+    code: `<AsciiRecipeCrtStudio speed={1.0} />`,
+  },
+  {
+    id: "ascii-dither-palette-lab",
+    name: "ASCII Magic Dither & Retro Palette Lab",
+    category: "webgl",
+    summary:
+      "REA-reconstructed renderDitherEngine supporting recursive Bayer-8, Bill Atkinson error diffusion, Halftone & LinesH across PICO-8, C64, CGA, GameBoy & Sepia palettes.",
+    filePath: "src/components/bits/ascii-dither-palette-lab.tsx",
+    code: `<AsciiDitherPaletteLab speed={1.0} />`,
+  },
+  {
     id: "dither-field",
     name: "Ordered Dither Matrix",
     category: "webgl",
