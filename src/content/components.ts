@@ -1,3 +1,5 @@
+import { siteConfig } from "../config/site";
+
 export type CategoryId =
   | "buttons"
   | "inputs"
@@ -8,12 +10,21 @@ export type CategoryId =
   | "data"
   | "cards"
   | "media"
-  | "ai";
+  | "ai"
+  | "web3-wallet"
+  | "web3-defi"
+  | "marketing"
+  | "shaders"
+  | "orbits";
 
 export interface Category {
   id: CategoryId;
   name: string;
   description: string;
+  /** Sidebar group heading shared by related categories, e.g. "Web3". */
+  group?: string;
+  /** Shorter name used under the group heading in the sidebar. */
+  navName?: string;
 }
 
 export type ComponentStatus = "ready" | "planned";
@@ -24,7 +35,10 @@ export interface ComponentEntry {
   category: CategoryId;
   description: string;
   status: ComponentStatus;
-  isNew?: boolean;
+  /** Release that added the component, e.g. "0.2.0". */
+  version: string;
+  /** True for components added in the current release (shows the "New" badge). */
+  isNew: boolean;
 }
 
 export const categories: Category[] = [
@@ -38,9 +52,30 @@ export const categories: Category[] = [
   { id: "cards", name: "Cards & Layout", description: "Tilt, stack, flip, expand and reorder." },
   { id: "media", name: "Media, Scroll & Backgrounds", description: "Marquees, lightboxes and ambient fields." },
   { id: "ai", name: "Loaders, AI & Widgets", description: "Loading states and AI-native interfaces." },
+  {
+    id: "web3-wallet",
+    name: "Web3: Wallet & Identity",
+    navName: "Wallet & Identity",
+    group: "Web3",
+    description: "Connect, identify and track transactions.",
+  },
+  {
+    id: "web3-defi",
+    name: "Web3: DeFi & Trading",
+    navName: "DeFi & Trading",
+    group: "Web3",
+    description: "Swaps, bridges, charts, staking and gas.",
+  },
+  { id: "marketing", name: "Marketing Sections & Logo Clouds", description: "Logo clouds, pricing, stats and CTAs." },
+  { id: "shaders", name: "Shaders & Backgrounds", description: "GPU-rendered clouds, gradients and fields." },
+  { id: "orbits", name: "Orbits, Beams & Illustrations", description: "Orbits, beams, globes and graphs." },
 ];
 
-type Row = [slug: string, name: string, description: string, status?: ComponentStatus, isNew?: boolean];
+type Row = [slug: string, name: string, description: string, status?: ComponentStatus, version?: string];
+
+/** First release; rows without a version belong to it. */
+const INITIAL_VERSION = "0.1.0";
+const V020 = "0.2.0";
 
 const rows: Record<CategoryId, Row[]> = {
   buttons: [
@@ -152,27 +187,88 @@ const rows: Record<CategoryId, Row[]> = {
     ["shimmering-dots", "Shimmering Grid Dots", "Random dots twinkle across a grid.", "ready"],
   ],
   ai: [
-    ["skeleton-reveal", "Skeleton to Content", "A pulsing skeleton cross-fades into content.", "ready", true],
-    ["spinner-check", "Spinner to Check", "A spinner pops into a drawn checkmark.", "ready", true],
-    ["matrix-loader", "Matrix Dot Loader", "A 4×4 dot matrix pulsing in patterns.", "ready", true],
-    ["bars-loader", "Bars Loader", "Equalizer-style bars.", "ready", true],
-    ["thinking-states", "Thinking States", "A shimmering status line that steps through stages.", "ready", true],
-    ["ai-prompt-input", "AI Prompt Input", "Auto-growing input with attachments and an orbiting border.", "ready", true],
-    ["chat-bubbles", "Chat Bubbles", "Messages spring in, with a typing indicator.", "ready", true],
-    ["voice-orb", "Voice Orb", "A blob that reacts to audio level.", "ready", true],
-    ["agent-steps", "Agent Progress Steps", "Steps move from loading to done with drawn checks.", "ready", true],
-    ["swipe-row", "Swipeable List Row", "Swipe to reveal archive and delete actions.", "ready", true],
+    ["skeleton-reveal", "Skeleton to Content", "A pulsing skeleton cross-fades into content.", "ready"],
+    ["spinner-check", "Spinner to Check", "A spinner pops into a drawn checkmark.", "ready"],
+    ["matrix-loader", "Matrix Dot Loader", "A 4×4 dot matrix pulsing in patterns.", "ready"],
+    ["bars-loader", "Bars Loader", "Equalizer-style bars.", "ready"],
+    ["thinking-states", "Thinking States", "A shimmering status line that steps through stages.", "ready"],
+    ["ai-prompt-input", "AI Prompt Input", "Auto-growing input with attachments and an orbiting border.", "ready"],
+    ["chat-bubbles", "Chat Bubbles", "Messages spring in, with a typing indicator.", "ready"],
+    ["voice-orb", "Voice Orb", "A blob that reacts to audio level.", "ready"],
+    ["agent-steps", "Agent Progress Steps", "Steps move from loading to done with drawn checks.", "ready"],
+    ["swipe-row", "Swipeable List Row", "Swipe to reveal archive and delete actions.", "ready"],
+  ],
+  "web3-wallet": [
+    ["connect-wallet-button", "Connect Wallet Button", "Opens a wallet list, spins while connecting, then morphs into an address pill.", "planned", V020],
+    ["wallet-selector-modal", "Wallet Selector Modal", "Wallet list with a Recent badge that morphs into a QR code view.", "planned", V020],
+    ["address-pill", "Address Pill", "Generated avatar, truncated address, copy morph and explorer link.", "planned", V020],
+    ["network-switcher", "Network Switcher", "Chain dropdown with a switching state and a wrong-network warning.", "planned", V020],
+    ["account-dropdown", "Account Dropdown", "Rolling total balance, address actions and disconnect.", "planned", V020],
+    ["token-balance-list", "Token Balance List", "Token rows with USD value and 24h change, plus a hide-small-balances toggle.", "planned", V020],
+    ["transaction-toast", "Transaction Toast", "A pending ring that resolves into a drawn check or a failure shake.", "planned", V020],
+    ["transaction-history", "Transaction History", "Grouped by date; rows expand to show from, to, fee and hash.", "planned", V020],
+    ["nft-card", "NFT Card", "Tilt and glare, a rarity badge, price, and traits on hover.", "planned", V020],
+    ["transaction-review-modal", "Transaction Review Modal", "Summary, fees and total, confirmed with a hold-to-confirm button.", "planned", V020],
+  ],
+  "web3-defi": [
+    ["token-swap-widget", "Token Swap Widget", "Flip-to-swap panels, a quote countdown, price impact and a staged button.", "planned", V020],
+    ["token-selector-modal", "Token Selector Modal", "Search, popular chips and a keyboard-navigable token list.", "planned", V020],
+    ["bridge-widget", "Cross-chain Bridge", "An animated route between chains, fee breakdown and progress tracker.", "planned", V020],
+    ["slippage-settings", "Slippage Settings", "Preset chips with a sliding indicator, custom input and warnings.", "planned", V020],
+    ["token-amount-input", "Token Amount Input", "Balance, percentage chips, USD value and a shake when over balance.", "planned", V020],
+    ["price-chart", "Candlestick Chart", "Timeframe tabs, a crosshair with OHLC tooltip and smooth transitions.", "planned", V020],
+    ["price-ticker", "Live Price Ticker", "A marquee of pairs with rolling digits and tick flashes.", "planned", V020],
+    ["staking-card", "Staking Card", "APY badge, stake and unstake tabs, live rewards and a claim burst.", "planned", V020],
+    ["liquidity-pool-card", "Liquidity Pool Card", "Pair icons, TVL and APR, and a two-handle price range.", "planned", V020],
+    ["gas-fee-selector", "Gas Fee Selector", "Slow, standard and fast cards with a live pulse and cost.", "planned", V020],
+  ],
+  marketing: [
+    ["logo-grid", "Logo Grid Hover Reveal", "Logos lift on hover to reveal a Learn More link.", "planned", V020],
+    ["dual-logo-marquee", "Dual Logo Marquee", "Two rows scrolling in opposite directions with edge fades.", "planned", V020],
+    ["logo-cloud-cycle", "Logo Cloud Blur Cycle", "Fixed slots where logos swap one by one with a blur.", "planned", V020],
+    ["spotlight-logo-grid", "Spotlight Logo Grid", "A cursor glow lights up the cell borders nearby.", "planned", V020],
+    ["testimonial-wall", "Testimonial Wall", "Masonry columns auto-scrolling at different speeds.", "planned", V020],
+    ["feature-bento", "Feature Bento Section", "Tiles that each run their own micro-animation.", "planned", V020],
+    ["pricing-section", "Pricing Section", "A monthly/yearly pill toggle with rolling prices.", "planned", V020],
+    ["stats-section", "Stats Section", "Number tickers that start in view, with hairline dividers.", "planned", V020],
+    ["faq-section", "FAQ Section", "A searchable accordion that filters with layout animation.", "planned", V020],
+    ["cta-section", "CTA with Border Beam", "A light beam travels around the call-to-action card.", "planned", V020],
+  ],
+  shaders: [
+    ["cloud-shader", "Cloud Shader", "Soft procedural clouds drifting across a sky gradient.", "planned", V020],
+    ["mesh-gradient", "Mesh Gradient", "A slowly flowing pastel mesh in four colors.", "planned", V020],
+    ["grain-gradient", "Grain Gradient", "A soft gradient with animated film grain.", "planned", V020],
+    ["dithered-waves", "Dithered Waves", "Bayer-dithered waves in black on white.", "planned", V020],
+    ["liquid-ripple", "Liquid Ripple", "Pointer movement and clicks ripple across a surface.", "planned", V020],
+    ["dot-matrix-field", "Dot Matrix Field", "A dot grid scaling with a moving noise field.", "planned", V020],
+    ["light-rays", "Light Rays", "Soft rays falling from the top with a gentle sway.", "planned", V020],
+    ["gpu-aurora", "GPU Aurora", "A light pastel aurora rendered on the GPU.", "planned", V020],
+    ["glow-orb", "Glow Orb", "A noisy, pulsing orb for AI assistants.", "planned", V020],
+    ["pixel-reveal-image", "Pixel Reveal Image", "An image resolves from pixelated to sharp.", "planned", V020],
+  ],
+  orbits: [
+    ["orbiting-circles", "Orbiting Circles", "Icons orbit a center element on concentric rings.", "planned", V020],
+    ["integration-hub", "Integration Hub", "Beams connect a center logo to the icons around it.", "planned", V020],
+    ["animated-beam", "Animated Beam", "A gradient pulse travels along a curve between two elements.", "planned", V020],
+    ["radar-sweep", "Radar Sweep", "A rotating sweep reveals blips as it passes.", "planned", V020],
+    ["dotted-globe", "Dotted Globe", "A rotating globe of dots with arcs; drag to spin.", "planned", V020],
+    ["ripple-rings", "Ripple Rings", "Concentric rings pulse outward behind an icon.", "planned", V020],
+    ["icon-cloud", "Icon Cloud", "Icons on a 3D sphere that auto-rotates; drag to spin.", "planned", V020],
+    ["border-beam", "Border Beam", "A light segment travels around any card's border.", "planned", V020],
+    ["node-network", "Node Network", "Floating connected nodes; lines highlight on hover.", "planned", V020],
+    ["animated-grid-pattern", "Animated Grid Pattern", "Grid squares light up in a subtle random pattern.", "planned", V020],
   ],
 };
 
 export const components: ComponentEntry[] = categories.flatMap((category) =>
-  rows[category.id].map(([slug, name, description, status = "planned", isNew]) => ({
+  rows[category.id].map(([slug, name, description, status = "planned", version = INITIAL_VERSION]) => ({
     slug,
     name,
     category: category.id,
     description,
     status,
-    ...(isNew ? { isNew } : {}),
+    version,
+    isNew: version === siteConfig.version,
   })),
 );
 

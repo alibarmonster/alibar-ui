@@ -4,6 +4,21 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+Work toward 0.2.0: 50 components in five new categories.
+
+### Added
+
+- Five categories in the catalog: Web3: Wallet & Identity, Web3: DeFi & Trading, Marketing Sections & Logo Clouds, Shaders & Backgrounds, and Orbits, Beams & Illustrations.
+- `useShaderCanvas` (`src/lib/webgl/use-shader-canvas.ts`): WebGL2 fragment shaders on a fullscreen triangle, with a pixel-ratio cap, render scale, offscreen and hidden-tab pausing, a static frame under reduced motion, context-loss recovery and cleanup.
+- GLSL snippets (hash, simplex noise, fBm, Bayer dither), a hex-to-vec3 color helper, bigint-safe web3 formatting built on viem, and mock web3 data for demos.
+- Twelve original placeholder brands for demos.
+- A version badge in the navbar and a `/changelog` page.
+
+### Changed
+
+- The "New" badge marks every component added in the latest release instead of a hand-picked list.
+- Registry items can ship the new shared lib files next to a component.
+
 ## [0.1.0] - 2026-11-01
 
 ### Added

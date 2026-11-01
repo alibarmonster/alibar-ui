@@ -9,4 +9,5 @@ export const docsPages: DocsPage[] = [
   { title: "Installation", href: "/docs/installation", description: "Set up a project and add your first component." },
   { title: "Theming", href: "/docs/theming", description: "Color, radius and shadow tokens." },
   { title: "Motion", href: "/docs/motion", description: "Durations, curves, springs and reduced motion." },
+  { title: "Changelog", href: "/changelog", description: "New components, changes and fixes in every release." },
 ];

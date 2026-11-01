@@ -56,11 +56,11 @@ export default function HomePage() {
         />
         <div className="relative mx-auto flex max-w-[1400px] flex-col items-center px-4 pt-20 pb-24 text-center sm:px-6 sm:pt-28 sm:pb-32">
           <Link
-            href="/components"
+            href="/changelog"
             className="hero-rise focus-ring group mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-background py-1 pr-3 pl-1 text-[13px] text-muted-foreground shadow-xs transition-colors hover:text-foreground"
           >
             <NewBadge />
-            All {readyComponents.length} components are live
+            v{siteConfig.version}: Web3, shaders, marketing sections and more
             <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
 
@@ -70,7 +70,7 @@ export default function HomePage() {
             className="hero-rise mt-7 max-w-xl text-base leading-7 text-pretty text-muted-foreground sm:text-lg sm:leading-8"
             style={{ "--delay": "300ms" } as CSSProperties}
           >
-            {components.length} animated, accessible React components built with Motion and Tailwind CSS. Copy the
+            {readyComponents.length} animated, accessible React components built with Motion and Tailwind CSS. Copy the
             source or install any of them with the shadcn CLI.
           </p>
 
@@ -140,7 +140,7 @@ export default function HomePage() {
               curves.
             </p>
           </div>
-          <p className="font-mono text-sm text-muted-foreground tabular-nums">{components.length} components</p>
+          <p className="font-mono text-sm text-muted-foreground tabular-nums">{readyComponents.length} of {components.length} components</p>
         </div>
 
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">

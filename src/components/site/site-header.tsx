@@ -124,8 +124,15 @@ export function SiteHeader() {
           <Menu className="size-5" aria-hidden="true" />
         </button>
         {loaded.nav ? <MobileNav open={navOpen} onOpenChange={setNavOpen} returnFocusRef={menuButton} /> : null}
-        <Link href="/" className="focus-ring mr-3 rounded-md" aria-label={`${siteConfig.name} home`}>
+        <Link href="/" className="focus-ring mr-2 rounded-md" aria-label={`${siteConfig.name} home`}>
           <Logo />
+        </Link>
+        <Link
+          href="/changelog"
+          className="focus-ring mr-3 inline-flex h-6 items-center rounded-full border border-border bg-surface px-2 font-mono text-[11px] font-medium text-muted-foreground tabular-nums transition-colors hover:border-foreground/20 hover:text-foreground"
+        >
+          v{siteConfig.version}
+          <span className="sr-only"> changelog</span>
         </Link>
         <HeaderLinks />
 

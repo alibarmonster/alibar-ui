@@ -5,7 +5,7 @@ import { PageHeader, Pager, Prose, SectionHeading } from "@/components/site/docs
 import { DocsPage } from "@/components/site/docs-layout";
 import { TableOfContents } from "@/components/site/toc";
 import { siteConfig } from "@/config/site";
-import { categories, components } from "@/content/components";
+import { categories, components, readyComponents } from "@/content/components";
 
 export const metadata: Metadata = {
   title: "Introduction",
@@ -23,7 +23,7 @@ export default function IntroductionPage() {
     <DocsPage toc={<TableOfContents items={toc} />}>
       <PageHeader
         title="Introduction"
-        description={`${siteConfig.name} is a library of ${components.length} animated, accessible React components. You don't install it as a package. You copy each component into your codebase and own it from there.`}
+        description={`${siteConfig.name} is a library of ${readyComponents.length} animated, accessible React components. You don't install it as a package. You copy each component into your codebase and own it from there.`}
       />
 
       <Prose>

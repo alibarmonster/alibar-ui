@@ -77,14 +77,20 @@ export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
         </ul>
       </div>
 
-      {categories.map((category) => {
+      {categories.map((category, index) => {
         const items = components.filter((c) => c.category === category.id);
         const ready = items.filter((c) => c.status === "ready");
         const planned = items.length - ready.length;
+        const startsGroup = category.group !== undefined && category.group !== categories[index - 1]?.group;
         return (
           <div key={category.id}>
+            {startsGroup ? (
+              <p className="mb-3 px-2.5 text-[11px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
+                {category.group}
+              </p>
+            ) : null}
             <p className="mb-1.5 flex items-center justify-between px-2.5 text-xs font-medium text-foreground">
-              {category.name}
+              {category.group ? (category.navName ?? category.name) : category.name}
               <span className="font-mono text-[11px] font-normal text-muted-foreground tabular-nums">
                 {ready.length}/{items.length}
               </span>

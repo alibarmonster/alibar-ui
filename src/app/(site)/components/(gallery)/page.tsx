@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/site/docs-blocks";
 import { Gallery } from "@/components/site/gallery";
-import { components, readyComponents } from "@/content/components";
+import { categories, components, readyComponents } from "@/content/components";
 import { componentFiles, extractDemoVariants, readProjectFile } from "@/lib/docs/source";
 
 export const metadata: Metadata = {
@@ -24,7 +24,9 @@ export default async function ComponentsPage() {
     <div className="mx-auto max-w-[1400px] px-4 pt-10 pb-24 sm:px-6 sm:pt-14">
       <PageHeader
         title="Components"
-        description={`${components.length} animated, accessible components across ten categories. Every one has a live preview, full source, and a one-line install.`}
+        description={`${readyComponents.length} animated, accessible components across ${categories.length} categories${
+          components.length > readyComponents.length ? `, with ${components.length - readyComponents.length} more on the way` : ""
+        }. Every one has a live preview, full source, and a one-line install.`}
       />
       <Gallery previews={previews} />
     </div>
