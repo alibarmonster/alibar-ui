@@ -8,6 +8,7 @@ import { OrbitingCircles } from "@/components/ui/orbiting-circles/orbiting-circl
 import { placeholderBrands } from "@/components/site/placeholder-logos";
 
 const SwapShowcase = dynamic(() => import("./whats-new-tiles").then((m) => m.SwapShowcase), { ssr: false });
+const AquariumShowcase = dynamic(() => import("@/components/ui/ascii-aquarium-background/demo").then((m) => m.ChatHero), { ssr: false });
 
 /** Mounts children once the placeholder nears the viewport. */
 function WhenNear({ children, className }: { children: ReactNode; className?: string }) {
@@ -40,6 +41,14 @@ export function SwapPanel() {
   return (
     <WhenNear className="flex min-h-[600px] w-full items-start justify-center">
       <SwapShowcase />
+    </WhenNear>
+  );
+}
+
+export function AquariumPanel() {
+  return (
+    <WhenNear className="flex min-h-[30rem] w-full">
+      <AquariumShowcase />
     </WhenNear>
   );
 }

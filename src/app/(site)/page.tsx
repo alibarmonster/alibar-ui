@@ -6,7 +6,7 @@ import { NewBadge } from "@/components/site/sidebar-nav";
 import { FeaturedBento } from "@/components/site/featured-bento";
 import { HeroSky } from "@/components/site/hero-sky";
 import { placeholderLogos } from "@/components/site/placeholder-logos";
-import { OrbitPanel, ShowcaseLink, SwapPanel } from "@/components/site/whats-new";
+import { AquariumPanel, OrbitPanel, ShowcaseLink, SwapPanel } from "@/components/site/whats-new";
 import { LogoGrid } from "@/components/ui/logo-grid/logo-grid";
 import { SiteCopyButton } from "@/components/site/site-copy-button";
 import { registryUrl, siteConfig } from "@/config/site";
@@ -137,8 +137,8 @@ export default function HomePage() {
               What&apos;s new in v{siteConfig.version}
             </h2>
             <p className="mt-2 max-w-xl text-[15px] leading-7 text-muted-foreground">
-              {newComponents.length} components in {newCategories.length} new categories: Web3 wallets and DeFi, marketing sections, GPU shaders, and orbits
-              and beams.
+              {newComponents.length} components in {newCategories.length} new categories: Web3 wallets and DeFi, marketing sections, shader and canvas
+              backgrounds, and orbits and beams.
             </p>
           </div>
           <ShowcaseLink href="/changelog">Read the changelog</ShowcaseLink>
@@ -189,6 +189,24 @@ export default function HomePage() {
             <div className="mt-6 flex flex-1 items-center">
               <OrbitPanel />
             </div>
+          </article>
+          <article
+            className="grid grid-cols-1 items-center gap-6 rounded-[20px] border border-border bg-surface p-6 sm:p-8 lg:col-span-2 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-10"
+            aria-labelledby="aquarium-heading"
+          >
+            <div>
+              <h3 id="aquarium-heading" className="text-lg font-semibold tracking-tight text-foreground">
+                A background that listens
+              </h3>
+              <p className="mt-1 max-w-md text-[14px] leading-6 text-muted-foreground">
+                Sea creatures drawn in glyphs on a 2D canvas. Focus the input and the ray swims over to listen. Send a question and it circles faster while it
+                thinks. Click the water for a ripple.
+              </p>
+              <div className="mt-2">
+                <ShowcaseLink href="/components/ascii-aquarium-background">ASCII Aquarium Background</ShowcaseLink>
+              </div>
+            </div>
+            <AquariumPanel />
           </article>
         </div>
       </section>

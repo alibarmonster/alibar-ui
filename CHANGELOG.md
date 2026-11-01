@@ -22,7 +22,7 @@ All notable changes to this project are documented here. The format follows [Kee
 - `useShaderCanvas` accepts sampler2D textures (images, canvases, video), uniforms as a per-frame function, and returns the shader clock as `time`. On software WebGL (SwiftShader, llvmpipe) it skips compiling and shows the CSS fallback, unless `allowSoftware` is set.
 - Shared web3 helpers for registry items: generated token, chain, wallet and address avatars, `RollingValue` for rolling pre-formatted amounts with green/red flashes, and shared `Token`, `Chain`, `WalletOption` and `TxStatus` types.
 - A version badge in the navbar and a `/changelog` page.
-- Landing page: a "What's new in v0.2.0" section with live showcases (Token Swap Widget, Orbiting Circles), Logo Grid Hover Reveal under the hero, and an optional Cloud Shader hero background.
+- Landing page: a "What's new in v0.2.0" section with live showcases (Token Swap Widget, Orbiting Circles, ASCII Aquarium Background), Logo Grid Hover Reveal under the hero, and an optional Cloud Shader hero background.
 
 ### Changed
 
