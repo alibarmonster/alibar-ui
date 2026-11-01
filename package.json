@@ -2,6 +2,32 @@
   "name": "alibar-components",
   "version": "0.1.0",
   "private": true,
+  "description": "alibar/ui: 100 animated, accessible React components for Next.js and Tailwind CSS. Copy, paste, or install with the shadcn CLI.",
+  "keywords": [
+    "react",
+    "nextjs",
+    "tailwindcss",
+    "motion",
+    "animation",
+    "components",
+    "ui",
+    "shadcn",
+    "shadcn-registry",
+    "accessibility"
+  ],
+  "homepage": "https://github.com/alibarmonster/alibar-components#readme",
+  "bugs": {
+    "url": "https://github.com/alibarmonster/alibar-components/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alibarmonster/alibar-components.git"
+  },
+  "license": "MIT",
+  "author": "alibar (https://github.com/alibarmonster)",
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "npm run registry:build && next build",
