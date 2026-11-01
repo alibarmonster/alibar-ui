@@ -4,8 +4,13 @@ import { ArrowRight, Accessibility, Gauge, PackageOpen } from "lucide-react";
 import { HeroHeadline } from "@/components/site/hero-headline";
 import { NewBadge } from "@/components/site/sidebar-nav";
 import { FeaturedBento } from "@/components/site/featured-bento";
+import { HeroSky } from "@/components/site/hero-sky";
+import { placeholderLogos } from "@/components/site/placeholder-logos";
+import { OrbitPanel, ShowcaseLink, SwapPanel } from "@/components/site/whats-new";
+import { LogoGrid } from "@/components/ui/logo-grid/logo-grid";
 import { SiteCopyButton } from "@/components/site/site-copy-button";
 import { registryUrl, siteConfig } from "@/config/site";
+import { releases } from "@/content/changelog";
 import { categories, components, readyComponents } from "@/content/components";
 
 const principles = [
@@ -45,11 +50,18 @@ const jsonLd = {
 
 export default function HomePage() {
   const installCommand = `npx shadcn@latest add ${registryUrl("spring-press-button")}`;
+  const newComponents = readyComponents.filter((c) => c.version === siteConfig.version);
+  const newCategories = categories.filter((category) => newComponents.some((c) => c.category === category.id));
+  const release = releases.find((r) => r.version === siteConfig.version);
+  const releaseDate = release?.date
+    ? new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${release.date}T00:00:00Z`))
+    : "soon";
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <section className="relative overflow-hidden border-b border-border">
+        <HeroSky />
         <div
           aria-hidden="true"
           className="bg-dot-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent)]"
@@ -105,6 +117,79 @@ export default function HomePage() {
             </code>
             <SiteCopyButton value={installCommand} variant="ghost" size="sm" aria-label="Copy install command" />
           </div>
+        </div>
+      </section>
+
+      <LogoGrid
+        className="border-b border-border"
+        eyebrow="New in v0.2.0: Logo Grid Hover Reveal. Hover or tab through the placeholder brands."
+        linkLabel="View component"
+        items={placeholderLogos.slice(0, 8).map((logo) => ({ ...logo, href: "/components/logo-grid" }))}
+      />
+
+      <section className="mx-auto max-w-[1400px] px-4 pt-20 sm:px-6 sm:pt-24" aria-labelledby="new-heading">
+        <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <p className="flex items-center gap-2 text-sm text-muted-foreground">
+              <NewBadge /> Released {releaseDate}
+            </p>
+            <h2 id="new-heading" className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+              What&apos;s new in v{siteConfig.version}
+            </h2>
+            <p className="mt-2 max-w-xl text-[15px] leading-7 text-muted-foreground">
+              {newComponents.length} components in {newCategories.length} new categories: Web3 wallets and DeFi, marketing sections, GPU shaders, and orbits
+              and beams.
+            </p>
+          </div>
+          <ShowcaseLink href="/changelog">Read the changelog</ShowcaseLink>
+        </div>
+
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {newCategories.map((category) => (
+            <li key={category.id}>
+              <Link
+                href={`/components?category=${category.id}`}
+                className="focus-ring group flex h-full flex-col rounded-[14px] border border-border bg-background p-4 transition-shadow hover:shadow-md"
+              >
+                <span className="text-sm font-medium text-foreground">{category.name}</span>
+                <span className="mt-1 text-[13px] leading-5 text-muted-foreground">{category.description}</span>
+                <span className="mt-auto pt-4 font-mono text-xs text-muted-foreground tabular-nums">
+                  {newComponents.filter((c) => c.category === category.id).length} components
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <article className="flex flex-col rounded-[20px] border border-border bg-surface p-6 sm:p-8" aria-labelledby="web3-heading">
+            <h3 id="web3-heading" className="text-lg font-semibold tracking-tight text-foreground">
+              Web3, with bigint math all the way down
+            </h3>
+            <p className="mt-1 max-w-md text-[14px] leading-6 text-muted-foreground">
+              The swap widget runs on mock data here: approve, flip, tweak slippage and swap. Every state is animated, and every amount is a bigint.
+            </p>
+            <div className="mt-2">
+              <ShowcaseLink href="/components/token-swap-widget">Token Swap Widget</ShowcaseLink>
+            </div>
+            <div className="mt-6">
+              <SwapPanel />
+            </div>
+          </article>
+          <article className="flex flex-col rounded-[20px] border border-border bg-surface p-6 sm:p-8" aria-labelledby="orbit-heading">
+            <h3 id="orbit-heading" className="text-lg font-semibold tracking-tight text-foreground">
+              Integrations that orbit your product
+            </h3>
+            <p className="mt-1 max-w-md text-[14px] leading-6 text-muted-foreground">
+              Pure CSS keyframes: no per-frame JavaScript. Hover an icon to pause the system and read its name.
+            </p>
+            <div className="mt-2">
+              <ShowcaseLink href="/components/orbiting-circles">Orbiting Circles</ShowcaseLink>
+            </div>
+            <div className="mt-6 flex flex-1 items-center">
+              <OrbitPanel />
+            </div>
+          </article>
         </div>
       </section>
 
