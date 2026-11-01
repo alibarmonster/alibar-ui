@@ -304,7 +304,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["sleeve-rail", "Sleeve Rail", "A fanned rail of album sleeves; the focused record slides out and spins.", "ready", V030],
     ["curved-wall", "Curved Wall", "Image panels on the inside of a cylinder, with drift, steps and dial-like snapping.", "ready", V030],
     ["formation-gallery", "Formation Gallery", "Up to 160 cards flowing between rings, spiral, globe and field.", "planned", V030],
-    ["darkroom-stream", "Darkroom Stream", "Photos stream out from the center and develop like prints.", "planned", V030],
+    ["darkroom-stream", "Darkroom Stream", "Photos stream out from the center and develop like prints.", "ready", V030],
     ["ring-reel", "Ring Reel", "A turning wheel of cards that zooms into an arc.", "ready", V030],
     ["helix-gallery", "Helix Gallery", "Cards wound on a vertical helix; scroll or drag to travel along it.", "planned", V030],
     ["depth-rail", "Depth Rail", "A lightweight CSS 3D coverflow with parallax and springy throws.", "planned", V030],

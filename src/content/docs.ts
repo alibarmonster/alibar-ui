@@ -156,4 +156,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "curved-wall": () => import("@/components/ui/curved-wall/docs"),
   "sleeve-rail": () => import("@/components/ui/sleeve-rail/docs"),
   "ring-reel": () => import("@/components/ui/ring-reel/docs"),
+  "darkroom-stream": () => import("@/components/ui/darkroom-stream/docs"),
 };

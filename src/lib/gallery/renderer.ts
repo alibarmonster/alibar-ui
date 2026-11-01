@@ -192,9 +192,15 @@ void main() {
   if (paper) color = u_paper;
 
   float tone = v_look.z;
-  if (tone < 1.0) {
+  if (tone < 1.0 && !paper) {
     float gray = dot(color, vec3(0.299, 0.587, 0.114));
-    color = mix(vec3(mix(0.55, gray, 0.5)), color, tone);
+    if (border > 0.0) {
+      // A print develops out of its paper: blank, then faint monochrome, then full color.
+      vec3 mono = mix(u_paper, vec3(gray), smoothstep(0.0, 0.6, tone));
+      color = mix(mono, color, smoothstep(0.45, 1.0, tone));
+    } else {
+      color = mix(vec3(mix(0.55, gray, 0.5)), color, tone);
+    }
   }
   color = mix(color, v_fill.rgb, v_fill.a);
   color *= 1.0 - v_look.y;

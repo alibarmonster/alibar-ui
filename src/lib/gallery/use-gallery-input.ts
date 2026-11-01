@@ -45,6 +45,8 @@ export interface UseGalleryInputOptions {
   pauseOnHover?: boolean;
   /** Stops autoplay (input still works). @default false */
   paused?: boolean;
+  /** Space toggles pause even without step autoplay, for galleries with continuous motion (drift, spin, streams). @default false */
+  pausable?: boolean;
   /** Request a frame on every pointer move, e.g. for hover picking. @default false */
   trackPointer?: boolean;
   onIndexChange?: (index: number) => void;
@@ -52,7 +54,7 @@ export interface UseGalleryInputOptions {
   onSelect?: (index: number) => void;
   onEscape?: () => void;
   /** A press without a drag, in element coordinates. */
-  onTap?: (point: { x: number; y: number }, input: Omit<GalleryInput, "index" | "autoplaying">) => void;
+  onTap?: (point: { x: number; y: number }, input: Omit<GalleryInput, "index" | "autoplaying" | "userPaused">) => void;
   /** Called whenever the position changes so a renderer can draw. */
   invalidate?: () => void;
 }
@@ -64,6 +66,8 @@ export interface GalleryInput {
   index: number;
   /** Autoplay is on and not paused by the user or the `paused` prop. */
   autoplaying: boolean;
+  /** The user paused motion (Space or `togglePause`). */
+  userPaused: boolean;
   /** Current position in items (fractional while moving; unbounded when looping). */
   position: () => number;
   /** Active item right now (use in event handlers; `index` is the rendered value). */
@@ -432,13 +436,14 @@ export function useGalleryInput(options: UseGalleryInputOptions): GalleryInput {
           o.onSelect?.(s.lastIndex);
         } else if (event.key === "Escape") {
           o.onEscape?.();
-        } else if (event.key === " " && o.autoplay && !target.closest("[data-gallery-control]")) {
+        } else if (event.key === " " && (o.autoplay || o.pausable) && !target.closest("[data-gallery-control]")) {
           event.preventDefault();
           togglePause();
         }
       };
       const onKeyUp = (event: KeyboardEvent) => {
-        if (event.key === " " && latest.current.autoplay && (latest.current.keyboard ?? true) && !(event.target as HTMLElement).closest("[data-gallery-control]")) event.preventDefault();
+        const o = latest.current;
+        if (event.key === " " && (o.autoplay || o.pausable) && (o.keyboard ?? true) && !(event.target as HTMLElement).closest("[data-gallery-control]")) event.preventDefault();
       };
       const onDragStart = (event: Event) => event.preventDefault();
 
@@ -507,7 +512,7 @@ export function useGalleryInput(options: UseGalleryInputOptions): GalleryInput {
       sync();
     };
 
-    const controls: Omit<GalleryInput, "index" | "autoplaying"> = {
+    const controls: Omit<GalleryInput, "index" | "autoplaying" | "userPaused"> = {
       bind,
       position: () => st().p,
       activeIndex: () => st().lastIndex,
@@ -559,5 +564,5 @@ export function useGalleryInput(options: UseGalleryInputOptions): GalleryInput {
     };
   }, [autoplay, interval, api]);
 
-  return { ...api.controls, index, autoplaying: Boolean(autoplay) && !options.paused && !userPaused };
+  return { ...api.controls, index, userPaused, autoplaying: Boolean(autoplay) && !options.paused && !userPaused };
 }

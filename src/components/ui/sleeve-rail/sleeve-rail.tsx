@@ -459,7 +459,9 @@ export function SleeveRail({
       role="group"
       aria-roledescription="carousel"
       aria-label={ariaLabel}
-      className={cn("relative flex size-full min-h-[420px] touch-pan-y flex-col rounded-[inherit] select-none has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring", className)}
+      // Focusable by click (not by Tab) so Escape and arrow keys work after pointer use.
+      tabIndex={-1}
+      className={cn("relative outline-none flex size-full min-h-[420px] touch-pan-y flex-col rounded-[inherit] select-none has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring", className)}
       style={{ backgroundColor, "--sleeve-accent": accent, ...style } as CSSProperties}
     >
       <div ref={hostRef} className="relative min-h-0 flex-1">

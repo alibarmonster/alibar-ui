@@ -179,6 +179,7 @@ export function RingReel({
     wheel,
     // Stepping only happens in arc view; the ring turns by drift instead.
     autoplay: autoplay && view === "arc",
+    pausable: spin !== 0,
     interval,
     pauseOnHover,
     paused,
@@ -336,7 +337,9 @@ export function RingReel({
       role="group"
       aria-roledescription="carousel"
       aria-label={ariaLabel}
-      className={cn("relative size-full min-h-[420px] touch-pan-y rounded-[inherit] select-none [container-type:size] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring", className)}
+      // Focusable by click (not by Tab) so Escape and arrow keys work after pointer use.
+      tabIndex={-1}
+      className={cn("relative outline-none size-full min-h-[420px] touch-pan-y rounded-[inherit] select-none [container-type:size] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring", className)}
       style={{ backgroundColor, ...style }}
     >
       <div ref={hostRef} className="absolute inset-0">
