@@ -3,13 +3,15 @@
 [![CI](https://github.com/alibarmonster/alibar-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/alibarmonster/alibar-ui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-100 animated, accessible React components for Next.js and Tailwind CSS. Copy the source or install a component with the shadcn CLI. Once a component is in your project, the code is yours to edit.
+150 animated, accessible React components for Next.js and Tailwind CSS. Copy the source or install a component with the shadcn CLI. Once a component is in your project, the code is yours to edit.
 
-- **100 components** in 10 categories, each with live demos, variants, a props table and accessibility notes.
+- **150 components** in 15 categories, each with live demos, variants, a props table and accessibility notes.
 - **Modern stack**: React 19, Next.js 16 (App Router), TypeScript (strict), Tailwind CSS v4, [Motion](https://motion.dev), [Radix UI](https://www.radix-ui.com) and [lucide-react](https://lucide.dev).
 - **Accessible by default**: full keyboard support, visible focus rings, ARIA roles, 40px touch targets and `prefers-reduced-motion` fallbacks.
 - **Smooth motion**: animates only `transform`, `opacity`, `filter` and `clip-path`, using shared duration, easing and spring tokens.
 - **No lock-in**: each component lives in one folder, with no global state, no external images and no runtime dependency on this repository.
+- **Web3-ready, safely**: wallet and DeFi components are presentational (data and callbacks in), use bigint math only and never touch a wallet themselves.
+- **GPU backgrounds without three.js**: shaders run on a small WebGL2 hook that pauses offscreen, respects reduced motion and falls back to CSS.
 
 ## Using a component
 
@@ -42,6 +44,11 @@ Each component page lists the packages to install, the helper files (`lib/utils.
 | Cards & Layout | Tilt Card, Swipe Cards, Bento Grid, Sortable List |
 | Media, Scroll & Backgrounds | Draggable Marquee, Parallax Slider, Hover Image Reveal |
 | Loaders, AI & Widgets | Thinking States, AI Prompt Input, Chat Bubbles, Agent Steps |
+| Web3: Wallet & Identity | Connect Wallet Button, Address Pill, Network Switcher, Transaction Toast |
+| Web3: DeFi & Trading | Token Swap Widget, Cross-chain Bridge, Candlestick Chart, Staking Card |
+| Marketing Sections & Logo Clouds | Logo Grid Hover Reveal, Testimonial Wall, Pricing Section, CTA with Border Beam |
+| Shaders & Backgrounds | Cloud Shader, Mesh Gradient, Liquid Ripple, Glow Orb |
+| Orbits, Beams & Illustrations | Orbiting Circles, Animated Beam, Dotted Globe, Icon Cloud |
 
 ## Local development
 
@@ -80,7 +87,7 @@ src/
 │   ├── site/                # Docs site chrome (header, gallery, code blocks, ...)
 │   └── bits/                # Lab primitives
 ├── content/                 # Component catalog, demo and docs indexes, docs navigation
-├── lib/                     # cn(), motion tokens, docs tooling, OG helpers
+├── lib/                     # cn(), motion tokens, color, webgl/ (shader hook, GLSL), web3/ (format, icons, mock), docs tooling
 └── config/site.ts           # Site name, URL and links
 scripts/                     # Registry build and consistency checks
 ```

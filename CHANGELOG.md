@@ -4,7 +4,9 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
-Work toward 0.2.0: 50 components in five new categories.
+## [0.2.0] - 2026-11-01
+
+50 components in five new categories, built on shared foundations for WebGL2 shaders and bigint-safe web3 formatting. No breaking changes.
 
 ### Added
 
@@ -20,6 +22,7 @@ Work toward 0.2.0: 50 components in five new categories.
 - `useShaderCanvas` accepts sampler2D textures (images, canvases, video), uniforms as a per-frame function, and returns the shader clock as `time`.
 - Shared web3 helpers for registry items: generated token, chain, wallet and address avatars, `RollingValue` for rolling pre-formatted amounts with green/red flashes, and shared `Token`, `Chain`, `WalletOption` and `TxStatus` types.
 - A version badge in the navbar and a `/changelog` page.
+- Landing page: a "What's new in v0.2.0" section with live showcases (Token Swap Widget, Orbiting Circles), Logo Grid Hover Reveal under the hero, and an optional Cloud Shader hero background.
 
 ### Changed
 
@@ -37,5 +40,6 @@ Work toward 0.2.0: 50 components in five new categories.
 - SEO metadata, a sitemap, `robots.txt` and generated Open Graph images for the site and every component.
 - An experimental WebGL2 playground at `/lab`.
 
-[Unreleased]: https://github.com/alibarmonster/alibar-ui/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/alibarmonster/alibar-ui/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/alibarmonster/alibar-ui/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/alibarmonster/alibar-ui/releases/tag/v0.1.0

@@ -16,6 +16,7 @@ export interface Release {
 export const releases: Release[] = [
   {
     version: "0.2.0",
+    date: "2026-11-01",
     title: "Web3, marketing sections, shaders and orbits",
     summary:
       "Fifty new components in five new categories, built on shared foundations for WebGL2 shaders and bigint-safe on-chain formatting.",
@@ -27,6 +28,8 @@ export const releases: Release[] = [
           "useShaderCanvas: renders a fragment shader with WebGL2 (no three.js), caps the pixel ratio, pauses offscreen and in hidden tabs, draws one static frame under reduced motion and recovers from context loss.",
           "Shared GLSL snippets (hash, simplex noise, fBm, Bayer dither), a hex-to-vec3 color helper, and web3 formatting built on bigint math and viem.",
           "A version badge in the navbar and this changelog.",
+          "Landing page: a What's new section with live showcases (Token Swap Widget, Orbiting Circles), Logo Grid Hover Reveal under the hero and an optional Cloud Shader hero background.",
+          "useShaderCanvas also takes texture uniforms (images, canvases, video) and per-frame uniform functions, and exposes its clock.",
         ],
       },
       {
