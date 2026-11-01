@@ -74,6 +74,10 @@ export interface GalleryInput {
   update: (dt: number) => boolean;
   /** Moves the position by `delta` items with no spring (continuous drift). Ignored while a gesture or snap is in progress. */
   drift: (delta: number) => void;
+  /** Drags from another control (e.g. a ruler): moves by `delta` items like a pointer drag. Finish with `scrubEnd()`. */
+  scrub: (delta: number) => void;
+  /** Ends a scrub: momentum, snapping and the quick-flick rule apply as for a drag. */
+  scrubEnd: () => void;
   next: () => void;
   previous: () => void;
   goTo: (index: number, options?: { instant?: boolean }) => void;
@@ -294,14 +298,6 @@ export function useGalleryInput(options: UseGalleryInputOptions): GalleryInput {
         const rect = element.getBoundingClientRect();
         return { x: event.clientX - rect.left, y: event.clientY - rect.top, width: rect.width, height: rect.height };
       };
-      const rubber = (value: number) => {
-        if (latest.current.loop) return value;
-        const limit = max();
-        if (value < 0) return value * 0.35;
-        if (value > limit) return limit + (value - limit) * 0.35;
-        return value;
-      };
-
       const onDown = (event: PointerEvent) => {
         if (event.pointerType === "mouse" && event.button !== 0) return;
         if ((event.target as Element | null)?.closest?.("[data-gallery-control]")) return;
@@ -472,6 +468,37 @@ export function useGalleryInput(options: UseGalleryInputOptions): GalleryInput {
       };
     };
 
+    const rubber = (value: number) => {
+      if (latest.current.loop) return value;
+      const limit = max();
+      if (value < 0) return value * 0.35;
+      if (value > limit) return limit + (value - limit) * 0.35;
+      return value;
+    };
+
+    const scrub = (delta: number) => {
+      const s = st();
+      const now = performance.now();
+      if (!s.dragging) {
+        s.dragging = true;
+        s.target = null;
+        s.v = 0;
+        s.startP = s.raw = s.p;
+        s.downT = now;
+        s.samples = [{ t: now, p: s.p }];
+      }
+      s.raw += delta;
+      s.p = rubber(s.raw);
+      s.samples.push({ t: now, p: s.p });
+      if (s.samples.length > 12) s.samples.shift();
+      sync();
+      kick();
+    };
+
+    const scrubEnd = () => {
+      if (st().dragging) release();
+    };
+
     const drift = (delta: number) => {
       const s = st();
       if (s.dragging || s.pending || s.target !== null || s.v !== 0 || !delta) return;
@@ -487,6 +514,8 @@ export function useGalleryInput(options: UseGalleryInputOptions): GalleryInput {
       velocity: () => st().v,
       update,
       drift,
+      scrub,
+      scrubEnd,
       next: () => step(1),
       previous: () => step(-1),
       goTo,

@@ -178,10 +178,14 @@ void main() {
   vec2 inner = max(halfSize - border, vec2(1.0));
   bool paper = border > 0.0 && (abs(v_local.x) > inner.x || abs(v_local.y) > inner.y);
   vec3 color = u_placeholder;
+  float texAlpha = 1.0;
   if (v_extra.x >= 0.0 && !paper) {
     vec2 uv = border > 0.0 ? v_local / (inner * 2.0) + 0.5 : v_uv;
-    vec3 tex = texture(u_images, vec3(mix(v_uvRect.xy, v_uvRect.zw, uv), v_extra.x)).rgb;
+    // Layers are premultiplied; transparent images (overlays, cut-outs) keep their alpha.
+    vec4 texel = texture(u_images, vec3(mix(v_uvRect.xy, v_uvRect.zw, uv), v_extra.x));
+    vec3 tex = texel.a > 0.001 ? texel.rgb / texel.a : vec3(0.0);
     color = mix(u_placeholder, tex, v_extra.y);
+    texAlpha = mix(1.0, texel.a, v_extra.y);
   }
   if (paper) color = u_paper;
 
@@ -194,7 +198,7 @@ void main() {
   color *= 1.0 - v_look.y;
   if (v_look.w > 0.0) color = mix(color, u_ring, smoothstep(-2.0 - aa, -2.0, d) * v_look.w);
 
-  float alpha = coverage * v_look.x * fade;
+  float alpha = coverage * v_look.x * fade * texAlpha;
   if (kind > 1.5) {
     float below = u_floorY - v_worldY;
     alpha *= below < 0.0 ? 0.0 : v_meta.y * (1.0 - smoothstep(0.0, u_reflectFade, below));

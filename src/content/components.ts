@@ -301,7 +301,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["animated-grid-pattern", "Animated Grid Pattern", "Grid squares light up in a subtle random pattern.", "ready", V020],
   ],
   galleries: [
-    ["sleeve-rail", "Sleeve Rail", "A fanned rail of album sleeves; the focused record slides out and spins.", "planned", V030],
+    ["sleeve-rail", "Sleeve Rail", "A fanned rail of album sleeves; the focused record slides out and spins.", "ready", V030],
     ["curved-wall", "Curved Wall", "Image panels on the inside of a cylinder, with drift, steps and dial-like snapping.", "ready", V030],
     ["formation-gallery", "Formation Gallery", "Up to 160 cards flowing between rings, spiral, globe and field.", "planned", V030],
     ["darkroom-stream", "Darkroom Stream", "Photos stream out from the center and develop like prints.", "planned", V030],
