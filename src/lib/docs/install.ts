@@ -12,6 +12,10 @@ import {
 /** Shared lib files that ship inside each registry item that imports them. */
 const LIB_FILES: Record<string, string> = {
   "@/lib/motion": "src/lib/motion.ts",
+  "@/lib/color": "src/lib/color.ts",
+  "@/lib/webgl/use-shader-canvas": "src/lib/webgl/use-shader-canvas.ts",
+  "@/lib/webgl/noise.glsl": "src/lib/webgl/noise.glsl.ts",
+  "@/lib/web3/format": "src/lib/web3/format.ts",
 };
 
 const UTILS_PACKAGES = ["clsx", "tailwind-merge"];
@@ -58,7 +62,7 @@ export async function getInstallInfo(slug: string): Promise<InstallInfo> {
         registryDependencies.add(registryUrl(sibling[1]));
         continue;
       }
-      throw new Error(`Unsupported import "${spec}" in ${origin}. Registry components may only import npm packages, @/lib/utils, @/lib/motion or other @/components/ui components.`);
+      throw new Error(`Unsupported import "${spec}" in ${origin}. Registry components may only import npm packages, @/lib/utils, the shared lib files (${Object.keys(LIB_FILES).join(", ")}) or other @/components/ui components. Demo-only modules such as @/lib/web3/mock must stay in demos.`);
     }
   }
 
