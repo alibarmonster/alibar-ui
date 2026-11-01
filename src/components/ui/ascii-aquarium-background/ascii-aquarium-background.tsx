@@ -502,15 +502,23 @@ export function AsciiAquariumBackground({
     // --- simulation ---------------------------------------------------------------------------
     const focusGeometry = (hero: Creature) => {
       const target = latest.current.focusRef?.current;
-      if (!target) return { x: cols / 2, y: rows / 2, rx: Math.max(8, cols * 0.3), ry: Math.max(6, rows * 0.28) };
-      const box = host.getBoundingClientRect();
-      const r = target.getBoundingClientRect();
-      const x = (r.left + r.width / 2 - box.left) / cellPx;
-      const y = (r.top + r.height / 2 - box.top) / cellPx;
-      const ry = Math.max(r.height / 2 / cellPx + hero.size * 0.36, 7) * (1 - energy * 0.08);
-      // Keep the orbit inside the container so the hero stays mostly in view around wide inputs.
-      const rx = Math.min(Math.max(r.width / 2 / cellPx + hero.size * 0.3, ry * 1.4), Math.max(ry, cols / 2 - hero.size * 0.2)) * (1 - energy * 0.05);
-      return { x, y, rx, ry };
+      let x = cols / 2;
+      let y = rows / 2;
+      let wantX = Math.max(8, cols * 0.3);
+      let wantY = Math.max(6, rows * 0.28);
+      if (target) {
+        const box = host.getBoundingClientRect();
+        const r = target.getBoundingClientRect();
+        x = (r.left + r.width / 2 - box.left) / cellPx;
+        y = (r.top + r.height / 2 - box.top) / cellPx;
+        wantY = Math.max(r.height / 2 / cellPx + hero.size * 0.36, 7);
+        wantX = Math.max(r.width / 2 / cellPx + hero.size * 0.3, wantY * 1.4);
+      }
+      // Fit the orbit in the room around the focus point so the wingtips stay in view. Around an input
+      // nearly as wide as the container, the hero passes behind the input's ends instead of off the sides.
+      const ry = clamp(wantY, 4, Math.max(4, Math.min(y, rows - y) - hero.size * 0.3));
+      const rx = clamp(wantX, ry, Math.max(ry, Math.min(x, cols - x) - hero.size * 0.5));
+      return { x, y, rx: rx * (1 - energy * 0.05), ry: ry * (1 - energy * 0.08) };
     };
 
     const step = (dt: number) => {
