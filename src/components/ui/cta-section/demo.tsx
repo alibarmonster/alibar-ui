@@ -8,7 +8,7 @@ export function Default() {
       className="max-w-3xl"
       eyebrow="Ready when you are"
       title="Ship interfaces that feel alive"
-      description="150 animated, accessible components. Copy one in and see the difference in minutes."
+      description="151 animated, accessible components. Copy one in and see the difference in minutes."
       primaryAction={{ label: "Browse components", href: "#components" }}
       secondaryAction={{ label: "Read the docs", href: "#docs" }}
     />

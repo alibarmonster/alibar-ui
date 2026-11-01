@@ -67,7 +67,7 @@ export const categories: Category[] = [
     description: "Swaps, bridges, charts, staking and gas.",
   },
   { id: "marketing", name: "Marketing Sections & Logo Clouds", description: "Logo clouds, pricing, stats and CTAs." },
-  { id: "shaders", name: "Shaders & Backgrounds", description: "GPU-rendered clouds, gradients and fields." },
+  { id: "shaders", name: "Shaders & Backgrounds", description: "GPU shaders and canvas scenes: clouds, gradients, fields and an ASCII aquarium." },
   { id: "orbits", name: "Orbits, Beams & Illustrations", description: "Orbits, beams, globes and graphs." },
 ];
 
@@ -245,6 +245,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["gpu-aurora", "GPU Aurora", "A light pastel aurora rendered on the GPU.", "ready", V020],
     ["glow-orb", "Glow Orb", "A noisy, pulsing orb for AI assistants.", "ready", V020],
     ["pixel-reveal-image", "Pixel Reveal Image", "An image resolves from pixelated to sharp.", "ready", V020],
+    ["ascii-aquarium-background", "ASCII Aquarium Background", "Glyph sea creatures swim on grid paper and circle your chat input.", "ready", V020],
   ],
   orbits: [
     ["orbiting-circles", "Orbiting Circles", "Icons orbit a center element on concentric rings.", "ready", V020],

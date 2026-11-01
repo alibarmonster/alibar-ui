@@ -3,7 +3,7 @@
 import { PricingSection, type PricingPlan } from "@/components/ui/pricing-section/pricing-section";
 
 const PLANS: PricingPlan[] = [
-  { name: "Hobby", description: "For side projects and experiments.", price: { monthly: 0, yearly: 0 }, features: ["3 projects", "Community support", "All 150 components"] },
+  { name: "Hobby", description: "For side projects and experiments.", price: { monthly: 0, yearly: 0 }, features: ["3 projects", "Community support", "All 151 components"] },
   {
     name: "Pro",
     description: "For teams shipping every week.",

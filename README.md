@@ -3,9 +3,9 @@
 [![CI](https://github.com/alibarmonster/alibar-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/alibarmonster/alibar-ui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-150 animated, accessible React components for Next.js and Tailwind CSS. Copy the source or install a component with the shadcn CLI. Once a component is in your project, the code is yours to edit.
+151 animated, accessible React components for Next.js and Tailwind CSS. Copy the source or install a component with the shadcn CLI. Once a component is in your project, the code is yours to edit.
 
-- **150 components** in 15 categories, each with live demos, variants, a props table and accessibility notes.
+- **151 components** in 15 categories, each with live demos, variants, a props table and accessibility notes.
 - **Modern stack**: React 19, Next.js 16 (App Router), TypeScript (strict), Tailwind CSS v4, [Motion](https://motion.dev), [Radix UI](https://www.radix-ui.com) and [lucide-react](https://lucide.dev).
 - **Accessible by default**: full keyboard support, visible focus rings, ARIA roles, 40px touch targets and `prefers-reduced-motion` fallbacks.
 - **Smooth motion**: animates only `transform`, `opacity`, `filter` and `clip-path`, using shared duration, easing and spring tokens.
@@ -47,7 +47,7 @@ Each component page lists the packages to install, the helper files (`lib/utils.
 | Web3: Wallet & Identity | Connect Wallet Button, Address Pill, Network Switcher, Transaction Toast |
 | Web3: DeFi & Trading | Token Swap Widget, Cross-chain Bridge, Candlestick Chart, Staking Card |
 | Marketing Sections & Logo Clouds | Logo Grid Hover Reveal, Testimonial Wall, Pricing Section, CTA with Border Beam |
-| Shaders & Backgrounds | Cloud Shader, Mesh Gradient, Liquid Ripple, Glow Orb |
+| Shaders & Backgrounds | Cloud Shader, Mesh Gradient, Glow Orb, ASCII Aquarium Background |
 | Orbits, Beams & Illustrations | Orbiting Circles, Animated Beam, Dotted Globe, Icon Cloud |
 
 ## Local development

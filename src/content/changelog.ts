@@ -19,7 +19,7 @@ export const releases: Release[] = [
     date: "2026-11-01",
     title: "Web3, marketing sections, shaders and orbits",
     summary:
-      "Fifty new components in five new categories, built on shared foundations for WebGL2 shaders and bigint-safe on-chain formatting.",
+      "Fifty-one new components in five new categories, built on shared foundations for WebGL2 shaders and bigint-safe on-chain formatting.",
     changes: [
       {
         type: "Added",
