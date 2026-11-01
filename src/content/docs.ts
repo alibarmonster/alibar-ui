@@ -157,4 +157,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "sleeve-rail": () => import("@/components/ui/sleeve-rail/docs"),
   "ring-reel": () => import("@/components/ui/ring-reel/docs"),
   "darkroom-stream": () => import("@/components/ui/darkroom-stream/docs"),
+  "formation-gallery": () => import("@/components/ui/formation-gallery/docs"),
 };
