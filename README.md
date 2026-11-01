@@ -1,6 +1,6 @@
 # alibar/ui
 
-[![CI](https://github.com/alibarmonster/alibar-components/actions/workflows/ci.yml/badge.svg)](https://github.com/alibarmonster/alibar-components/actions/workflows/ci.yml)
+[![CI](https://github.com/alibarmonster/alibar-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/alibarmonster/alibar-ui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 100 animated, accessible React components for Next.js and Tailwind CSS. Copy the source or install a component with the shadcn CLI. Once a component is in your project, the code is yours to edit.
@@ -48,8 +48,8 @@ Each component page lists the packages to install, the helper files (`lib/utils.
 Requirements: Node.js 20.9 or newer and [Bun](https://bun.sh) 1.2 or newer. The lockfile is `bun.lock`.
 
 ```bash
-git clone https://github.com/alibarmonster/alibar-components.git
-cd alibar-components
+git clone https://github.com/alibarmonster/alibar-ui.git
+cd alibar-ui
 bun install
 bun dev
 ```

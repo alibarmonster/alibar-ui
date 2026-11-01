@@ -14,7 +14,7 @@ export const siteConfig = {
   description:
     "Animated, accessible React components for Next.js and Tailwind CSS. Copy, paste, or install with the shadcn CLI.",
   url: resolveSiteUrl(),
-  github: "https://github.com/alibarmonster/alibar-components",
+  github: "https://github.com/alibarmonster/alibar-ui",
 };
 
 /** Absolute URL of a component's shadcn registry item. */

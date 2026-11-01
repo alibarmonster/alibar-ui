@@ -5,8 +5,8 @@ Thanks for helping out! This guide covers setup, naming conventions and the bar 
 ## Setup
 
 ```bash
-git clone https://github.com/alibarmonster/alibar-components.git
-cd alibar-components
+git clone https://github.com/alibarmonster/alibar-ui.git
+cd alibar-ui
 bun install
 bun dev
 ```

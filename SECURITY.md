@@ -8,7 +8,7 @@ Only the latest release on `main` receives security fixes.
 
 Please **do not** open a public issue for security problems.
 
-Report them privately through GitHub instead: go to the repository's **Security** tab and choose **Report a vulnerability**, or use [this link](https://github.com/alibarmonster/alibar-components/security/advisories/new). Include:
+Report them privately through GitHub instead: go to the repository's **Security** tab and choose **Report a vulnerability**, or use [this link](https://github.com/alibarmonster/alibar-ui/security/advisories/new). Include:
 
 - the affected component, page or file
 - steps to reproduce or a proof of concept

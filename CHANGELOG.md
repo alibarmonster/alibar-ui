@@ -15,5 +15,5 @@ All notable changes to this project are documented here. The format follows [Kee
 - SEO metadata, a sitemap, `robots.txt` and generated Open Graph images for the site and every component.
 - An experimental WebGL2 playground at `/lab`.
 
-[Unreleased]: https://github.com/alibarmonster/alibar-components/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/alibarmonster/alibar-components/releases/tag/v0.1.0
+[Unreleased]: https://github.com/alibarmonster/alibar-ui/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/alibarmonster/alibar-ui/releases/tag/v0.1.0
