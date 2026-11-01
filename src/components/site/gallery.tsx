@@ -40,7 +40,8 @@ function WhenVisible({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div ref={ref} className="relative flex h-full w-full items-center justify-center p-6">
+    // data-preview-card lets a tall demo trim itself to fit the card (see the ASCII Aquarium chat hero).
+    <div ref={ref} data-preview-card="" className="relative flex h-full w-full items-center justify-center p-6">
       {visible ? children : null}
     </div>
   );

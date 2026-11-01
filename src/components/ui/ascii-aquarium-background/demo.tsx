@@ -54,22 +54,22 @@ export function ChatHero() {
     <AsciiAquariumBackground
       focusRef={form}
       mode={mode}
-      className="flex min-h-[30rem] w-full flex-col items-center justify-center rounded-xl border border-border px-4 py-12"
+      className="flex min-h-[30rem] w-full flex-col items-center justify-center rounded-xl border border-border px-4 py-12 [[data-preview-card]_&]:h-48 [[data-preview-card]_&]:min-h-0 [[data-preview-card]_&]:py-5"
     >
       <div className="flex w-full max-w-lg flex-col items-center text-center">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/85 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/85 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm [[data-preview-card]_&]:hidden">
           <Sparkles className="size-3.5 text-primary" aria-hidden="true" />
           Reef assistant
         </span>
-        <h2 className="mt-4 text-3xl font-semibold tracking-tight text-balance text-foreground sm:text-4xl">What should we explore?</h2>
-        <p className="mt-2 max-w-sm rounded-md bg-background/70 px-1.5 text-[15px] text-balance text-muted-foreground backdrop-blur-sm">
+        <h2 className="mt-4 text-3xl font-semibold tracking-tight text-balance text-foreground sm:text-4xl [[data-preview-card]_&]:mt-0 [[data-preview-card]_&]:text-xl">What should we explore?</h2>
+        <p className="mt-2 max-w-sm rounded-md bg-background/70 px-1.5 text-[15px] text-balance text-muted-foreground backdrop-blur-sm [[data-preview-card]_&]:hidden">
           Start typing and the ray swims over to listen.
         </p>
 
         <form
           ref={form}
           onSubmit={submit}
-          className="mt-6 flex w-full items-center gap-2 rounded-2xl border border-border bg-background p-1.5 pl-4 shadow-lg shadow-black/5 focus-within:ring-2 focus-within:ring-ring"
+          className="mt-6 flex w-full items-center gap-2 [[data-preview-card]_&]:mt-4 rounded-2xl border border-border bg-background p-1.5 pl-4 shadow-lg shadow-black/5 focus-within:ring-2 focus-within:ring-ring"
         >
           <label htmlFor={`${id}-ask`} className="sr-only">
             Ask anything
@@ -94,7 +94,7 @@ export function ChatHero() {
           </button>
         </form>
 
-        <div className="mt-4 flex min-h-28 w-full flex-col items-center">
+        <div className="mt-4 flex min-h-28 w-full flex-col items-center [[data-preview-card]_&]:hidden">
           <div aria-live="polite" className="w-full">
             {thinking ? (
               <p className="inline-flex items-center gap-2 rounded-full bg-background/85 px-3 py-1 text-sm text-muted-foreground backdrop-blur-sm">
