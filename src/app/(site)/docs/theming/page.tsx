@@ -38,6 +38,7 @@ const roles: Record<string, string> = {
   "chart-3": "Chart series 3",
   "chart-4": "Chart series 4",
   "chart-5": "Chart series 5",
+  "chart-6": "Chart series 6 (usage categories)",
   border: "Hairline borders",
   input: "Input borders",
   ring: "Focus ring",
