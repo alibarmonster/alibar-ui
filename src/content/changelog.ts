@@ -18,7 +18,7 @@ export const releases: Release[] = [
     version: "0.3.0",
     title: "3D galleries, physical surfaces, prediction markets, billing and HTML in Canvas",
     summary:
-      "Thirty-seven components in five new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, and an adapter for the experimental HTML-in-Canvas API.",
+      "Thirty-eight components, most in five new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, and an adapter for the experimental HTML-in-Canvas API.",
     changes: [
       {
         type: "Added",
@@ -29,6 +29,7 @@ export const releases: Release[] = [
           "Prediction market foundations (integer basis-point and cent math, formatting, a hydration-safe clock) and two demo pages built from the ten market components: a full market page at /demos/prediction-market and a filterable feed at /demos/prediction-feed. All market data is simulated.",
           "Usage and billing components built on integer minor-unit money (USD and IDR) and integer credits: Spend Meter, Credit Trend, Credit Breakdown, Printed Receipt and Wallet Agent Chat. Totals roll instead of swapping, every category color has a label, and the wallet agent is scripted and never signs anything without an explicit approve click.",
           "HTML in Canvas: ten components that draw live DOM through the experimental WICG API (Ripple Form, Dissolve Transition, CRT Terminal, Disintegrate Delete, Magnifier Lens, Cloth Banner, Peel Card, Liquid Glass Overlay, Floating Screen and Living Book), all through one adapter that keeps clicks, focus and selection on the drawn pixels, each with a CSS fallback for every other browser, and a demo page at /demos/html-in-canvas.",
+          "ASCII Koi Pond in Shaders & Backgrounds: glyph-cell koi that swim, leave wakes, come to look at the cursor and race for food you drop.",
         ],
       },
       {

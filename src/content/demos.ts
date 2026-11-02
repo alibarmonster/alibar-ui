@@ -191,4 +191,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "liquid-glass-overlay": () => import("@/components/ui/liquid-glass-overlay/demo"),
   "floating-screen": () => import("@/components/ui/floating-screen/demo"),
   "living-book": () => import("@/components/ui/living-book/demo"),
+  "ascii-koi-pond": () => import("@/components/ui/ascii-koi-pond/demo"),
 };

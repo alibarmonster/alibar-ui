@@ -190,4 +190,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "liquid-glass-overlay": () => import("@/components/ui/liquid-glass-overlay/docs"),
   "floating-screen": () => import("@/components/ui/floating-screen/docs"),
   "living-book": () => import("@/components/ui/living-book/docs"),
+  "ascii-koi-pond": () => import("@/components/ui/ascii-koi-pond/docs"),
 };

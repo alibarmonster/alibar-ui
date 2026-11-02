@@ -15,7 +15,7 @@ const demoMap = read("src/content/demos.ts");
 const docsMap = read("src/content/docs.ts");
 const failures: string[] = [];
 
-assert.equal(components.length, 188, "The catalog should list 188 components");
+assert.equal(components.length, 189, "The catalog should list 189 components");
 assert.equal(new Set(components.map((c) => c.slug)).size, components.length, "Slugs must be unique");
 for (const category of categories) {
   assert.ok(components.some((c) => c.category === category.id), `${category.name} should have at least one component`);

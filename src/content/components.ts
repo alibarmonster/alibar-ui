@@ -287,6 +287,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["glow-orb", "Glow Orb", "A noisy, pulsing orb for AI assistants.", "ready", V020],
     ["pixel-reveal-image", "Pixel Reveal Image", "An image resolves from pixelated to sharp.", "ready", V020],
     ["ascii-aquarium-background", "ASCII Aquarium Background", "Glyph sea creatures swim on grid paper and circle your chat input.", "ready", V020],
+    ["ascii-koi-pond", "ASCII Koi Pond", "Glyph-cell koi swim, leave wakes and race for food you drop.", "ready", V030],
   ],
   orbits: [
     ["orbiting-circles", "Orbiting Circles", "Icons orbit a center element on concentric rings.", "ready", V020],
