@@ -37,6 +37,13 @@ const LIB_FILES: Record<string, string> = {
   "@/lib/usage/format": "src/lib/usage/format.ts",
   "@/lib/usage/colors": "src/lib/usage/colors.ts",
   "@/lib/usage/wallet-agent": "src/lib/usage/wallet-agent.ts",
+  "@/lib/html-canvas/support": "src/lib/html-canvas/support.ts",
+  "@/lib/html-canvas/setup": "src/lib/html-canvas/setup.ts",
+  "@/lib/html-canvas/draw-2d": "src/lib/html-canvas/draw-2d.ts",
+  "@/lib/html-canvas/texture-webgl": "src/lib/html-canvas/texture-webgl.ts",
+  "@/lib/html-canvas/sync-geometry": "src/lib/html-canvas/sync-geometry.ts",
+  "@/lib/html-canvas/gl": "src/lib/html-canvas/gl.ts",
+  "@/lib/html-canvas/use-html-canvas": "src/lib/html-canvas/use-html-canvas.ts",
 };
 
 const UTILS_PACKAGES = ["clsx", "tailwind-merge"];

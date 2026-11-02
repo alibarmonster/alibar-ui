@@ -336,7 +336,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["wallet-agent-chat", "Wallet Agent Chat", "An AI wallet assistant that answers with transaction cards.", "ready", V030],
   ],
   "html-canvas": [
-    ["ripple-form", "Ripple Form", "A live sign-up form on a rippling water surface.", "planned", V030],
+    ["ripple-form", "Ripple Form", "A live sign-up form on a rippling water surface.", "ready", V030],
     ["peel-card", "Peel Card", "A DOM card that curls back like paper to reveal its back.", "planned", V030],
     ["living-book", "Living Book", "A 3D book whose pages are live, selectable DOM.", "planned", V030],
     ["dissolve-transition", "Dissolve Transition", "Outgoing content dissolves into pixels as the next resolves.", "planned", V030],

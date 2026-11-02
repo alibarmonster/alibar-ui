@@ -180,4 +180,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "credit-breakdown": () => import("@/components/ui/credit-breakdown/docs"),
   "printed-receipt": () => import("@/components/ui/printed-receipt/docs"),
   "wallet-agent-chat": () => import("@/components/ui/wallet-agent-chat/docs"),
+  "ripple-form": () => import("@/components/ui/ripple-form/docs"),
 };

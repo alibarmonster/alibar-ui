@@ -181,4 +181,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "credit-breakdown": () => import("@/components/ui/credit-breakdown/demo"),
   "printed-receipt": () => import("@/components/ui/printed-receipt/demo"),
   "wallet-agent-chat": () => import("@/components/ui/wallet-agent-chat/demo"),
+  "ripple-form": () => import("@/components/ui/ripple-form/demo"),
 };

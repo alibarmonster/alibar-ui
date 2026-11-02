@@ -1,5 +1,5 @@
 import { mockAddress } from "@/lib/web3/mock";
-import type { DailyUsage, UsageCategory, UsageResource, UsageTeammate, UsageWorkflow } from "./types";
+import type { DailyUsage, UsageCategory, UsageResource, UsageTeammate, UsageWorkflow } from "@/lib/usage/types";
 
 /**
  * Demo-only usage and billing data. Everything here is fictional and deterministic (fixed dates, a

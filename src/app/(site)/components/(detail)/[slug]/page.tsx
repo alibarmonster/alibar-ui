@@ -6,6 +6,7 @@ import { CodeBlock, InstallTabs } from "@/components/site/code-block";
 import { ComponentPreview } from "@/components/site/component-preview";
 import { Callout, PageHeader, Pager, PropsTable, SectionHeading, Step, Steps } from "@/components/site/docs-blocks";
 import { DocsPage } from "@/components/site/docs-layout";
+import { HtmlCanvasNotice } from "@/components/site/html-canvas-status";
 import { NewBadge } from "@/components/site/sidebar-nav";
 import { TableOfContents, type TocItem } from "@/components/site/toc";
 import { registryUrl, siteConfig } from "@/config/site";
@@ -110,6 +111,8 @@ export default async function ComponentPage({ params }: Params) {
           </span>
         }
       />
+
+      {entry.category === "html-canvas" ? <HtmlCanvasNotice className="mb-6" /> : null}
 
       <ComponentPreview slug={slug} variants={variants} />
 
