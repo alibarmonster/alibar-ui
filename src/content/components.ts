@@ -329,11 +329,11 @@ const rows: Record<CategoryId, Row[]> = {
     ["market-activity", "Market Activity & Discussion", "A live trade stream and a threaded discussion.", "ready", V030],
   ],
   billing: [
-    ["spend-meter", "Spend Meter", "Monthly usage by resource against an adjustable limit.", "planned", V030],
-    ["credit-trend", "Credit Trend", "Daily credit spend with stacked bars and a projection.", "planned", V030],
-    ["credit-breakdown", "Credit Breakdown", "Credits by category, workflow and teammate.", "planned", V030],
-    ["printed-receipt", "Printed Receipt", "An order receipt that feeds out of a thermal printer.", "planned", V030],
-    ["wallet-agent-chat", "Wallet Agent Chat", "An AI wallet assistant that answers with transaction cards.", "planned", V030],
+    ["spend-meter", "Spend Meter", "Monthly usage by resource against an adjustable limit.", "ready", V030],
+    ["credit-trend", "Credit Trend", "Daily credit spend with stacked bars and a projection.", "ready", V030],
+    ["credit-breakdown", "Credit Breakdown", "Credits by category, workflow and teammate.", "ready", V030],
+    ["printed-receipt", "Printed Receipt", "An order receipt that feeds out of a thermal printer.", "ready", V030],
+    ["wallet-agent-chat", "Wallet Agent Chat", "An AI wallet assistant that answers with transaction cards.", "ready", V030],
   ],
   "html-canvas": [
     ["ripple-form", "Ripple Form", "A live sign-up form on a rippling water surface.", "planned", V030],

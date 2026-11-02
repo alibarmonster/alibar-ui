@@ -33,6 +33,10 @@ const LIB_FILES: Record<string, string> = {
   "@/lib/markets/format": "src/lib/markets/format.ts",
   "@/lib/markets/use-now": "src/lib/markets/use-now.ts",
   "@/lib/markets/avatar": "src/lib/markets/avatar.tsx",
+  "@/lib/usage/types": "src/lib/usage/types.ts",
+  "@/lib/usage/format": "src/lib/usage/format.ts",
+  "@/lib/usage/colors": "src/lib/usage/colors.ts",
+  "@/lib/usage/wallet-agent": "src/lib/usage/wallet-agent.ts",
 };
 
 const UTILS_PACKAGES = ["clsx", "tailwind-merge"];

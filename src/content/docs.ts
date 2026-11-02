@@ -175,4 +175,9 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "market-leaderboard": () => import("@/components/ui/market-leaderboard/docs"),
   "resolution-card": () => import("@/components/ui/resolution-card/docs"),
   "market-activity": () => import("@/components/ui/market-activity/docs"),
+  "spend-meter": () => import("@/components/ui/spend-meter/docs"),
+  "credit-trend": () => import("@/components/ui/credit-trend/docs"),
+  "credit-breakdown": () => import("@/components/ui/credit-breakdown/docs"),
+  "printed-receipt": () => import("@/components/ui/printed-receipt/docs"),
+  "wallet-agent-chat": () => import("@/components/ui/wallet-agent-chat/docs"),
 };

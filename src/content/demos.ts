@@ -176,4 +176,9 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "market-leaderboard": () => import("@/components/ui/market-leaderboard/demo"),
   "resolution-card": () => import("@/components/ui/resolution-card/demo"),
   "market-activity": () => import("@/components/ui/market-activity/demo"),
+  "spend-meter": () => import("@/components/ui/spend-meter/demo"),
+  "credit-trend": () => import("@/components/ui/credit-trend/demo"),
+  "credit-breakdown": () => import("@/components/ui/credit-breakdown/demo"),
+  "printed-receipt": () => import("@/components/ui/printed-receipt/demo"),
+  "wallet-agent-chat": () => import("@/components/ui/wallet-agent-chat/demo"),
 };
