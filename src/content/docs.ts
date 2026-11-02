@@ -191,4 +191,9 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "floating-screen": () => import("@/components/ui/floating-screen/docs"),
   "living-book": () => import("@/components/ui/living-book/docs"),
   "ascii-koi-pond": () => import("@/components/ui/ascii-koi-pond/docs"),
+  "shelf-gallery": () => import("@/components/ui/shelf-gallery/docs"),
+  "foil-card-drift": () => import("@/components/ui/foil-card-drift/docs"),
+  "icon-headline": () => import("@/components/ui/icon-headline/docs"),
+  "pixel-mosaic": () => import("@/components/ui/pixel-mosaic/docs"),
+  "tumbling-tags": () => import("@/components/ui/tumbling-tags/docs"),
 };

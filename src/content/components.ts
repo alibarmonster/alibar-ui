@@ -274,6 +274,8 @@ const rows: Record<CategoryId, Row[]> = {
     ["stats-section", "Stats Section", "Number tickers that start in view, with hairline dividers.", "ready", V020],
     ["faq-section", "FAQ Section", "A searchable accordion that filters with layout animation.", "ready", V020],
     ["cta-section", "CTA with Border Beam", "A light beam travels around the call-to-action card.", "ready", V020],
+    ["icon-headline", "Icon Headline", "A headline with app-icon tiles inline that pop in and flip.", "ready", V030],
+    ["tumbling-tags", "Tumbling Tags", "Labelled blocks drop in, tumble and settle into a tilted pile.", "ready", V030],
   ],
   shaders: [
     ["cloud-shader", "Cloud Shader", "Soft procedural clouds drifting across a sky gradient.", "ready", V020],
@@ -288,6 +290,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["pixel-reveal-image", "Pixel Reveal Image", "An image resolves from pixelated to sharp.", "ready", V020],
     ["ascii-aquarium-background", "ASCII Aquarium Background", "Glyph sea creatures swim on grid paper and circle your chat input.", "ready", V020],
     ["ascii-koi-pond", "ASCII Koi Pond", "Glyph-cell koi swim, leave wakes and race for food you drop.", "ready", V030],
+    ["pixel-mosaic", "Pixel Mosaic", "A living band of colored pixels with a dissolving edge.", "ready", V030],
   ],
   orbits: [
     ["orbiting-circles", "Orbiting Circles", "Icons orbit a center element on concentric rings.", "ready", V020],
@@ -312,10 +315,12 @@ const rows: Record<CategoryId, Row[]> = {
     ["page-flip-book", "Page Flip Book", "Pages turn with a curl and a shadow along the spine.", "ready", V030],
     ["infinite-canvas-gallery", "Infinite Canvas Gallery", "An endless pannable grid with momentum and column parallax.", "ready", V030],
     ["scattered-prints", "Scattered Prints", "Polaroids on a table you can pick up and throw.", "ready", V030],
+    ["shelf-gallery", "Shelf Gallery", "Covers settle on floating shelves, tilt toward you and open forward.", "ready", V030],
   ],
   surfaces: [
     ["card-wallet", "Card Wallet", "Metal, black, glass and color cards you can fan, cycle and lift out.", "ready", V030],
     ["lens-tab-bar", "Lens Tab Bar", "A lens slides between tabs and redraws what passes under it inverted.", "ready", V030],
+    ["foil-card-drift", "Foil Card Drift", "Cards drift past in 3D with a holographic foil that follows their turn.", "ready", V030],
   ],
   markets: [
     ["market-card", "Market Card", "A prediction market with odds, a gauge and Yes/No buttons.", "ready", V030],

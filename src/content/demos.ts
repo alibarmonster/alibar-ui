@@ -192,4 +192,9 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "floating-screen": () => import("@/components/ui/floating-screen/demo"),
   "living-book": () => import("@/components/ui/living-book/demo"),
   "ascii-koi-pond": () => import("@/components/ui/ascii-koi-pond/demo"),
+  "shelf-gallery": () => import("@/components/ui/shelf-gallery/demo"),
+  "foil-card-drift": () => import("@/components/ui/foil-card-drift/demo"),
+  "icon-headline": () => import("@/components/ui/icon-headline/demo"),
+  "pixel-mosaic": () => import("@/components/ui/pixel-mosaic/demo"),
+  "tumbling-tags": () => import("@/components/ui/tumbling-tags/demo"),
 };
