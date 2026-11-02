@@ -21,6 +21,7 @@ const MobileNav = dynamic(() => import("./mobile-nav").then((m) => m.MobileNav),
 const links = [
   { href: "/components", label: "Components" },
   { href: "/docs", label: "Docs" },
+  { href: "/templates", label: "Templates" },
 ];
 
 function isEditable(target: EventTarget | null) {

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { readyComponents } from "@/content/components";
 
-const PAGES = ["", "/components", "/docs", "/docs/installation", "/docs/theming", "/docs/motion", "/changelog", "/demos/prediction-market", "/demos/prediction-feed", "/demos/html-in-canvas"];
+const PAGES = ["", "/components", "/docs", "/docs/installation", "/docs/theming", "/docs/motion", "/changelog", "/demos/prediction-market", "/demos/prediction-feed", "/demos/html-in-canvas", "/templates", "/templates/pennant"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

@@ -77,6 +77,13 @@ export function MobileNav({
                   >
                     Browse all components
                   </Link>
+                  <Link
+                    href="/templates"
+                    onClick={close}
+                    className="focus-ring -mt-5 mb-6 flex h-10 items-center rounded-md px-2.5 text-[15px] font-medium text-foreground hover:bg-surface-2"
+                  >
+                    Templates
+                  </Link>
                   <LayoutGroup id="mobile-nav">
                     <SidebarNav onNavigate={close} />
                   </LayoutGroup>
