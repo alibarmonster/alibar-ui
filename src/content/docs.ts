@@ -181,4 +181,13 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "printed-receipt": () => import("@/components/ui/printed-receipt/docs"),
   "wallet-agent-chat": () => import("@/components/ui/wallet-agent-chat/docs"),
   "ripple-form": () => import("@/components/ui/ripple-form/docs"),
+  "dissolve-transition": () => import("@/components/ui/dissolve-transition/docs"),
+  "crt-terminal": () => import("@/components/ui/crt-terminal/docs"),
+  "disintegrate-delete": () => import("@/components/ui/disintegrate-delete/docs"),
+  "magnifier-lens": () => import("@/components/ui/magnifier-lens/docs"),
+  "cloth-banner": () => import("@/components/ui/cloth-banner/docs"),
+  "peel-card": () => import("@/components/ui/peel-card/docs"),
+  "liquid-glass-overlay": () => import("@/components/ui/liquid-glass-overlay/docs"),
+  "floating-screen": () => import("@/components/ui/floating-screen/docs"),
+  "living-book": () => import("@/components/ui/living-book/docs"),
 };

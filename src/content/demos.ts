@@ -182,4 +182,13 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "printed-receipt": () => import("@/components/ui/printed-receipt/demo"),
   "wallet-agent-chat": () => import("@/components/ui/wallet-agent-chat/demo"),
   "ripple-form": () => import("@/components/ui/ripple-form/demo"),
+  "dissolve-transition": () => import("@/components/ui/dissolve-transition/demo"),
+  "crt-terminal": () => import("@/components/ui/crt-terminal/demo"),
+  "disintegrate-delete": () => import("@/components/ui/disintegrate-delete/demo"),
+  "magnifier-lens": () => import("@/components/ui/magnifier-lens/demo"),
+  "cloth-banner": () => import("@/components/ui/cloth-banner/demo"),
+  "peel-card": () => import("@/components/ui/peel-card/demo"),
+  "liquid-glass-overlay": () => import("@/components/ui/liquid-glass-overlay/demo"),
+  "floating-screen": () => import("@/components/ui/floating-screen/demo"),
+  "living-book": () => import("@/components/ui/living-book/demo"),
 };

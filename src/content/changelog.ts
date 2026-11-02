@@ -28,6 +28,7 @@ export const releases: Release[] = [
           "24 original generated placeholder images for gallery demos.",
           "Prediction market foundations (integer basis-point and cent math, formatting, a hydration-safe clock) and two demo pages built from the ten market components: a full market page at /demos/prediction-market and a filterable feed at /demos/prediction-feed. All market data is simulated.",
           "Usage and billing components built on integer minor-unit money (USD and IDR) and integer credits: Spend Meter, Credit Trend, Credit Breakdown, Printed Receipt and Wallet Agent Chat. Totals roll instead of swapping, every category color has a label, and the wallet agent is scripted and never signs anything without an explicit approve click.",
+          "HTML in Canvas: ten components that draw live DOM through the experimental WICG API (Ripple Form, Dissolve Transition, CRT Terminal, Disintegrate Delete, Magnifier Lens, Cloth Banner, Peel Card, Liquid Glass Overlay, Floating Screen and Living Book), all through one adapter that keeps clicks, focus and selection on the drawn pixels, each with a CSS fallback for every other browser, and a demo page at /demos/html-in-canvas.",
         ],
       },
       {

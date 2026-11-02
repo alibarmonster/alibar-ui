@@ -127,7 +127,8 @@ export function useHtmlCanvas<C extends ContextType>({
     runSetup();
 
     const start = performance.now();
-    let last = start;
+    // Frame time is measured between loop frames only, so the first frame after idling has a normal step.
+    let lastFrame = 0;
     let size = { width: 0, height: 0, dpr: 1 };
     let visible = true;
     let frame = 0;
@@ -136,18 +137,22 @@ export function useHtmlCanvas<C extends ContextType>({
     const draw = (reason: HtmlCanvasFrame<C>["reason"]) => {
       if (!ready || !size.width || !size.height) return;
       const now = performance.now();
+      const delta = reason === "frame" && lastFrame ? Math.min(1 / 20, (now - lastFrame) / 1000) : reason === "frame" ? 1 / 60 : 0;
+      if (reason === "frame") lastFrame = now;
       try {
-        renderRef.current({ ctx, canvas, width: size.width, height: size.height, dpr: size.dpr, time: (now - start) / 1000, delta: Math.min(0.1, (now - last) / 1000), reason, changed });
+        renderRef.current({ ctx, canvas, width: size.width, height: size.height, dpr: size.dpr, time: (now - start) / 1000, delta, reason, changed });
       } catch (error) {
         console.error(error);
       }
-      last = now;
       changed = [];
     };
 
     const loop = () => {
       frame = 0;
-      if (!visible || document.hidden || !animatingRef.current) return;
+      if (!visible || document.hidden || !animatingRef.current) {
+        lastFrame = 0;
+        return;
+      }
       draw("frame");
       frame = requestAnimationFrame(loop);
     };
