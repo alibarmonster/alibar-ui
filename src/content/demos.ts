@@ -197,4 +197,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "icon-headline": () => import("@/components/ui/icon-headline/demo"),
   "pixel-mosaic": () => import("@/components/ui/pixel-mosaic/demo"),
   "tumbling-tags": () => import("@/components/ui/tumbling-tags/demo"),
+  "pixel-landscape": () => import("@/components/ui/pixel-landscape/demo"),
 };

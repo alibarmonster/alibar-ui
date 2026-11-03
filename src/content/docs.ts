@@ -196,4 +196,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "icon-headline": () => import("@/components/ui/icon-headline/docs"),
   "pixel-mosaic": () => import("@/components/ui/pixel-mosaic/docs"),
   "tumbling-tags": () => import("@/components/ui/tumbling-tags/docs"),
+  "pixel-landscape": () => import("@/components/ui/pixel-landscape/docs"),
 };

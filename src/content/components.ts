@@ -291,6 +291,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["ascii-aquarium-background", "ASCII Aquarium Background", "Glyph sea creatures swim on grid paper and circle your chat input.", "ready", V020],
     ["ascii-koi-pond", "ASCII Koi Pond", "Glyph-cell koi swim, leave wakes and race for food you drop.", "ready", V030],
     ["pixel-mosaic", "Pixel Mosaic", "A living band of colored pixels with a dissolving edge.", "ready", V030],
+    ["pixel-landscape", "Pixel Landscape", "A mountain range in dots, relit by a sun that follows the pointer.", "ready", V030],
   ],
   orbits: [
     ["orbiting-circles", "Orbiting Circles", "Icons orbit a center element on concentric rings.", "ready", V020],

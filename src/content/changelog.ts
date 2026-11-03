@@ -18,7 +18,7 @@ export const releases: Release[] = [
     version: "0.3.0",
     title: "3D galleries, physical surfaces, prediction markets, billing and HTML in Canvas",
     summary:
-      "Forty-three components, most in five new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, and an adapter for the experimental HTML-in-Canvas API.",
+      "Forty-four components, most in five new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, and an adapter for the experimental HTML-in-Canvas API.",
     changes: [
       {
         type: "Added",
@@ -31,6 +31,7 @@ export const releases: Release[] = [
           "HTML in Canvas: ten components that draw live DOM through the experimental WICG API (Ripple Form, Dissolve Transition, CRT Terminal, Disintegrate Delete, Magnifier Lens, Cloth Banner, Peel Card, Liquid Glass Overlay, Floating Screen and Living Book), all through one adapter that keeps clicks, focus and selection on the drawn pixels, each with a CSS fallback for every other browser, and a demo page at /demos/html-in-canvas.",
           "ASCII Koi Pond in Shaders & Backgrounds: glyph-cell koi that swim, leave wakes, come to look at the cursor and race for food you drop.",
           "Shelf Gallery, Foil Card Drift, Icon Headline, Pixel Mosaic and Tumbling Tags: covers on floating shelves, foil cards drifting in 3D, a headline with inline app icons, a living pixel band and a pile of tumbling product blocks.",
+          "Pixel Landscape: a dot-mosaic mountain range the pointer relights like a moving sun.",
         ],
       },
       {

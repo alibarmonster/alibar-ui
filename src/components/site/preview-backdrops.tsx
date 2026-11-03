@@ -51,6 +51,10 @@ export const backdrops: Record<string, Backdrop> = {
       Custom: { props: { koi: 3, cell: 18, lilyPads: 2, showCounter: false, palette: { base: "light", background: "#eef6f4", body: "#dbe6e3", line: "#a9c4bd", patch: "#f0b43c", patchDeep: "#e07a2c" } } },
     },
   },
+  "pixel-landscape": {
+    Component: load(() => import("@/components/ui/pixel-landscape/pixel-landscape"), (m) => m.PixelLandscape),
+    variants: { Alpine: { props: { palette: "alpine", seed: 3, height: 0.66 } }, Dusk: { props: { palette: "dusk", seed: 12, shape: "square", cell: 8 } } },
+  },
   "pixel-mosaic": {
     Component: load(() => import("@/components/ui/pixel-mosaic/pixel-mosaic"), (m) => m.PixelMosaic),
     props: { edge: "bottom", fill: 0.45 },
