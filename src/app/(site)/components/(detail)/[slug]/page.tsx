@@ -114,7 +114,11 @@ export default async function ComponentPage({ params }: Params) {
 
       {entry.category === "html-canvas" ? <HtmlCanvasNotice className="mb-6" /> : null}
 
-      <ComponentPreview slug={slug} variants={variants} />
+      <ComponentPreview
+        slug={slug}
+        variants={variants}
+        copy={{ name: entry.name, description: entry.description, install: `npx shadcn@latest add ${registryUrl(slug)}`, usage: docs.usage, source: componentSource }}
+      />
 
       <SectionHeading id="installation">Installation</SectionHeading>
       <h3 className="mb-3 text-[15px] font-semibold text-foreground">CLI</h3>

@@ -109,7 +109,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex h-14 max-w-[1400px] items-center gap-2 px-4 sm:px-6">
+      <div className="mx-auto flex h-14 max-w-[1760px] items-center gap-2 px-4 sm:px-6">
         <button
           ref={menuButton}
           type="button"

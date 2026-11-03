@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { LayoutGrid, Search } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useReducedMotion } from "motion/react";
 import * as m from "motion/react-m";
@@ -61,9 +63,56 @@ export function NewBadge({ className }: { className?: string }) {
 
 export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
+  const [query, setQuery] = useState("");
+  const ready = components.filter((c) => c.status === "ready");
+  const needle = query.trim().toLowerCase();
+  const matches = needle ? ready.filter((c) => `${c.name} ${c.description}`.toLowerCase().includes(needle)) : [];
 
   return (
     <nav aria-label="Documentation" className="space-y-7 pb-10 text-sm">
+      <div className="space-y-2">
+        <Link
+          href="/components"
+          onClick={onNavigate}
+          className="focus-ring flex h-9 items-center gap-2 rounded-lg bg-surface-2 px-2.5 text-[13px] font-medium text-foreground transition-colors hover:bg-[color-mix(in_oklab,var(--surface-2)_80%,var(--foreground)_6%)]"
+        >
+          <LayoutGrid className="size-3.5 text-muted-foreground" aria-hidden="true" />
+          Browse all components
+        </Link>
+        <label className="relative block">
+          <span className="sr-only">Filter components</span>
+          <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={`Filter ${ready.length} components…`}
+            className="h-9 w-full rounded-lg border border-border bg-background pr-2.5 pl-8 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
+          />
+        </label>
+      </div>
+
+      {needle ? (
+        <div>
+          <p className="mb-1.5 px-2.5 text-xs font-medium text-foreground" aria-live="polite">
+            {matches.length} {matches.length === 1 ? "match" : "matches"}
+          </p>
+          <ul className="space-y-px">
+            {matches.map((item) => {
+              const href = `/components/${item.slug}`;
+              return (
+                <li key={item.slug}>
+                  <NavLink href={href} active={pathname === href} onNavigate={onNavigate} badge={item.isNew ? <NewBadge className="ml-auto" /> : null}>
+                    {item.name}
+                  </NavLink>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
+
+      <div className={cn("space-y-7", needle && "hidden")}>
       <div>
         <p className="mb-1.5 px-2.5 text-xs font-medium text-foreground">Getting started</p>
         <ul className="space-y-px">
@@ -120,6 +169,7 @@ export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
           </div>
         );
       })}
+      </div>
     </nav>
   );
 }
