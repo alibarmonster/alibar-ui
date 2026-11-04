@@ -6,15 +6,20 @@ import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight, Shuffle } from "lucide-react";
 import { backdrops } from "@/components/site/preview-backdrops";
 import { getComponent } from "@/content/components";
+import { cn } from "@/lib/utils";
 
 /** Light backgrounds from the library that read well behind the hero copy, with props tuned for it. */
-const SCENES: { slug: string; props?: Record<string, unknown> }[] = [
+const SCENES: { slug: string; props?: Record<string, unknown>; className?: string }[] = [
   { slug: "ascii-koi-pond", props: { showCounter: false, koi: 6, lilyPads: 4 } },
   { slug: "pixel-landscape", props: { palette: "alpine", seed: 3, height: 0.4 } },
   { slug: "ascii-aquarium-background" },
   { slug: "dithered-waves" },
   { slug: "mesh-gradient", props: { colors: ["#FED7AA", "#FBCFE8", "#DDD6FE", "#E0F2FE"], speed: 1.4 } },
   { slug: "particle-field" },
+  { slug: "dot-matrix-field" },
+  { slug: "liquid-ripple" },
+  // The mosaic always scatters to the far edge, so a mask keeps it to a band along the bottom.
+  { slug: "pixel-mosaic", props: { edge: "top", fill: 0.3 }, className: "[mask-image:linear-gradient(to_top,#000_6%,transparent_26%)]" },
   { slug: "cloud-shader", props: { density: 3, speed: 0.6, quality: "medium", skyTopColor: "#DCEBFA" } },
 ];
 
@@ -51,7 +56,7 @@ export function HeroBackdrop() {
     <>
       <AnimatePresence>
         {scene && Scene ? (
-          <motion.div key={scene.slug} aria-hidden="true" className="absolute inset-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: "easeOut" }}>
+          <motion.div key={scene.slug} aria-hidden="true" className={cn("absolute inset-0", scene.className)} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: "easeOut" }}>
             <Scene {...entry.props} {...scene.props} className="absolute inset-0 size-full" />
           </motion.div>
         ) : null}

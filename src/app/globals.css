@@ -161,6 +161,12 @@
 }
 
 /* Landing hero (CSS so it runs before hydration) */
+@keyframes landing-marquee {
+  to {
+    translate: -50% 0;
+  }
+}
+
 @keyframes hero-word-in {
   from {
     opacity: 0;
