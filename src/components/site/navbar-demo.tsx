@@ -15,10 +15,11 @@ export function KiteMark({ className }: { className?: string }) {
   );
 }
 
-export function KiteBrand({ dark = false }: { dark?: boolean }) {
+/** `inherit` takes the text color from the navbar, for navbars that recolor when a menu opens. */
+export function KiteBrand({ dark = false, inherit = false }: { dark?: boolean; inherit?: boolean }) {
   return (
-    <a href="#" onClick={(e) => e.preventDefault()} className={`flex items-center gap-2 rounded-md text-[15px] font-semibold tracking-tight outline-none focus-visible:ring-2 focus-visible:ring-ring ${dark ? "text-white" : "text-[#0b0b0c]"}`}>
-      <KiteMark className={dark ? "size-5 text-white" : "size-5 text-[#2563eb]"} />
+    <a href="#" onClick={(e) => e.preventDefault()} className={`flex items-center gap-2 rounded-md text-[15px] font-semibold tracking-tight outline-none focus-visible:ring-2 focus-visible:ring-ring ${inherit ? "" : dark ? "text-white" : "text-[#0b0b0c]"}`}>
+      <KiteMark className={inherit || dark ? "size-5" : "size-5 text-[#2563eb]"} />
       Kite
     </a>
   );
@@ -56,18 +57,20 @@ export const navActions: NavAction[] = [
   { label: "Get started", href: "#" },
 ];
 
-/** A scrolling sample page; the navbar sits at its top and can read its scroll. */
-export function NavbarStage({ children, dark = false, height = 460 }: { children: (scroll: RefObject<HTMLDivElement | null>) => ReactNode; dark?: boolean; height?: number }) {
+/** A scrolling sample page; the navbar sits at its top and can read its scroll. `image` puts a photo behind the hero (implies dark). */
+export function NavbarStage({ children, dark = false, height = 460, image }: { children: (scroll: RefObject<HTMLDivElement | null>) => ReactNode; dark?: boolean; height?: number; image?: string }) {
   const scroll = useRef<HTMLDivElement>(null);
+  dark = dark || !!image;
   return (
     <div ref={scroll} className="relative w-full overflow-y-auto rounded-xl border border-border" style={{ height }} onClick={(e) => (e.target as HTMLElement).closest("a[href='#']") && e.preventDefault()}>
-      <div className={dark ? "min-h-[1400px] bg-[linear-gradient(180deg,#0b1a33,#13294b_45%,#0b0f17)] text-white" : "min-h-[1400px] bg-[radial-gradient(70%_50%_at_50%_0%,#dbeafe,#ffffff_70%)] text-[#0b0b0c]"}>
+      <div className={dark ? "relative min-h-[1400px] bg-[linear-gradient(180deg,#0b1a33,#13294b_45%,#0b0f17)] text-white" : "min-h-[1400px] bg-[radial-gradient(70%_50%_at_50%_0%,#dbeafe,#ffffff_70%)] text-[#0b0b0c]"}>
+        {image ? <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[640px] bg-cover bg-center [mask-image:linear-gradient(#000_70%,transparent)]" style={{ backgroundImage: `url(${image})` }} /> : null}
         {children(scroll)}
-        <div className="mx-auto max-w-2xl px-6 pt-20 text-center">
+        <div className="relative mx-auto max-w-2xl px-6 pt-20 text-center">
           <p className="text-[clamp(1.75rem,4vw,2.75rem)] leading-tight font-semibold tracking-tight">Analytics your whole team can fly.</p>
           <p className={dark ? "mt-3 text-white/70" : "mt-3 text-[#52525b]"}>Scroll this panel to see how the navbar behaves.</p>
         </div>
-        <div className="mx-auto mt-16 grid max-w-3xl gap-4 px-6 sm:grid-cols-3">
+        <div className="relative mx-auto mt-16 grid max-w-3xl gap-4 px-6 sm:grid-cols-3">
           {Array.from({ length: 9 }, (_, i) => (
             <div key={i} className={dark ? "h-32 rounded-xl bg-white/5" : "h-32 rounded-xl bg-[#f4f4f5]"} />
           ))}

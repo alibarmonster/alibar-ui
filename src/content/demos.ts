@@ -208,4 +208,9 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "morph-dropdown-nav": () => import("@/components/ui/morph-dropdown-nav/demo"),
   "scroll-aware-nav": () => import("@/components/ui/scroll-aware-nav/demo"),
   "sheet-nav": () => import("@/components/ui/sheet-nav/demo"),
+  "notch-nav": () => import("@/components/ui/notch-nav/demo"),
+  "gooey-nav": () => import("@/components/ui/gooey-nav/demo"),
+  "liquid-tab-nav": () => import("@/components/ui/liquid-tab-nav/demo"),
+  "overlay-menu-nav": () => import("@/components/ui/overlay-menu-nav/demo"),
+  "takeover-nav": () => import("@/components/ui/takeover-nav/demo"),
 };

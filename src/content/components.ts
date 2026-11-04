@@ -192,6 +192,11 @@ const rows: Record<CategoryId, Row[]> = {
     ["morph-dropdown-nav", "Morphing Dropdown Nav", "One dropdown panel that reshapes and slides between menus.", "ready", V030],
     ["scroll-aware-nav", "Scroll-Aware Nav", "Clear over the hero, frosted on scroll, hides going down, with progress.", "ready", V030],
     ["sheet-nav", "Sheet Nav", "A hamburger that morphs into a full-screen sheet with staggered links.", "ready", V030],
+    ["notch-nav", "Notch Nav", "A bar with the logo raised in a center notch and a dot that glides to the current page.", "ready", V030],
+    ["gooey-nav", "Gooey Nav", "Capsules joined by liquid necks that stretch as you hover.", "ready", V030],
+    ["liquid-tab-nav", "Liquid Tab Nav", "A bar whose bottom edge swells under the current section and flows to the next.", "ready", V030],
+    ["overlay-menu-nav", "Overlay Menu Nav", "A mono Menu button that opens a dark, blurred overlay with link columns and story cards.", "ready", V030],
+    ["takeover-nav", "Takeover Nav", "A glass bar whose dot button floods the page with color and giant stretched words.", "ready", V030],
   ],
   text: [
     ["text-scramble", "Text Scramble", "Characters scramble, then resolve in place.", "ready"],
