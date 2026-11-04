@@ -212,4 +212,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "liquid-tab-nav": () => import("@/components/ui/liquid-tab-nav/docs"),
   "overlay-menu-nav": () => import("@/components/ui/overlay-menu-nav/docs"),
   "takeover-nav": () => import("@/components/ui/takeover-nav/docs"),
+  "gather-nav": () => import("@/components/ui/gather-nav/docs"),
 };

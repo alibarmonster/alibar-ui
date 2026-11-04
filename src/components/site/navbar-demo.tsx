@@ -58,12 +58,18 @@ export const navActions: NavAction[] = [
 ];
 
 /** A scrolling sample page; the navbar sits at its top and can read its scroll. `image` puts a photo behind the hero (implies dark). */
-export function NavbarStage({ children, dark = false, height = 460, image }: { children: (scroll: RefObject<HTMLDivElement | null>) => ReactNode; dark?: boolean; height?: number; image?: string }) {
+/** Stippled noise in clumps, like a dithered photo, to show off frosted navbars. */
+const STIPPLE = `url("data:image/svg+xml,${encodeURIComponent(
+  "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='1' seed='4'/><feColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.12  0 0 0 0 0.12  0 0 0 -3 1.35'/></filter><rect width='240' height='240' filter='url(#n)'/></svg>",
+)}")`;
+
+export function NavbarStage({ children, dark = false, height = 460, image, texture = false }: { children: (scroll: RefObject<HTMLDivElement | null>) => ReactNode; dark?: boolean; height?: number; image?: string; texture?: boolean }) {
   const scroll = useRef<HTMLDivElement>(null);
   dark = dark || !!image;
   return (
     <div ref={scroll} className="relative w-full overflow-y-auto rounded-xl border border-border" style={{ height }} onClick={(e) => (e.target as HTMLElement).closest("a[href='#']") && e.preventDefault()}>
-      <div className={dark ? "relative min-h-[1400px] bg-[linear-gradient(180deg,#0b1a33,#13294b_45%,#0b0f17)] text-white" : "min-h-[1400px] bg-[radial-gradient(70%_50%_at_50%_0%,#dbeafe,#ffffff_70%)] text-[#0b0b0c]"}>
+      <div className={dark ? "relative min-h-[1400px] bg-[linear-gradient(180deg,#0b1a33,#13294b_45%,#0b0f17)] text-white" : texture ? "relative min-h-[1400px] bg-white text-[#0b0b0c]" : "min-h-[1400px] bg-[radial-gradient(70%_50%_at_50%_0%,#dbeafe,#ffffff_70%)] text-[#0b0b0c]"}>
+        {texture ? <div aria-hidden="true" className="absolute inset-0 [mask-image:radial-gradient(40%_30%_at_25%_8%,#000,transparent),radial-gradient(35%_40%_at_80%_30%,#000,transparent),radial-gradient(50%_25%_at_50%_70%,#000,transparent)]" style={{ backgroundImage: STIPPLE }} /> : null}
         {image ? <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[640px] bg-cover bg-center [mask-image:linear-gradient(#000_70%,transparent)]" style={{ backgroundImage: `url(${image})` }} /> : null}
         {children(scroll)}
         <div className="relative mx-auto max-w-2xl px-6 pt-20 text-center">

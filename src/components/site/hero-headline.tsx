@@ -6,7 +6,7 @@ import { Fragment, type CSSProperties } from "react";
  */
 export function HeroHeadline({ words, emphasis }: { words: string[]; emphasis: string }) {
   return (
-    <h1 className="text-[2.6rem] leading-[1.05] font-semibold tracking-[-0.035em] text-balance text-foreground sm:text-6xl lg:text-7xl">
+    <h1 className="text-[2.8rem] leading-[1.02] font-semibold tracking-[-0.04em] text-balance text-foreground sm:text-7xl lg:text-[5.75rem]">
       {words.map((word, i) => (
         <Fragment key={`${word}-${i}`}>
           <span className="hero-word inline-block" style={{ "--i": i } as CSSProperties}>

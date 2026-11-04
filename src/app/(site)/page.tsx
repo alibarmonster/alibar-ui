@@ -4,7 +4,7 @@ import { ArrowRight, Accessibility, Gauge, PackageOpen } from "lucide-react";
 import { HeroHeadline } from "@/components/site/hero-headline";
 import { NewBadge } from "@/components/site/sidebar-nav";
 import { FeaturedBento } from "@/components/site/featured-bento";
-import { HeroSky } from "@/components/site/hero-sky";
+import { HeroBackdrop } from "@/components/site/hero-backdrop";
 import { placeholderLogos } from "@/components/site/placeholder-logos";
 import { AquariumPanel, OrbitPanel, ShowcaseLink, SwapPanel } from "@/components/site/whats-new";
 import { LogoGrid } from "@/components/ui/logo-grid/logo-grid";
@@ -61,19 +61,16 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <section className="relative overflow-hidden border-b border-border">
-        <HeroSky />
-        <div
-          aria-hidden="true"
-          className="bg-dot-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent)]"
-        />
-        <div className="relative mx-auto flex max-w-[1400px] flex-col items-center px-4 pt-20 pb-24 text-center sm:px-6 sm:pt-28 sm:pb-32">
+      <section className="relative isolate flex min-h-[calc(100svh-4rem)] items-center overflow-hidden border-b border-border">
+        <HeroBackdrop />
+        {/* The copy lets the pointer through to the background (the koi follow it); its controls take it back. */}
+        <div className="pointer-events-none relative mx-auto flex w-full max-w-[1400px] flex-col items-center px-4 pt-16 pb-28 text-center sm:px-6 sm:pt-20 [&_a]:pointer-events-auto [&_button]:pointer-events-auto [&_code]:pointer-events-auto">
           <Link
             href="/changelog"
-            className="hero-rise focus-ring group mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-background py-1 pr-3 pl-1 text-[13px] text-muted-foreground shadow-xs transition-colors hover:text-foreground"
+            className="hero-rise focus-ring group mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-background/90 py-1 pr-3 pl-1 text-[13px] text-muted-foreground shadow-sm backdrop-blur transition-colors hover:text-foreground"
           >
             <NewBadge />
-            v{release.version}: Web3, shaders, marketing sections and more
+            v{siteConfig.version} preview: 3D galleries, markets, navbars
             <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
 
@@ -107,7 +104,7 @@ export default function HomePage() {
           </div>
 
           <div
-            className="hero-rise mt-10 flex w-full max-w-md items-center gap-2 rounded-[10px] border border-border bg-background/80 py-1 pr-1 pl-3.5 shadow-xs backdrop-blur"
+            className="hero-rise mt-10 flex w-full max-w-md items-center gap-2 rounded-[10px] border border-border bg-background/90 py-1 pr-1 pl-3.5 shadow-sm backdrop-blur"
             style={{ "--delay": "460ms" } as CSSProperties}
           >
             <span className="font-mono text-[13px] text-muted-foreground select-none" aria-hidden="true">
@@ -118,6 +115,18 @@ export default function HomePage() {
             </code>
             <SiteCopyButton value={installCommand} variant="ghost" size="sm" aria-label="Copy install command" />
           </div>
+
+          <ul
+            className="hero-rise mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 font-mono text-[12px] text-muted-foreground"
+            style={{ "--delay": "540ms" } as CSSProperties}
+          >
+            {[`${readyComponents.length} components`, `${categories.length} categories`, "React 19 + Tailwind v4", "MIT licensed"].map((fact, i) => (
+              <li key={fact} className="flex items-center gap-5">
+                {i > 0 ? <span aria-hidden="true" className="size-1 rounded-full bg-border" /> : null}
+                {fact}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

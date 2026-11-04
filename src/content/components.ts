@@ -197,6 +197,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["liquid-tab-nav", "Liquid Tab Nav", "A bar whose bottom edge swells under the current section and flows to the next.", "ready", V030],
     ["overlay-menu-nav", "Overlay Menu Nav", "A mono Menu button that opens a dark, blurred overlay with link columns and story cards.", "ready", V030],
     ["takeover-nav", "Takeover Nav", "A glass bar whose dot button floods the page with color and giant stretched words.", "ready", V030],
+    ["gather-nav", "Gather Nav", "A plain bar that melts on scroll, gathering its links into a frosted pill.", "ready", V030],
   ],
   text: [
     ["text-scramble", "Text Scramble", "Characters scramble, then resolve in place.", "ready"],

@@ -213,4 +213,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "liquid-tab-nav": () => import("@/components/ui/liquid-tab-nav/demo"),
   "overlay-menu-nav": () => import("@/components/ui/overlay-menu-nav/demo"),
   "takeover-nav": () => import("@/components/ui/takeover-nav/demo"),
+  "gather-nav": () => import("@/components/ui/gather-nav/demo"),
 };
