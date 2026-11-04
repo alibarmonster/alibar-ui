@@ -44,6 +44,10 @@ const LIB_FILES: Record<string, string> = {
   "@/lib/html-canvas/sync-geometry": "src/lib/html-canvas/sync-geometry.ts",
   "@/lib/html-canvas/gl": "src/lib/html-canvas/gl.ts",
   "@/lib/html-canvas/use-html-canvas": "src/lib/html-canvas/use-html-canvas.ts",
+  "@/lib/nav/types": "src/lib/nav/types.ts",
+  "@/lib/nav/use-scroll-state": "src/lib/nav/use-scroll-state.ts",
+  "@/lib/nav/use-menu": "src/lib/nav/use-menu.ts",
+  "@/lib/nav/mobile-menu": "src/lib/nav/mobile-menu.tsx",
 };
 
 const UTILS_PACKAGES = ["clsx", "tailwind-merge"];

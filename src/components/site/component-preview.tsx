@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { spring } from "@/lib/motion";
 import { CodeFrame } from "./code-frame";
 import { DemoRenderer } from "./demo-renderer";
+import { getComponent } from "@/content/components";
 import { backdrops, type Backdrop } from "./preview-backdrops";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
 
@@ -389,7 +390,9 @@ function StageContent({ mode, slug, variant, replays, tall = false }: { mode: Mo
       </div>
     );
   }
-  return <div className={cn("relative flex w-full items-center justify-center px-4 py-14 sm:px-10", tall ? "min-h-dvh" : "min-h-[34rem]")}>{demo}</div>;
+  // Navbars are page-wide, so they get nearly the whole stage width.
+  const wide = getComponent(slug)?.category === "navbars";
+  return <div className={cn("relative flex w-full items-center justify-center px-4 py-14", !wide && "sm:px-10", tall ? "min-h-dvh" : "min-h-[34rem]")}>{demo}</div>;
 }
 
 export function ComponentPreview({ slug, variants, copy }: { slug: string; variants: PreviewVariant[]; copy?: PreviewCopy }) {

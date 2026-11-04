@@ -6,6 +6,7 @@ export type CategoryId =
   | "toggles"
   | "overlays"
   | "navigation"
+  | "navbars"
   | "text"
   | "data"
   | "cards"
@@ -52,6 +53,7 @@ export const categories: Category[] = [
   { id: "toggles", name: "Toggles & Selection", description: "Switches, tabs, pickers and choice controls." },
   { id: "overlays", name: "Overlays & Feedback", description: "Modals, sheets, menus, tooltips and toasts." },
   { id: "navigation", name: "Navigation", description: "Docks, palettes, menus and wayfinding." },
+  { id: "navbars", name: "Navbars & Headers", description: "Site headers with mega menus, floating islands and scroll-aware bars." },
   { id: "text", name: "Text Animations", description: "Type that scrambles, streams and reveals." },
   { id: "data", name: "Numbers & Data Display", description: "Counters, charts, rings and stat cards." },
   { id: "cards", name: "Cards & Layout", description: "Tilt, stack, flip, expand and reorder." },
@@ -178,6 +180,18 @@ const rows: Record<CategoryId, Row[]> = {
     ["animated-breadcrumb", "Animated Breadcrumb", "Items slide in; overflow collapses into a menu.", "ready"],
     ["animated-pagination", "Animated Pagination", "A sliding indicator with rolling page numbers.", "ready"],
     ["proximity-nav", "Proximity Navigation", "Items scale and brighten as the cursor approaches.", "ready"],
+  ],
+  navbars: [
+    ["island-nav", "Island Nav", "A compact dark pill floating at the top that tightens as you scroll.", "ready", V030],
+    ["float-bar", "Float Bar", "A floating frosted bar with dropdowns and a solid call to action.", "ready", V030],
+    ["split-islands", "Split Islands", "Logo and menus on one island, actions on another, the page between.", "ready", V030],
+    ["duo-panel-menu", "Duo Panel Menu", "A dropdown pairing a light link list with a dark featured panel.", "ready", V030],
+    ["catalog-menu", "Catalog Menu", "A two-column mega menu with icons, a gliding highlight and a spotlight card.", "ready", V030],
+    ["ticker-header", "Ticker Header", "A scrolling announcement strip above the nav that tucks away on scroll.", "ready", V030],
+    ["center-pill-nav", "Center Pill Nav", "Links in a centered pill with a sliding hover, actions in their own pill.", "ready", V030],
+    ["morph-dropdown-nav", "Morphing Dropdown Nav", "One dropdown panel that reshapes and slides between menus.", "ready", V030],
+    ["scroll-aware-nav", "Scroll-Aware Nav", "Clear over the hero, frosted on scroll, hides going down, with progress.", "ready", V030],
+    ["sheet-nav", "Sheet Nav", "A hamburger that morphs into a full-screen sheet with staggered links.", "ready", V030],
   ],
   text: [
     ["text-scramble", "Text Scramble", "Characters scramble, then resolve in place.", "ready"],
