@@ -55,6 +55,14 @@ export const backdrops: Record<string, Backdrop> = {
     Component: load(() => import("@/components/ui/pixel-landscape/pixel-landscape"), (m) => m.PixelLandscape),
     variants: { Alpine: { props: { palette: "alpine", seed: 3, height: 0.66 } }, Dusk: { props: { palette: "dusk", seed: 12, shape: "square", cell: 8 } } },
   },
+  "dither-wildlife": {
+    Component: load(() => import("@/components/ui/dither-wildlife/dither-wildlife"), (m) => m.DitherWildlife),
+    variants: {
+      Flock: { props: { scene: "birds" } },
+      Grove: { props: { scene: "grove" } },
+      Sepia: { props: { tones: ["#e3cfa8", "#c49a62", "#8a5d34", "#4a2f1a"], background: "#fbf4e6" } },
+    },
+  },
   "pixel-mosaic": {
     Component: load(() => import("@/components/ui/pixel-mosaic/pixel-mosaic"), (m) => m.PixelMosaic),
     props: { edge: "bottom", fill: 0.45 },

@@ -18,7 +18,7 @@ export const releases: Release[] = [
     version: "0.3.0",
     title: "3D galleries, physical surfaces, prediction markets, billing, HTML in Canvas and navbars",
     summary:
-      "Sixty components, most in six new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, and an adapter for the experimental HTML-in-Canvas API.",
+      "Sixty-one components, most in six new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, and an adapter for the experimental HTML-in-Canvas API.",
     changes: [
       {
         type: "Added",
@@ -32,6 +32,7 @@ export const releases: Release[] = [
           "ASCII Koi Pond in Shaders & Backgrounds: glyph-cell koi that swim, leave wakes, come to look at the cursor and race for food you drop.",
           "Shelf Gallery, Foil Card Drift, Icon Headline, Pixel Mosaic and Tumbling Tags: covers on floating shelves, foil cards drifting in 3D, a headline with inline app icons, a living pixel band and a pile of tumbling product blocks.",
           "Pixel Landscape: a dot-mosaic mountain range the pointer relights like a moving sun.",
+          "Dither Wildlife: galloping horses, a wheeling flock or a swaying grove, drawn in dithered gray pixels.",
           "Navbars & Headers: sixteen site headers (Island Nav, Float Bar, Split Islands, Duo Panel Menu, Catalog Menu, Ticker Header, Center Pill Nav, Morphing Dropdown Nav, Scroll-Aware Nav, Sheet Nav, Notch Nav, Gooey Nav, Liquid Tab Nav, Overlay Menu Nav, Takeover Nav and Gather Nav) sharing menu, scroll and mobile-menu helpers, all keyboard operable and sized by container queries.",
         ],
       },
