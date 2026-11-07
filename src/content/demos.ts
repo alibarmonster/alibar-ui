@@ -216,4 +216,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "gather-nav": () => import("@/components/ui/gather-nav/demo"),
   "dither-wildlife": () => import("@/components/ui/dither-wildlife/demo"),
   "glyph-map-card": () => import("@/components/ui/glyph-map-card/demo"),
+  "ascii-shark-sea": () => import("@/components/ui/ascii-shark-sea/demo"),
 };

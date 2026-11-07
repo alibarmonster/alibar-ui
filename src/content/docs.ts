@@ -215,4 +215,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "gather-nav": () => import("@/components/ui/gather-nav/docs"),
   "dither-wildlife": () => import("@/components/ui/dither-wildlife/docs"),
   "glyph-map-card": () => import("@/components/ui/glyph-map-card/docs"),
+  "ascii-shark-sea": () => import("@/components/ui/ascii-shark-sea/docs"),
 };
