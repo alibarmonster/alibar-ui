@@ -29,6 +29,7 @@ export const releases: Release[] = [
           "Palette Dither Field: layered waves Bayer-dithered to any 2–8 color palette, with pointer ripples and dithered palette crossfades.",
           "Clothesline Cards: profile cards swaying on a string that you can brush, pull and flip, with a holographic shimmer.",
           "Pixel Bloom Select: a select whose options bloom out of dithered pixels in each option's palette and fall away when it closes.",
+          "Pane Stack Portfolio: project panes receding in a diagonal row, with filters, an index grid and a detail view the front pane morphs into.",
         ],
       },
       {

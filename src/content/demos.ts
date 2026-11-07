@@ -220,4 +220,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "palette-dither-field": () => import("@/components/ui/palette-dither-field/demo"),
   "clothesline-cards": () => import("@/components/ui/clothesline-cards/demo"),
   "pixel-bloom-select": () => import("@/components/ui/pixel-bloom-select/demo"),
+  "pane-stack-portfolio": () => import("@/components/ui/pane-stack-portfolio/demo"),
 };

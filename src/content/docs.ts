@@ -219,4 +219,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "palette-dither-field": () => import("@/components/ui/palette-dither-field/docs"),
   "clothesline-cards": () => import("@/components/ui/clothesline-cards/docs"),
   "pixel-bloom-select": () => import("@/components/ui/pixel-bloom-select/docs"),
+  "pane-stack-portfolio": () => import("@/components/ui/pane-stack-portfolio/docs"),
 };
