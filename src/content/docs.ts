@@ -222,4 +222,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "pane-stack-portfolio": () => import("@/components/ui/pane-stack-portfolio/docs"),
   "retro-desktop-hero": () => import("@/components/ui/retro-desktop-hero/docs"),
   "flow-line-chat-card": () => import("@/components/ui/flow-line-chat-card/docs"),
+  "multiplayer-canvas-card": () => import("@/components/ui/multiplayer-canvas-card/docs"),
 };
