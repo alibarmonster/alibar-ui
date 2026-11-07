@@ -9,6 +9,7 @@ import { CategoryMarquee, ClosingBand, ReleaseShowcase } from "@/components/site
 import { SiteCopyButton } from "@/components/site/site-copy-button";
 import { registryUrl, siteConfig } from "@/config/site";
 import { categories, components, readyComponents } from "@/content/components";
+import { cn } from "@/lib/utils";
 import { releases } from "@/content/changelog";
 
 const principles = [
@@ -45,6 +46,10 @@ const jsonLd = {
     },
   ],
 };
+
+/** The last category card fills the rest of its row, so the grid never ends on a lone card. */
+const MD_SPAN: Record<number, string> = { 1: "", 2: "md:col-span-2", 3: "md:col-span-3" };
+const XL_SPAN: Record<number, string> = { 1: "xl:col-span-1", 2: "xl:col-span-2", 3: "xl:col-span-3", 4: "xl:col-span-4", 5: "xl:col-span-5", 6: "xl:col-span-6", 7: "xl:col-span-7" };
 
 export default function HomePage() {
   const installCommand = `npx shadcn@latest add ${registryUrl("spring-press-button")}`;
@@ -200,8 +205,9 @@ export default function HomePage() {
           {categories.map((category, index) => {
             const items = components.filter((c) => c.category === category.id);
             const ready = items.filter((c) => c.status === "ready").length;
+            const last = index === categories.length - 1;
             return (
-              <li key={category.id}>
+              <li key={category.id} className={last ? cn(MD_SPAN[3 - ((categories.length - 1) % 3)], XL_SPAN[7 - ((categories.length - 1) % 7)]) : undefined}>
                 <Link
                   href={`/components?category=${category.id}`}
                   className="focus-ring group flex h-full flex-col rounded-[14px] border border-border bg-surface p-4 transition-[box-shadow,background-color] duration-300 hover:bg-background hover:shadow-md"
