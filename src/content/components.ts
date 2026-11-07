@@ -21,7 +21,8 @@ export type CategoryId =
   | "surfaces"
   | "markets"
   | "billing"
-  | "html-canvas";
+  | "html-canvas"
+  | "studio";
 
 export interface Category {
   id: CategoryId;
@@ -110,6 +111,13 @@ export const categories: Category[] = [
     navName: "Live DOM Effects",
     group: "HTML in Canvas",
     description: "Live, interactive DOM drawn into a canvas and distorted (experimental).",
+  },
+  {
+    id: "studio",
+    name: "Studio Pieces & Glyph Art",
+    navName: "Portfolio & Glyph Pieces",
+    group: "Studio Pieces & Glyph Art",
+    description: "Portfolio heroes, hanging cards, paper and images redrawn as glyphs and dithered pixels.",
   },
 ];
 
@@ -374,6 +382,18 @@ const rows: Record<CategoryId, Row[]> = {
     ["floating-screen", "Floating Screen", "A live mini-app on a tilted 3D device screen.", "ready", V030],
     ["cloth-banner", "Cloth Banner", "An announcement bar on gently waving cloth.", "ready", V030],
     ["liquid-glass-overlay", "Liquid Glass Overlay", "Draggable glass that refracts the live content below.", "ready", V030],
+  ],
+  studio: [
+    ["retro-desktop-hero", "Retro Desktop Hero", "A portfolio hero as a tiny retro desktop with icons, windows and a taskbar.", "planned", V030],
+    ["pane-stack-portfolio", "Pane Stack Portfolio", "Project panes standing in a receding diagonal row, with filters and a detail view.", "planned", V030],
+    ["crumple-notes", "Crumple Notes", "Paper notes that crumple into balls and unfold again, creases and all.", "planned", V030],
+    ["clothesline-cards", "Clothesline Cards", "Profile cards swaying on a string, with a foil shimmer and a flip to the back.", "planned", V030],
+    ["pixel-bloom-select", "Pixel Bloom Select", "A select whose list grows out of colored pixels and dissolves back into them.", "planned", V030],
+    ["palette-dither-field", "Palette Dither Field", "Layered waves Bayer-dithered to any palette, with live palette crossfades.", "planned", V030],
+    ["ascii-shark-sea", "ASCII Shark Sea", "A side-view ocean of glyph sharks on patrol and fish schools that scatter.", "planned", V030],
+    ["glyph-map-card", "Glyph Map Card", "An image redrawn as a living glyph map that shifts under the cursor.", "planned", V030],
+    ["flow-line-chat-card", "Flow Line Chat Card", "A feature card with a live chat channel over flowing lines.", "planned", V030],
+    ["multiplayer-canvas-card", "Multiplayer Canvas Card", "A feature card where named cursors select, type and comment on a canvas.", "planned", V030],
   ],
 };
 

@@ -48,6 +48,14 @@ const LIB_FILES: Record<string, string> = {
   "@/lib/nav/use-scroll-state": "src/lib/nav/use-scroll-state.ts",
   "@/lib/nav/use-menu": "src/lib/nav/use-menu.ts",
   "@/lib/nav/mobile-menu": "src/lib/nav/mobile-menu.tsx",
+  "@/lib/glyph/ramp": "src/lib/glyph/ramp.ts",
+  "@/lib/glyph/bayer": "src/lib/glyph/bayer.ts",
+  "@/lib/glyph/palettes": "src/lib/glyph/palettes.ts",
+  "@/lib/glyph/sample-image": "src/lib/glyph/sample-image.ts",
+  "@/lib/glyph/glyph-atlas": "src/lib/glyph/glyph-atlas.ts",
+  "@/lib/glyph/canvas-loop": "src/lib/glyph/canvas-loop.ts",
+  "@/lib/pixel-art/icons": "src/lib/pixel-art/icons.ts",
+  "@/lib/pixel-art/pixel-art": "src/lib/pixel-art/pixel-art.tsx",
 };
 
 const UTILS_PACKAGES = ["clsx", "tailwind-merge"];

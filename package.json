@@ -36,6 +36,7 @@
     "typecheck": "next typegen && tsc --noEmit",
     "registry:build": "tsx scripts/build-registry.ts && shadcn build",
     "gallery:images": "tsx scripts/generate-gallery-images.ts",
+    "studio:images": "tsx scripts/generate-studio-images.ts",
     "check": "tsx scripts/check-components.ts",
     "lab:verify": "tsx scripts/verify-registry.ts"
   },
