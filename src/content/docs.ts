@@ -216,4 +216,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "dither-wildlife": () => import("@/components/ui/dither-wildlife/docs"),
   "glyph-map-card": () => import("@/components/ui/glyph-map-card/docs"),
   "ascii-shark-sea": () => import("@/components/ui/ascii-shark-sea/docs"),
+  "palette-dither-field": () => import("@/components/ui/palette-dither-field/docs"),
 };

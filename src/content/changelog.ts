@@ -26,6 +26,7 @@ export const releases: Release[] = [
           "Studio Pieces & Glyph Art, a new category built on a shared glyph engine: per-cell image sampling, glyph sprite atlases, Bayer dithering, named palettes and one canvas loop that pauses offscreen and holds still under reduced motion.",
           "Glyph Map Card: an image redrawn as a living glyph map that scrambles under the pointer, with a serif title, watchers and an expanded view.",
           "ASCII Shark Sea: hammerheads, great whites and reef sharks patrolling a side-view glyph ocean while fish schools scatter and regroup; click to drop bait.",
+          "Palette Dither Field: layered waves Bayer-dithered to any 2–8 color palette, with pointer ripples and dithered palette crossfades.",
         ],
       },
       {
