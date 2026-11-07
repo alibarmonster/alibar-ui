@@ -218,4 +218,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "ascii-shark-sea": () => import("@/components/ui/ascii-shark-sea/docs"),
   "palette-dither-field": () => import("@/components/ui/palette-dither-field/docs"),
   "clothesline-cards": () => import("@/components/ui/clothesline-cards/docs"),
+  "pixel-bloom-select": () => import("@/components/ui/pixel-bloom-select/docs"),
 };

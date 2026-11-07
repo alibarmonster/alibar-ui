@@ -219,4 +219,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "ascii-shark-sea": () => import("@/components/ui/ascii-shark-sea/demo"),
   "palette-dither-field": () => import("@/components/ui/palette-dither-field/demo"),
   "clothesline-cards": () => import("@/components/ui/clothesline-cards/demo"),
+  "pixel-bloom-select": () => import("@/components/ui/pixel-bloom-select/demo"),
 };

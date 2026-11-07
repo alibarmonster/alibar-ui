@@ -28,6 +28,7 @@ export const releases: Release[] = [
           "ASCII Shark Sea: hammerheads, great whites and reef sharks patrolling a side-view glyph ocean while fish schools scatter and regroup; click to drop bait.",
           "Palette Dither Field: layered waves Bayer-dithered to any 2–8 color palette, with pointer ripples and dithered palette crossfades.",
           "Clothesline Cards: profile cards swaying on a string that you can brush, pull and flip, with a holographic shimmer.",
+          "Pixel Bloom Select: a select whose options bloom out of dithered pixels in each option's palette and fall away when it closes.",
         ],
       },
       {
