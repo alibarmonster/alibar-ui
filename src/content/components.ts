@@ -127,6 +127,7 @@ type Row = [slug: string, name: string, description: string, status?: ComponentS
 const INITIAL_VERSION = "0.1.0";
 const V020 = "0.2.0";
 const V030 = "0.3.0";
+const V040 = "0.4.0";
 
 const rows: Record<CategoryId, Row[]> = {
   buttons: [
@@ -384,16 +385,16 @@ const rows: Record<CategoryId, Row[]> = {
     ["liquid-glass-overlay", "Liquid Glass Overlay", "Draggable glass that refracts the live content below.", "ready", V030],
   ],
   studio: [
-    ["retro-desktop-hero", "Retro Desktop Hero", "A portfolio hero as a tiny retro desktop with icons, windows and a taskbar.", "planned", V030],
-    ["pane-stack-portfolio", "Pane Stack Portfolio", "Project panes standing in a receding diagonal row, with filters and a detail view.", "planned", V030],
-    ["crumple-notes", "Crumple Notes", "Paper notes that crumple into balls and unfold again, creases and all.", "planned", V030],
-    ["clothesline-cards", "Clothesline Cards", "Profile cards swaying on a string, with a foil shimmer and a flip to the back.", "planned", V030],
-    ["pixel-bloom-select", "Pixel Bloom Select", "A select whose list grows out of colored pixels and dissolves back into them.", "planned", V030],
-    ["palette-dither-field", "Palette Dither Field", "Layered waves Bayer-dithered to any palette, with live palette crossfades.", "planned", V030],
-    ["ascii-shark-sea", "ASCII Shark Sea", "A side-view ocean of glyph sharks on patrol and fish schools that scatter.", "planned", V030],
-    ["glyph-map-card", "Glyph Map Card", "An image redrawn as a living glyph map that shifts under the cursor.", "ready", V030],
-    ["flow-line-chat-card", "Flow Line Chat Card", "A feature card with a live chat channel over flowing lines.", "planned", V030],
-    ["multiplayer-canvas-card", "Multiplayer Canvas Card", "A feature card where named cursors select, type and comment on a canvas.", "planned", V030],
+    ["retro-desktop-hero", "Retro Desktop Hero", "A portfolio hero as a tiny retro desktop with icons, windows and a taskbar.", "planned", V040],
+    ["pane-stack-portfolio", "Pane Stack Portfolio", "Project panes standing in a receding diagonal row, with filters and a detail view.", "planned", V040],
+    ["crumple-notes", "Crumple Notes", "Paper notes that crumple into balls and unfold again, creases and all.", "planned", V040],
+    ["clothesline-cards", "Clothesline Cards", "Profile cards swaying on a string, with a foil shimmer and a flip to the back.", "planned", V040],
+    ["pixel-bloom-select", "Pixel Bloom Select", "A select whose list grows out of colored pixels and dissolves back into them.", "planned", V040],
+    ["palette-dither-field", "Palette Dither Field", "Layered waves Bayer-dithered to any palette, with live palette crossfades.", "planned", V040],
+    ["ascii-shark-sea", "ASCII Shark Sea", "A side-view ocean of glyph sharks on patrol and fish schools that scatter.", "planned", V040],
+    ["glyph-map-card", "Glyph Map Card", "An image redrawn as a living glyph map that shifts under the cursor.", "ready", V040],
+    ["flow-line-chat-card", "Flow Line Chat Card", "A feature card with a live chat channel over flowing lines.", "planned", V040],
+    ["multiplayer-canvas-card", "Multiplayer Canvas Card", "A feature card where named cursors select, type and comment on a canvas.", "planned", V040],
   ],
 };
 

@@ -15,10 +15,30 @@ export interface Release {
  */
 export const releases: Release[] = [
   {
+    version: "0.4.0",
+    title: "Studio pieces and glyph art",
+    summary:
+      "Portfolio heroes, hanging cards, paper and images redrawn as glyphs and dithered pixels, in one new category built on a shared glyph engine.",
+    changes: [
+      {
+        type: "Added",
+        items: [
+          "Studio Pieces & Glyph Art, a new category built on a shared glyph engine: per-cell image sampling, glyph sprite atlases, Bayer dithering, named palettes and one canvas loop that pauses offscreen and holds still under reduced motion.",
+          "Glyph Map Card: an image redrawn as a living glyph map that scrambles under the pointer, with a serif title, watchers and an expanded view.",
+        ],
+      },
+      {
+        type: "Changed",
+        items: ["The New badge moves to 0.4.0 components; components from 0.3.0 no longer show it."],
+      },
+    ],
+  },
+  {
     version: "0.3.0",
+    date: "2026-11-07",
     title: "3D galleries, physical surfaces, prediction markets, billing, HTML in Canvas and navbars",
     summary:
-      "Sixty-two components, most in seven new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, an adapter for the experimental HTML-in-Canvas API and a shared glyph engine.",
+      "Sixty-one components, most in six new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, and an adapter for the experimental HTML-in-Canvas API.",
     changes: [
       {
         type: "Added",
@@ -33,7 +53,6 @@ export const releases: Release[] = [
           "Shelf Gallery, Foil Card Drift, Icon Headline, Pixel Mosaic and Tumbling Tags: covers on floating shelves, foil cards drifting in 3D, a headline with inline app icons, a living pixel band and a pile of tumbling product blocks.",
           "Pixel Landscape: a dot-mosaic mountain range the pointer relights like a moving sun.",
           "Dither Wildlife: galloping horses, a wheeling flock or a swaying grove, drawn in dithered gray pixels.",
-          "Studio Pieces & Glyph Art, a new category built on a shared glyph engine (sampling, sprite atlases, Bayer dithering, palettes). First up: Glyph Map Card, an image redrawn as a living glyph map that scrambles under the pointer, with a serif title, watchers and an expanded view.",
           "Navbars & Headers: sixteen site headers (Island Nav, Float Bar, Split Islands, Duo Panel Menu, Catalog Menu, Ticker Header, Center Pill Nav, Morphing Dropdown Nav, Scroll-Aware Nav, Sheet Nav, Notch Nav, Gooey Nav, Liquid Tab Nav, Overlay Menu Nav, Takeover Nav and Gather Nav) sharing menu, scroll and mobile-menu helpers, all keyboard operable and sized by container queries.",
         ],
       },

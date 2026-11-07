@@ -12,7 +12,7 @@ export const siteConfig = {
   name: "alibar/ui",
   shortName: "alibar",
   /** Current release. Keep in sync with package.json (`bun run check` verifies it). */
-  version: "0.3.0",
+  version: "0.4.0",
   description:
     "Animated, accessible React components for Next.js and Tailwind CSS. Copy, paste, or install with the shadcn CLI.",
   url: resolveSiteUrl(),

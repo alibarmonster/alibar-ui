@@ -9,6 +9,7 @@ import { CategoryMarquee, ClosingBand, ReleaseShowcase } from "@/components/site
 import { SiteCopyButton } from "@/components/site/site-copy-button";
 import { registryUrl, siteConfig } from "@/config/site";
 import { categories, components, readyComponents } from "@/content/components";
+import { releases } from "@/content/changelog";
 
 const principles = [
   {
@@ -47,8 +48,9 @@ const jsonLd = {
 
 export default function HomePage() {
   const installCommand = `npx shadcn@latest add ${registryUrl("spring-press-button")}`;
-  // The release in progress: its components and the categories it introduces.
-  const newComponents = readyComponents.filter((c) => c.version === siteConfig.version);
+  // The latest shipped (dated) release: its components and the categories it introduces.
+  const shipped = releases.find((r) => r.date)?.version ?? siteConfig.version;
+  const newComponents = readyComponents.filter((c) => c.version === shipped);
   const newCategories = categories.filter((category) => newComponents.some((c) => c.category === category.id));
   const counted = categories.map((c) => ({ id: c.id, name: c.name, count: readyComponents.filter((r) => r.category === c.id).length }));
   const marqueeRows = [counted.filter((_, i) => i % 2 === 0), counted.filter((_, i) => i % 2 === 1)];
@@ -65,7 +67,7 @@ export default function HomePage() {
             className="hero-rise focus-ring group mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-background/90 py-1 pr-3 pl-1 text-[13px] text-muted-foreground shadow-sm backdrop-blur transition-colors hover:text-foreground"
           >
             <NewBadge />
-            v{siteConfig.version} preview: 3D galleries, markets, navbars
+            v{shipped} is out: 3D galleries, markets, navbars
             <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
 
@@ -133,10 +135,10 @@ export default function HomePage() {
         <div className="mb-10 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div>
             <p className="flex items-center gap-2 text-sm text-muted-foreground">
-              <NewBadge /> In progress
+              <NewBadge /> Latest release
             </p>
             <h2 id="new-heading" className="mt-3 max-w-2xl text-3xl leading-[1.1] font-semibold tracking-[-0.03em] text-balance text-foreground sm:text-5xl">
-              v{siteConfig.version}: galleries, markets, billing and the HTML-in-Canvas era.
+              v{shipped}: galleries, markets, billing and the HTML-in-Canvas era.
             </h2>
             <p className="mt-4 max-w-xl text-[15px] leading-7 text-muted-foreground">
               {newComponents.length} new components across {newCategories.length} categories. Every tile below is the real thing, so drag, hover and click
