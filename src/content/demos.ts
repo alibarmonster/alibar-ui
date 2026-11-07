@@ -222,4 +222,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "pixel-bloom-select": () => import("@/components/ui/pixel-bloom-select/demo"),
   "pane-stack-portfolio": () => import("@/components/ui/pane-stack-portfolio/demo"),
   "retro-desktop-hero": () => import("@/components/ui/retro-desktop-hero/demo"),
+  "flow-line-chat-card": () => import("@/components/ui/flow-line-chat-card/demo"),
 };

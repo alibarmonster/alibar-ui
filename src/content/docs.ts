@@ -221,4 +221,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "pixel-bloom-select": () => import("@/components/ui/pixel-bloom-select/docs"),
   "pane-stack-portfolio": () => import("@/components/ui/pane-stack-portfolio/docs"),
   "retro-desktop-hero": () => import("@/components/ui/retro-desktop-hero/docs"),
+  "flow-line-chat-card": () => import("@/components/ui/flow-line-chat-card/docs"),
 };

@@ -31,6 +31,7 @@ export const releases: Release[] = [
           "Pixel Bloom Select: a select whose options bloom out of dithered pixels in each option's palette and fall away when it closes.",
           "Pane Stack Portfolio: project panes receding in a diagonal row, with filters, an index grid and a detail view the front pane morphs into.",
           "Retro Desktop Hero: a tiny retro desktop with draggable pixel icons, windows you can move, minimize and maximize, a hello window and a taskbar.",
+          "Flow Line Chat Card and Multiplayer Canvas Card: a pair of animated feature cards for a chat and a collaboration product, sharing a FlowLines background of flowing, pointer-bending lines.",
         ],
       },
       {
