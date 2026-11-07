@@ -27,6 +27,7 @@ export const releases: Release[] = [
           "Glyph Map Card: an image redrawn as a living glyph map that scrambles under the pointer, with a serif title, watchers and an expanded view.",
           "ASCII Shark Sea: hammerheads, great whites and reef sharks patrolling a side-view glyph ocean while fish schools scatter and regroup; click to drop bait.",
           "Palette Dither Field: layered waves Bayer-dithered to any 2–8 color palette, with pointer ripples and dithered palette crossfades.",
+          "Clothesline Cards: profile cards swaying on a string that you can brush, pull and flip, with a holographic shimmer.",
         ],
       },
       {

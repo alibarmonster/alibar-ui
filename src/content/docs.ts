@@ -217,4 +217,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "glyph-map-card": () => import("@/components/ui/glyph-map-card/docs"),
   "ascii-shark-sea": () => import("@/components/ui/ascii-shark-sea/docs"),
   "palette-dither-field": () => import("@/components/ui/palette-dither-field/docs"),
+  "clothesline-cards": () => import("@/components/ui/clothesline-cards/docs"),
 };

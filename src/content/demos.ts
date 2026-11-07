@@ -218,4 +218,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "glyph-map-card": () => import("@/components/ui/glyph-map-card/demo"),
   "ascii-shark-sea": () => import("@/components/ui/ascii-shark-sea/demo"),
   "palette-dither-field": () => import("@/components/ui/palette-dither-field/demo"),
+  "clothesline-cards": () => import("@/components/ui/clothesline-cards/demo"),
 };
