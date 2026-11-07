@@ -54,6 +54,7 @@ const LIB_FILES: Record<string, string> = {
   "@/lib/glyph/sample-image": "src/lib/glyph/sample-image.ts",
   "@/lib/glyph/glyph-atlas": "src/lib/glyph/glyph-atlas.ts",
   "@/lib/glyph/canvas-loop": "src/lib/glyph/canvas-loop.ts",
+  "@/lib/glyph/ascii-life": "src/lib/glyph/ascii-life.ts",
   "@/lib/pixel-art/icons": "src/lib/pixel-art/icons.ts",
   "@/lib/pixel-art/pixel-art": "src/lib/pixel-art/pixel-art.tsx",
 };
