@@ -35,7 +35,7 @@ export function Custom() {
   return (
     <AsciiKoiPond
       koi={3}
-      cell={18}
+      cell={12}
       lilyPads={2}
       showCounter={false}
       palette={{ base: "light", background: "#eef6f4", body: "#dbe6e3", line: "#a9c4bd", patch: "#f0b43c", patchDeep: "#e07a2c" }}

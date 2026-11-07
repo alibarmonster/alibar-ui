@@ -12,8 +12,10 @@ export const docs: ComponentDocs = {
     "Under reduced motion the pond draws a single still frame and clicks don't drop food. It pauses offscreen and in hidden tabs.",
   ],
   notes: [
-    "Each koi is a follow-the-leader spine of 16 segments with a body profile (head, shoulders, tapering body, fanned tail) and a lateral sway that grows toward the tail. Cells inside the body become filled squares with a glyph: pale scales with dots, orange and red patches with X S % 8, dark markings with #.",
-    "Patterns come from value noise in each fish's own body coordinates, so markings and glyphs travel with the fish instead of shimmering across the grid. Four varieties are mixed in.",
-    "Wakes, ripples and lily pads are drawn with slope glyphs (- \\\\ | /). Pass `palette` as an object to recolor any part; it starts from `base`.",
+    "Seen from above, each koi is a follow-the-leader spine of 16 segments with a body profile (head, shoulders, tapering body) and a travelling wave that grows toward the tail. Cells are about 1.45 times as tall as they are wide, like a terminal.",
+    "Every covered cell gets a shaded block lit from the top left and a glyph whose density follows the shade: sparse . : on lit scales, dense % # @ in shadow. Five sub-samples per cell decide coverage, so partly covered edge cells get a light glyph instead of a hard block. Fins and the tail are translucent blocks with fin rays (- \\\\ | /).",
+    "Patterns (pale scales, orange and red patches, dark markings) come from value noise in each fish's own body coordinates, so they travel with the fish. Four varieties are mixed in.",
+    "Wakes and food ripples go into a diffusing energy field that lights small dots in the water and fades. Lily pads drift past as notched outlines. Pass `palette` as an object to recolor any part; it starts from `base`.",
+    "The rendering approach (top-down bodies, shaded blocks with density-matched glyphs, sub-sampled edges, a wake field) learns from ascii-sharks by drewdi (MIT); this is an independent implementation.",
   ],
 };

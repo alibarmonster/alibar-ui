@@ -37,7 +37,10 @@ export const releases: Release[] = [
       },
       {
         type: "Changed",
-        items: ["The New badge moves to 0.4.0 components; components from 0.3.0 no longer show it."],
+        items: [
+          "ASCII Koi Pond is redrawn from above with shaded, patterned bodies, translucent fins, soft edges and wakes that light the water. Its props are unchanged.",
+          "The New badge moves to 0.4.0 components; components from 0.3.0 no longer show it.",
+        ],
       },
     ],
   },
