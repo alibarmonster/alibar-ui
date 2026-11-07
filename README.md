@@ -121,7 +121,7 @@ Issues and pull requests are welcome. Please read the [contributing guide](./CON
 
 alibar/ui was built and is maintained with help from [Claude](https://www.anthropic.com/claude) by Anthropic. Claude worked as a pair programmer through the whole process: designing and implementing the components and the docs site, testing accessibility and performance, and preparing the repository for open source.
 
-ASCII Shark Sea, ASCII Koi Pond and ASCII Aquarium Background learn their top-down bodies, shaded blocks with density-matched glyphs, soft sub-sampled edges and glowing wake field from [ascii-sharks](https://github.com/stackedlol/ascii-sharks) by drewdi (MIT). The implementations are our own; ASCII Shark Sea carries the ascii-sharks copyright and MIT notice in its source.
+ASCII Shark Sea, ASCII Koi Pond, ASCII Aquarium Background and the ASCII look of Dither Wildlife learn their top-down bodies, shaded blocks with density-matched glyphs, soft sub-sampled edges and glowing wake field from [ascii-sharks](https://github.com/stackedlol/ascii-sharks) by drewdi (MIT). The implementations are our own; ASCII Shark Sea carries the ascii-sharks copyright and MIT notice in its source.
 
 ## License
 

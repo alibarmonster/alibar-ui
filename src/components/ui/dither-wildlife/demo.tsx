@@ -8,7 +8,7 @@ export function Horses() {
       <div className="flex max-w-md flex-col gap-4 p-10">
         <p className="font-mono text-[11px] tracking-[0.14em] text-[#6f6f6f] uppercase">Field notes / 01</p>
         <h3 className="text-[clamp(1.75rem,4vw,2.75rem)] leading-[1.08] font-semibold tracking-tight text-[#1c1c1c]">Run with the herd.</h3>
-        <p className="text-[15px] leading-relaxed text-[#5a5a5a]">A dithered gallop in four gray inks, drawn and shaded live on a canvas.</p>
+        <p className="text-[15px] leading-relaxed text-[#5a5a5a]">An ASCII gallop in four gray inks, shaded and dithered live on a canvas.</p>
       </div>
     </DitherWildlife>
   );
@@ -20,6 +20,10 @@ export function Flock() {
 
 export function Grove() {
   return <DitherWildlife scene="grove" className="h-96 w-full rounded-2xl border border-black/5" />;
+}
+
+export function Pixels() {
+  return <DitherWildlife look="dither" scene="grove" className="h-96 w-full rounded-2xl border border-black/5" />;
 }
 
 export function Sepia() {
