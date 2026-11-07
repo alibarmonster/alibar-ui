@@ -391,7 +391,7 @@ const rows: Record<CategoryId, Row[]> = {
     ["pixel-bloom-select", "Pixel Bloom Select", "A select whose list grows out of colored pixels and dissolves back into them.", "planned", V030],
     ["palette-dither-field", "Palette Dither Field", "Layered waves Bayer-dithered to any palette, with live palette crossfades.", "planned", V030],
     ["ascii-shark-sea", "ASCII Shark Sea", "A side-view ocean of glyph sharks on patrol and fish schools that scatter.", "planned", V030],
-    ["glyph-map-card", "Glyph Map Card", "An image redrawn as a living glyph map that shifts under the cursor.", "planned", V030],
+    ["glyph-map-card", "Glyph Map Card", "An image redrawn as a living glyph map that shifts under the cursor.", "ready", V030],
     ["flow-line-chat-card", "Flow Line Chat Card", "A feature card with a live chat channel over flowing lines.", "planned", V030],
     ["multiplayer-canvas-card", "Multiplayer Canvas Card", "A feature card where named cursors select, type and comment on a canvas.", "planned", V030],
   ],

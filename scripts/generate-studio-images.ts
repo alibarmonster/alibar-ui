@@ -387,22 +387,29 @@ function glyphSource({ art }: GlyphSourceImage, rnd: () => number) {
       ${bubbles.join("")}`;
   }
   if (art === "bird") {
-    const wing = (side: 1 | -1) =>
-      `<path d="M ${GW / 2} ${GH * 0.5} Q ${GW / 2 + side * 120} ${GH * 0.3} ${GW / 2 + side * 340} ${GH * 0.28} Q ${GW / 2 + side * 250} ${GH * 0.42} ${GW / 2 + side * 210} ${GH * 0.5} Q ${GW / 2 + side * 120} ${GH * 0.56} ${GW / 2} ${GH * 0.58} Z" fill="url(#wing)"/>`;
-    return `<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f2f2"/><stop offset="1" stop-color="#c8c8c8"/></linearGradient>
-      <rect width="${GW}" height="${GH}" fill="url(#sky)"/>
-      <circle cx="${GW * 0.78}" cy="${GH * 0.24}" r="70" fill="#ffffff"/>
-      <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3a3a"/><stop offset="1" stop-color="#8a8a8a"/></linearGradient>
-      ${wing(-1)}${wing(1)}
-      <path d="M ${GW / 2 - 150} ${GH * 0.29} L ${GW / 2 - 340} ${GH * 0.28} L ${GW / 2 - 290} ${GH * 0.33} Z" fill="#111111"/>
-      <path d="M ${GW / 2 + 150} ${GH * 0.29} L ${GW / 2 + 340} ${GH * 0.28} L ${GW / 2 + 290} ${GH * 0.33} Z" fill="#111111"/>
-      <ellipse cx="${GW / 2}" cy="${GH * 0.54}" rx="44" ry="96" fill="#d9d9d9"/>
-      <ellipse cx="${GW / 2}" cy="${GH * 0.54}" rx="44" ry="96" fill="url(#wing)" opacity="0.35"/>
-      <circle cx="${GW / 2}" cy="${GH * 0.4}" r="34" fill="#e6e6e6"/>
-      <path d="M ${GW / 2 - 8} ${GH * 0.33} L ${GW / 2} ${GH * 0.27} L ${GW / 2 + 8} ${GH * 0.33} Z" fill="#555555"/>
-      <circle cx="${GW / 2 - 14}" cy="${GH * 0.39}" r="5" fill="#111111"/>
-      <circle cx="${GW / 2 + 14}" cy="${GH * 0.39}" r="5" fill="#111111"/>
-      <path d="M ${GW / 2 - 26} ${GH * 0.7} L ${GW / 2} ${GH * 0.8} L ${GW / 2 + 26} ${GH * 0.7} Z" fill="#6a6a6a"/>`;
+    // A songbird perched on a branch, in profile: bold, dark shapes that hold up as glyphs.
+    const leaves = [
+      [150, 455, -30],
+      [215, 488, 25],
+      [610, 470, -20],
+      [680, 505, 30],
+    ]
+      .map(([x, y, r]) => `<ellipse cx="${x}" cy="${y}" rx="46" ry="18" transform="rotate(${r} ${x} ${y})" fill="#5c5c5c"/>`)
+      .join("");
+    return `<radialGradient id="bg" cx="0.55" cy="0.4" r="0.8"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dadada"/></radialGradient>
+      <rect width="${GW}" height="${GH}" fill="url(#bg)"/>
+      <path d="M 40 470 Q 300 430 520 452 T 780 440" stroke="#2a2a2a" stroke-width="22" fill="none" stroke-linecap="round"/>
+      ${leaves}
+      <linearGradient id="body" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#1a1a1a"/><stop offset="0.65" stop-color="#4a4a4a"/><stop offset="1" stop-color="#8c8c8c"/></linearGradient>
+      <path d="M 520 300 L 660 250 L 668 282 L 540 352 Z" fill="#141414"/>
+      <ellipse cx="415" cy="330" rx="150" ry="112" fill="url(#body)"/>
+      <path d="M 330 300 Q 420 250 520 300 Q 470 360 360 360 Z" fill="#0f0f0f" opacity="0.75"/>
+      <ellipse cx="395" cy="380" rx="92" ry="58" fill="#a8a8a8"/>
+      <circle cx="285" cy="235" r="78" fill="#1c1c1c"/>
+      <path d="M 212 222 L 150 238 L 214 252 Z" fill="#111111"/>
+      <circle cx="262" cy="222" r="15" fill="#f4f4f4"/>
+      <circle cx="259" cy="222" r="7" fill="#050505"/>
+      <path d="M 395 436 L 385 462 M 440 436 L 446 462" stroke="#111111" stroke-width="9" stroke-linecap="round"/>`;
   }
   // Skyline.
   const layer = (count: number, baseY: number, minH: number, maxH: number, color: string, windows: boolean) => {

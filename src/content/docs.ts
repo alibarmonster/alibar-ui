@@ -214,4 +214,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "takeover-nav": () => import("@/components/ui/takeover-nav/docs"),
   "gather-nav": () => import("@/components/ui/gather-nav/docs"),
   "dither-wildlife": () => import("@/components/ui/dither-wildlife/docs"),
+  "glyph-map-card": () => import("@/components/ui/glyph-map-card/docs"),
 };

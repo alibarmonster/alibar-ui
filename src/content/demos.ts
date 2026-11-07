@@ -215,4 +215,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "takeover-nav": () => import("@/components/ui/takeover-nav/demo"),
   "gather-nav": () => import("@/components/ui/gather-nav/demo"),
   "dither-wildlife": () => import("@/components/ui/dither-wildlife/demo"),
+  "glyph-map-card": () => import("@/components/ui/glyph-map-card/demo"),
 };

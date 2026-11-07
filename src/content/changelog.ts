@@ -18,7 +18,7 @@ export const releases: Release[] = [
     version: "0.3.0",
     title: "3D galleries, physical surfaces, prediction markets, billing, HTML in Canvas and navbars",
     summary:
-      "Sixty-one components, most in six new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, and an adapter for the experimental HTML-in-Canvas API.",
+      "Sixty-two components, most in seven new categories, built on a shared WebGL2 gallery engine, simulated market and billing data, an adapter for the experimental HTML-in-Canvas API and a shared glyph engine.",
     changes: [
       {
         type: "Added",
@@ -33,6 +33,7 @@ export const releases: Release[] = [
           "Shelf Gallery, Foil Card Drift, Icon Headline, Pixel Mosaic and Tumbling Tags: covers on floating shelves, foil cards drifting in 3D, a headline with inline app icons, a living pixel band and a pile of tumbling product blocks.",
           "Pixel Landscape: a dot-mosaic mountain range the pointer relights like a moving sun.",
           "Dither Wildlife: galloping horses, a wheeling flock or a swaying grove, drawn in dithered gray pixels.",
+          "Studio Pieces & Glyph Art, a new category built on a shared glyph engine (sampling, sprite atlases, Bayer dithering, palettes). First up: Glyph Map Card, an image redrawn as a living glyph map that scrambles under the pointer, with a serif title, watchers and an expanded view.",
           "Navbars & Headers: sixteen site headers (Island Nav, Float Bar, Split Islands, Duo Panel Menu, Catalog Menu, Ticker Header, Center Pill Nav, Morphing Dropdown Nav, Scroll-Aware Nav, Sheet Nav, Notch Nav, Gooey Nav, Liquid Tab Nav, Overlay Menu Nav, Takeover Nav and Gather Nav) sharing menu, scroll and mobile-menu helpers, all keyboard operable and sized by container queries.",
         ],
       },

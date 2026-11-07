@@ -12,3 +12,16 @@ export const geistMono = localFont({
   adjustFontFallback: false,
   fallback: ["ui-monospace", "SFMono-Regular", "Roboto Mono", "Menlo", "Monaco", "Liberation Mono", "DejaVu Sans Mono", "Courier New", "monospace"],
 });
+
+/**
+ * Geist Serif for display headings in demos and components that ask for a serif face
+ * (`var(--font-geist-serif)` with a system serif fallback). Not preloaded: only a few pages use it.
+ */
+export const geistSerif = localFont({
+  src: "../../node_modules/geist/dist/fonts/geist-serif/GeistSerif-Regular.woff2",
+  variable: "--font-geist-serif",
+  weight: "400",
+  preload: false,
+  adjustFontFallback: false,
+  fallback: ["ui-serif", "Iowan Old Style", "Georgia", "Times New Roman", "serif"],
+});

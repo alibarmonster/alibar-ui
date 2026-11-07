@@ -121,7 +121,7 @@ export interface GlyphSourceImage {
 export const glyphSources: GlyphSourceImage[] = (
   [
     ["reef-fish", "A striped reef fish swimming left among a few bubbles", "fish"],
-    ["gull", "A gull gliding with its wings spread under a pale sun", "bird"],
+    ["songbird", "A small songbird perched on a leafy branch", "bird"],
     ["skyline", "A city skyline at dusk with a large low sun and lit windows", "skyline"],
   ] as const
 ).map(([id, alt, art], i) => ({ id, src: `/studio/glyph/${id}.webp`, alt, art, seed: 9100 + i * 17 }));

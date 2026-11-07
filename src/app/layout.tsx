@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { siteConfig } from "@/config/site";
-import { geistMono } from "@/lib/fonts";
+import { geistMono, geistSerif } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -33,7 +33,7 @@ const originTrialToken = process.env.NEXT_PUBLIC_HTML_IN_CANVAS_OT_TOKEN;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={cn(GeistSans.variable, geistMono.variable)}>
+    <html lang="en" className={cn(GeistSans.variable, geistMono.variable, geistSerif.variable)}>
       {/* Opts the site into the HTML-in-Canvas origin trial when a token is configured. */}
       {originTrialToken ? (
         <head>
