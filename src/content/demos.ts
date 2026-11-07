@@ -224,4 +224,5 @@ export const demoLoaders: Record<string, () => Promise<Record<string, unknown>>>
   "retro-desktop-hero": () => import("@/components/ui/retro-desktop-hero/demo"),
   "flow-line-chat-card": () => import("@/components/ui/flow-line-chat-card/demo"),
   "multiplayer-canvas-card": () => import("@/components/ui/multiplayer-canvas-card/demo"),
+  "crumple-notes": () => import("@/components/ui/crumple-notes/demo"),
 };

@@ -32,6 +32,7 @@ export const releases: Release[] = [
           "Pane Stack Portfolio: project panes receding in a diagonal row, with filters, an index grid and a detail view the front pane morphs into.",
           "Retro Desktop Hero: a tiny retro desktop with draggable pixel icons, windows you can move, minimize and maximize, a hello window and a taskbar.",
           "Flow Line Chat Card and Multiplayer Canvas Card: a pair of animated feature cards for a chat and a collaboration product, sharing a FlowLines background of flowing, pointer-bending lines.",
+          "Crumple Notes: paper notes that crumple into WebGL paper balls and unfold again, keeping faint creases.",
         ],
       },
       {

@@ -38,3 +38,18 @@ export const geistPixel = localFont({
   adjustFontFallback: false,
   fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
 });
+
+/**
+ * Caveat (OFL) for handwritten notes, e.g. Crumple Notes (`var(--font-hand)` with a cursive
+ * fallback). Not preloaded.
+ */
+export const caveat = localFont({
+  src: [
+    { path: "../../node_modules/@fontsource/caveat/files/caveat-latin-400-normal.woff2", weight: "400" },
+    { path: "../../node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2", weight: "700" },
+  ],
+  variable: "--font-hand",
+  preload: false,
+  adjustFontFallback: false,
+  fallback: ["Bradley Hand", "Segoe Print", "Comic Sans MS", "cursive"],
+});

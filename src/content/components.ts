@@ -387,7 +387,7 @@ const rows: Record<CategoryId, Row[]> = {
   studio: [
     ["retro-desktop-hero", "Retro Desktop Hero", "A portfolio hero as a tiny retro desktop with icons, windows and a taskbar.", "ready", V040],
     ["pane-stack-portfolio", "Pane Stack Portfolio", "Project panes standing in a receding diagonal row, with filters and a detail view.", "ready", V040],
-    ["crumple-notes", "Crumple Notes", "Paper notes that crumple into balls and unfold again, creases and all.", "planned", V040],
+    ["crumple-notes", "Crumple Notes", "Paper notes that crumple into balls and unfold again, creases and all.", "ready", V040],
     ["clothesline-cards", "Clothesline Cards", "Profile cards swaying on a string, with a foil shimmer and a flip to the back.", "ready", V040],
     ["pixel-bloom-select", "Pixel Bloom Select", "A select whose list grows out of colored pixels and dissolves back into them.", "ready", V040],
     ["palette-dither-field", "Palette Dither Field", "Layered waves Bayer-dithered to any palette, with live palette crossfades.", "ready", V040],
