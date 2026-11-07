@@ -28,6 +28,7 @@ Work toward 0.4.0: ten components (#213–222) in one new category, Studio Piece
 ### Changed
 
 - ASCII Koi Pond (#189) is redrawn from above in the same style as ASCII Shark Sea: shaded blocks for pale scales, orange and red patches and dark markings under glyphs that thicken into shadow, soft sub-sampled edges, a dorsal ridge, translucent fanned fins and a forked tail, and wakes and food ripples that light dots in the water. Koi glide in wide arcs instead of turning on the spot, lily pads are notched discs, and `cell` now defaults to 8 (cell width; cells are 1.45 times as tall). The props and palette keys are unchanged.
+- ASCII Aquarium Background lights its creatures from the top left (denser squares and glyphs on the shaded side, rare accent glints), leaves wakes that light accent dots behind rays, fish and pulsing jellyfish, and has fish dart away from a nearby cursor. Its look, props and handle are otherwise unchanged.
 - The README credits ascii-sharks (MIT), which ASCII Shark Sea, ASCII Koi Pond and ASCII Aquarium Background learn from.
 - The README and package description count 222 components in 22 categories, and the last category card on the landing page fills the rest of its row.
 - Version 0.4.0 in progress: the navbar badge and the New badges follow it, so components from 0.3.0 no longer show New. The landing page showcases 0.3.0, the latest shipped release.

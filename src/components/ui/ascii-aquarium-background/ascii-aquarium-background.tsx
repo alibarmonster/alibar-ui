@@ -2,6 +2,7 @@
 
 import { useEffect, useImperativeHandle, useRef, type ComponentProps, type CSSProperties, type Ref, type RefObject } from "react";
 import { cn } from "@/lib/utils";
+import { hash3, WakeField } from "@/lib/glyph/ascii-life";
 
 export type AquariumMode = "idle" | "listening" | "thinking";
 
@@ -292,6 +293,9 @@ export function AsciiAquariumBackground({
     let overlay = new Int16Array(0);
     let overlayAlpha = new Float32Array(0);
     let overlayTint = new Uint8Array(0);
+    // Energy left where creatures swim; it spreads, fades and lights dots in the empty water.
+    let wake = new WakeField(1, 1);
+    let accentRgb = "37, 99, 235";
     let t = 0;
     let clock = 0;
     let last = 0;
@@ -349,6 +353,7 @@ export function AsciiAquariumBackground({
       paletteKey = latest.current.paletteKey;
       const ink = resolveColor(el, probe, colors.ink);
       const accent = resolveColor(el, probe, colors.accent);
+      accentRgb = accent.join(", ");
       tints = Array.from({ length: TINTS }, (_, k) => {
         const f = k / (TINTS - 1);
         const mix = (i: number) => Math.round(ink[i] + (accent[i] - ink[i]) * f);
@@ -476,6 +481,7 @@ export function AsciiAquariumBackground({
       overlay = new Int16Array(cols * rows);
       overlayAlpha = new Float32Array(cols * rows);
       overlayTint = new Uint8Array(cols * rows);
+      wake = new WakeField(cols, rows);
       if (oldCols && list.length) {
         const sx = cols / oldCols;
         const sy = rows / oldRows;
@@ -643,6 +649,16 @@ export function AsciiAquariumBackground({
             const ty = c.y + ox * sh + oy * ch + noise1(f.seed * 1.7 + t * 0.4) * 0.7;
             f.vx += ((tx - f.x) * 4.5 - (f.vx - c.vx) * 2.4) * sdt;
             f.vy += ((ty - f.y) * 4.5 - (f.vy - c.vy) * 2.4) * sdt;
+            if (following) {
+              // Small fish dart away from a nearby cursor, then fall back into formation.
+              const dx = f.x - pointer.x;
+              const dy = f.y - pointer.y;
+              const d = Math.hypot(dx, dy) || 1;
+              if (d < 7) {
+                f.vx += (dx / d) * (7 - d) * 9 * sdt;
+                f.vy += (dy / d) * (7 - d) * 9 * sdt;
+              }
+            }
             f.x += f.vx * sdt;
             f.y += f.vy * sdt;
             const fs = Math.hypot(f.vx, f.vy);
@@ -651,6 +667,30 @@ export function AsciiAquariumBackground({
           }
         }
       }
+
+      // Wakes: rays and fish stir the water behind them, jellyfish push a puff on each pulse.
+      const deposit = (x: number, y: number, amount: number) => {
+        const col = Math.floor(x);
+        const row = Math.floor(y);
+        if (col >= 0 && row >= 0 && col < cols && row < rows) wake.add(row * cols + col, amount * slow);
+      };
+      for (const c of list) {
+        const speed = Math.hypot(c.vx, c.vy);
+        if (c.kind === "ray") {
+          const back = c.size * (0.62 + 0.38 * c.z) * 0.24;
+          const span = c.size * (0.62 + 0.38 * c.z) * 0.4;
+          const ch = Math.cos(c.heading);
+          const sh = Math.sin(c.heading);
+          for (const side of [-1, 1]) deposit(c.x - ch * back - sh * span * side, c.y - sh * back + ch * span * side, (0.04 + speed * 0.012) * (c.hero ? 1.5 : 1));
+          deposit(c.x - ch * back * 2.2, c.y - sh * back * 2.2, 0.03 + speed * 0.01);
+        } else if (c.kind === "jelly") {
+          if (c.phase < 0.25) deposit(c.x - Math.sin(c.heading) * c.size * 0.2, c.y + Math.cos(c.heading) * c.size * 0.4, 0.12);
+        } else {
+          for (const f of c.members) deposit(f.x - Math.cos(f.heading) * 1.5, f.y - Math.sin(f.heading) * 1.5, 0.02 + Math.hypot(f.vx, f.vy) * 0.006);
+        }
+      }
+      if (pointer.active && interactive && clock - pointer.at < 0.2) deposit(pointer.x, pointer.y, 0.05);
+      wake.step(sdt, 1.3);
 
       for (const cluster of clusters) {
         cluster.age += sdt;
@@ -809,6 +849,9 @@ export function AsciiAquariumBackground({
       }
       lctx.globalAlpha = 1;
       const img = lctx.getImageData(0, 0, cols, rows).data;
+      const still = reduce.matches;
+      /** Brightness of a cell's paint, or 1 (thin) where nothing is painted. */
+      const lum = (k: number) => (img[k * 4 + 3] < ALPHA_SKIP * 255 ? 1 : img[k * 4] / 255);
 
       // Ripples and bursts win over creature glyphs in the cells they pass through.
       overlay.fill(-1);
@@ -875,15 +918,37 @@ export function AsciiAquariumBackground({
             blit(Math.abs(gx) + Math.abs(gy) < 24 ? SPARK_I[2] : lineGlyph(Math.atan2(gy, gx)), tint, x, y);
             continue;
           }
-          const l = img[i * 4] / 255;
-          if (tint !== fill) {
-            ctx.fillStyle = tints[tint] ?? "#000";
-            fill = tint;
+          // Light from the top left: thickness rises toward the middle of a body, so the side whose
+          // thickness grows toward the bottom right faces the light and the far side falls into shade.
+          const gx = (col > 0 ? lum(i - 1) : 1) - (col + 1 < cols ? lum(i + 1) : 1);
+          const gy = (row > 0 ? lum(i - cols) : 1) - (row + 1 < rows ? lum(i + cols) : 1);
+          const facing = clamp((gx * 0.6 + gy * 0.8) * 1.6, -1, 1);
+          const l = clamp(img[i * 4] / 255 + facing * 0.2, 0, 1);
+          // A rare glint in the accent color, re-rolled on a slow staggered clock, like light on skin.
+          const glint = !still && hash3(col, row, Math.floor(clock * 2.2 + hash3(col, row, 3) * 4)) < 0.035 && l < 0.7;
+          const t2 = glint ? TINTS - 1 : tint;
+          if (t2 !== fill) {
+            ctx.fillStyle = tints[t2] ?? "#000";
+            fill = t2;
           }
-          ctx.globalAlpha = (0.05 + 0.11 * (1 - l)) * a;
+          // Solid shaded cells: denser in shadow, barely there where the light hits.
+          ctx.globalAlpha = (0.05 + 0.2 * (1 - l) ** 1.3) * a;
           ctx.fillRect(x + inset, y + inset, glyphPx - inset, glyphPx - inset);
           ctx.globalAlpha = 0.5 + 0.5 * a;
-          blit(l < 0.36 ? pickGlyph(DARK_I, l / 0.36) : l < 0.68 ? pickGlyph(MID_I, (l - 0.36) / 0.32) : pickGlyph(LIGHT_I, (l - 0.68) / 0.32), tint, x, y);
+          blit(l < 0.36 ? pickGlyph(DARK_I, l / 0.36) : l < 0.68 ? pickGlyph(MID_I, (l - 0.36) / 0.32) : pickGlyph(LIGHT_I, (l - 0.68) / 0.32), t2, x, y);
+        }
+      }
+
+      // The wake lights small dots in empty water, brighter where it is strong.
+      const dot = Math.max(2, Math.round(pitch * 0.3));
+      const e = wake.energy;
+      for (let level = 0; level < 4; level++) {
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = `rgba(${accentRgb}, ${0.3 + level * 0.18})`;
+        for (let i = 0; i < e.length; i++) {
+          if (e[i] < 0.12 || overlay[i] >= 0 || img[i * 4 + 3] >= ALPHA_SKIP * 255) continue;
+          if (Math.min(3, Math.floor((e[i] - 0.12) * 6)) !== level) continue;
+          ctx.fillRect(Math.round((i % cols) * pitch + (pitch - dot) / 2), Math.round(((i / cols) | 0) * pitch + (pitch - dot) / 2), dot, dot);
         }
       }
 
@@ -939,6 +1004,11 @@ export function AsciiAquariumBackground({
       const x = (clientX - box.left) / cellPx;
       const y = (clientY - box.top) / cellPx;
       ripples.push({ x, y, age: 0, max: clamp(Math.min(cols, rows) * 0.22 + 8, 10, 26) });
+      for (let j = 0; j < 24; j++) {
+        const col = Math.floor(x + Math.cos((j / 24) * TAU) * 2.5);
+        const row = Math.floor(y + Math.sin((j / 24) * TAU) * 2.5);
+        if (col >= 0 && row >= 0 && col < cols && row < rows) wake.add(row * cols + col, 1);
+      }
       if (ripples.length > 6) ripples.shift();
       if (latest.current.burst) {
         for (let i = 0; i < 14; i++) {

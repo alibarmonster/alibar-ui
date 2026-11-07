@@ -39,6 +39,7 @@ export const releases: Release[] = [
         type: "Changed",
         items: [
           "ASCII Koi Pond is redrawn from above with shaded, patterned bodies, translucent fins, soft edges and wakes that light the water. Its props are unchanged.",
+          "ASCII Aquarium Background lights its creatures from the top left, leaves glowing wakes behind them and has fish dart away from the cursor.",
           "The New badge moves to 0.4.0 components; components from 0.3.0 no longer show it.",
         ],
       },
