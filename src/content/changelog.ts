@@ -18,7 +18,7 @@ export const releases: Release[] = [
     version: "0.4.0",
     title: "Studio pieces and glyph art",
     summary:
-      "Portfolio heroes, hanging cards, paper and images redrawn as glyphs and dithered pixels, in one new category built on a shared glyph engine.",
+      "Ten components in one new category: portfolio heroes, hanging cards, crumpling paper, feature cards, and images redrawn as glyphs and dithered pixels, built on a shared glyph engine.",
     changes: [
       {
         type: "Added",

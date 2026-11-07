@@ -4,7 +4,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
-Work toward 0.4.0: Studio Pieces & Glyph Art (#213–222), one new category built on a shared glyph engine. No breaking changes so far.
+Work toward 0.4.0: ten components (#213–222) in one new category, Studio Pieces & Glyph Art, built on a shared glyph engine. No breaking changes so far.
 
 ### Added
 
@@ -26,6 +26,7 @@ Work toward 0.4.0: Studio Pieces & Glyph Art (#213–222), one new category buil
 
 ### Changed
 
+- The README and package description count 222 components in 22 categories, and the last category card on the landing page fills the rest of its row.
 - Version 0.4.0 in progress: the navbar badge and the New badges follow it, so components from 0.3.0 no longer show New. The landing page showcases 0.3.0, the latest shipped release.
 
 ## [0.3.0] - 2026-11-07
