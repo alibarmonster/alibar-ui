@@ -4,21 +4,21 @@ export const docs: ComponentDocs = {
   usage: `import { AsciiSharkSea } from "@/components/ui/ascii-shark-sea/ascii-shark-sea";
 
 <AsciiSharkSea
-  sharks={[{ kind: "hammerhead" }, { kind: "great-white", size: 1.2 }, { kind: "reef" }]}
-  schools={3}
-  className="h-[520px]"
+  sharks={[{ kind: "hammerhead" }, { kind: "great-white", size: 0.84 }, { kind: "reef", size: 0.72 }]}
+  palette="dark"
+  className="h-[560px]"
 >
   <Hero />
 </AsciiSharkSea>`,
   a11y: [
     "The sea is a decorative canvas (aria-hidden) behind your content, which keeps its own semantics and tab order.",
-    "Clicks on links, buttons and form fields belong to them and never drop bait. Nothing depends on the pointer: fish avoiding the cursor and bait are extras.",
-    "Under reduced motion it draws one still frame and clicks don't drop bait. It pauses offscreen, in hidden tabs and while `paused` is set.",
+    "Clicks on links, buttons and form fields belong to them and never drop bait. Fish dodging the cursor and bait are extras; nothing depends on them.",
+    "Under reduced motion the sea settles for a few simulated seconds and then holds one still frame; clicks don't drop bait. It pauses offscreen, in hidden tabs and while `paused` is set.",
   ],
   notes: [
-    "Each shark is a 14-segment follow-the-leader spine with a vertical sway that grows toward the tail. Every frame, the cells around it are rasterized against a side profile (pointed snout, dorsal and pectoral fins, a two-lobed tail) and stamped with glyphs from a shared atlas: dense glyphs along the back, lighter ones on the flanks, dots on the pale belly, gill slits and an eye. Hammerheads get a T-shaped head, reef sharks black fin tips, great whites a heavier body and a fuller tail.",
-    "Sharks patrol across the view and turn once they are fully past an edge, often at a new depth: farther sharks are shorter and fainter. Fish schools are boids (separation, alignment, cohesion) that drift around a wandering home, scatter from any shark's head, middle or tail and regroup after it passes.",
-    "A click drops bait (`*`) that sinks slowly. Nearby fish crowd it, and after a moment the nearest shark heading that way comes for it, then leaves a burst of bubbles.",
-    "`palette` takes `light`, `dark` or an object of colors that starts from `base`; the water is a CSS gradient from `surface` to `deep`, so it shows before the canvas draws.",
+    "Seen from above. Each shark is a 20-node follow-the-leader spine with a bend limit per joint, a travelling body wave and pectoral fins that bank into turns. Every frame the cells around it are supersampled against a top-down outline (snout, falcate pectorals, pelvics, forked tail, a hammer-shaped head for hammerheads, a whip tail for threshers): fully covered cells become a shaded block lit from the top left with a glyph that gets denser in shadow, partly covered cells become light edge glyphs, so silhouettes stay soft. Glyphs are keyed to body coordinates so they ride along with the skin, and now and then one catches a color.",
+    "Fish are one dash per cell. Schools flock (separation in cell units, alignment, cohesion, a blind spot behind each fish), pass alarm from fish to fish, break to either side of a passing shark and regroup; one kind mills into a bait ball, one swims in ribbons, one swarms. Hungry sharks hunt, preferring stragglers in sparse water; eaten fish return later as a new school from an edge. A click drops bait that calm fish crowd and a hungry shark comes for.",
+    "Anything that swims leaves energy in a wake field that blurs and fades each step, lighting dots in the water; sharks also cast a faint shadow. Content passed as children keeps the middle clear: sharks steer around an ellipse there.",
+    "Learned from ascii-sharks by drewdi (github.com/stackedlol/ascii-sharks, MIT); this is an independent implementation and the file carries its license notice.",
   ],
 };
