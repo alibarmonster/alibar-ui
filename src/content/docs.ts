@@ -220,4 +220,5 @@ export const docsLoaders: Record<string, () => Promise<{ docs: ComponentDocs }>>
   "clothesline-cards": () => import("@/components/ui/clothesline-cards/docs"),
   "pixel-bloom-select": () => import("@/components/ui/pixel-bloom-select/docs"),
   "pane-stack-portfolio": () => import("@/components/ui/pane-stack-portfolio/docs"),
+  "retro-desktop-hero": () => import("@/components/ui/retro-desktop-hero/docs"),
 };

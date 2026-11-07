@@ -25,3 +25,16 @@ export const geistSerif = localFont({
   adjustFontFallback: false,
   fallback: ["ui-serif", "Iowan Old Style", "Georgia", "Times New Roman", "serif"],
 });
+
+/**
+ * Geist Pixel (square cut) for pixel-style labels, e.g. the Retro Desktop Hero
+ * (`var(--font-geist-pixel)` with a monospace fallback). Not preloaded.
+ */
+export const geistPixel = localFont({
+  src: "../../node_modules/geist/dist/fonts/geist-pixel/GeistPixel-Square.woff2",
+  variable: "--font-geist-pixel",
+  weight: "400",
+  preload: false,
+  adjustFontFallback: false,
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+});
